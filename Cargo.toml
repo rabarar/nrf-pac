@@ -1,0 +1,11 @@
+[package]
+name = "nrf-pac"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = "0.7.1"
+cortex-m-rt = { version = ">=0.6.15,<0.8", optional = true }
+
+[features]
+rt = ["cortex-m-rt/device"]
