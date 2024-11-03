@@ -2,17 +2,24 @@
 
 set -euxo pipefail
 
-rm -rf src
-mkdir src
+rm -f src/chips/*/*.rs
 
 (cd ../chiptool/; cargo build)
-RUST_BACKTRACE=1 RUST_LOG=info ../chiptool/target/debug/chiptool generate --svd svd/nrf52840.svd --transform svd/nrf52840.yaml
+export RUST_BACKTRACE=1
+export RUST_LOG=info
+chiptool=../chiptool/target/debug/chiptool
 
-# cargo install form
-form -i lib.rs -o src
-rm lib.rs
-#mv lib.rs src
+for chip in $(ls svd); do 
+    chip=${chip%.*}
+    $chiptool generate --svd svd/$chip.svd --transform transform.yaml
+    rustfmt lib.rs
+    sed -i '/#!\[no_std]/d' lib.rs
+    mv lib.rs src/chips/$chip/pac.rs
+done
 
 cargo fmt
-cargo check
-cargo doc
+for chip in $(ls svd); do 
+    chip=${chip%.*}
+    cargo check --features $chip
+    cargo doc --features $chip
+done
