@@ -172,7 +172,7 @@ transforms:
 
 # ======= NFCT
   - !DeleteEnums
-      from: nfct(|_s|_ns)::vals::(Fieldpresent|Crcerror|Crcmoderx|Crcmodetx)
+      from: nfct(|_s|_ns)::vals::(Fieldpresent|Crcerror|Crcmoderx|Crcmodetx|Paritystatus)
 
 # ======= NVMC
   - !DeleteEnums
