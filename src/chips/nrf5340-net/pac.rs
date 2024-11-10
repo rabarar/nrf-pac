@@ -349,40 +349,40 @@ pub mod aar_ns {
                 Enable(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for event END"]
+            #[doc = "Write '1' to disable interrupt for event END"]
             #[inline(always)]
             pub const fn end(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event END"]
+            #[doc = "Write '1' to disable interrupt for event END"]
             #[inline(always)]
             pub fn set_end(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for event RESOLVED"]
+            #[doc = "Write '1' to disable interrupt for event RESOLVED"]
             #[inline(always)]
             pub const fn resolved(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event RESOLVED"]
+            #[doc = "Write '1' to disable interrupt for event RESOLVED"]
             #[inline(always)]
             pub fn set_resolved(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for event NOTRESOLVED"]
+            #[doc = "Write '1' to disable interrupt for event NOTRESOLVED"]
             #[inline(always)]
             pub const fn notresolved(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event NOTRESOLVED"]
+            #[doc = "Write '1' to disable interrupt for event NOTRESOLVED"]
             #[inline(always)]
             pub fn set_notresolved(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
@@ -899,40 +899,40 @@ pub mod ccm_ns {
                 Headermask(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for event ENDKSGEN"]
+            #[doc = "Write '1' to disable interrupt for event ENDKSGEN"]
             #[inline(always)]
             pub const fn endksgen(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event ENDKSGEN"]
+            #[doc = "Write '1' to disable interrupt for event ENDKSGEN"]
             #[inline(always)]
             pub fn set_endksgen(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for event ENDCRYPT"]
+            #[doc = "Write '1' to disable interrupt for event ENDCRYPT"]
             #[inline(always)]
             pub const fn endcrypt(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event ENDCRYPT"]
+            #[doc = "Write '1' to disable interrupt for event ENDCRYPT"]
             #[inline(always)]
             pub fn set_endcrypt(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Deprecated intsetfield - Write '1' to enable interrupt for event ERROR"]
+            #[doc = "Deprecated intclrfield - Write '1' to disable interrupt for event ERROR"]
             #[inline(always)]
             pub const fn error(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Deprecated intsetfield - Write '1' to enable interrupt for event ERROR"]
+            #[doc = "Deprecated intclrfield - Write '1' to disable interrupt for event ERROR"]
             #[inline(always)]
             pub fn set_error(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
@@ -4635,29 +4635,29 @@ pub mod ecb_ns {
         }
     }
     pub mod regs {
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for event ENDECB"]
+            #[doc = "Write '1' to disable interrupt for event ENDECB"]
             #[inline(always)]
             pub const fn endecb(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event ENDECB"]
+            #[doc = "Write '1' to disable interrupt for event ENDECB"]
             #[inline(always)]
             pub fn set_endecb(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for event ERRORECB"]
+            #[doc = "Write '1' to disable interrupt for event ERRORECB"]
             #[inline(always)]
             pub const fn errorecb(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event ERRORECB"]
+            #[doc = "Write '1' to disable interrupt for event ERRORECB"]
             #[inline(always)]
             pub fn set_errorecb(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
@@ -5894,9 +5894,9 @@ pub mod gpio_ns {
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub enum Dir {
-            #[doc = "Pin set as input"]
+            #[doc = "Configure pin as an input pin"]
             INPUT = 0x0,
-            #[doc = "Pin set as output"]
+            #[doc = "Configure pin as an output pin"]
             OUTPUT = 0x01,
         }
         impl Dir {
@@ -6289,106 +6289,106 @@ pub mod gpiote_ns {
                 Config(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for event IN\\[0\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[0\\]"]
             #[inline(always)]
             pub const fn in0(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[0\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[0\\]"]
             #[inline(always)]
             pub fn set_in0(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[1\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[1\\]"]
             #[inline(always)]
             pub const fn in1(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[1\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[1\\]"]
             #[inline(always)]
             pub fn set_in1(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[2\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[2\\]"]
             #[inline(always)]
             pub const fn in2(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[2\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[2\\]"]
             #[inline(always)]
             pub fn set_in2(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[3\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[3\\]"]
             #[inline(always)]
             pub const fn in3(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[3\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[3\\]"]
             #[inline(always)]
             pub fn set_in3(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[4\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[4\\]"]
             #[inline(always)]
             pub const fn in4(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[4\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[4\\]"]
             #[inline(always)]
             pub fn set_in4(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[5\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[5\\]"]
             #[inline(always)]
             pub const fn in5(&self) -> bool {
                 let val = (self.0 >> 5usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[5\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[5\\]"]
             #[inline(always)]
             pub fn set_in5(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[6\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[6\\]"]
             #[inline(always)]
             pub const fn in6(&self) -> bool {
                 let val = (self.0 >> 6usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[6\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[6\\]"]
             #[inline(always)]
             pub fn set_in6(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[7\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[7\\]"]
             #[inline(always)]
             pub const fn in7(&self) -> bool {
                 let val = (self.0 >> 7usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event IN\\[7\\]"]
+            #[doc = "Write '1' to disable interrupt for event IN\\[7\\]"]
             #[inline(always)]
             pub fn set_in7(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
             }
-            #[doc = "Write '1' to enable interrupt for event PORT"]
+            #[doc = "Write '1' to disable interrupt for event PORT"]
             #[inline(always)]
             pub const fn port(&self) -> bool {
                 let val = (self.0 >> 31usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event PORT"]
+            #[doc = "Write '1' to disable interrupt for event PORT"]
             #[inline(always)]
             pub fn set_port(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
@@ -13007,18 +13007,18 @@ pub mod shared {
                 Psel(0)
             }
         }
-        #[doc = "Deprecated register - Publish configuration for event ERROR"]
+        #[doc = "Publish configuration for event END"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Publish(pub u32);
         impl Publish {
-            #[doc = "DPPI channel that event ERROR will publish to."]
+            #[doc = "DPPI channel that event END will publish to."]
             #[inline(always)]
             pub const fn chidx(&self) -> u8 {
                 let val = (self.0 >> 0usize) & 0xff;
                 val as u8
             }
-            #[doc = "DPPI channel that event ERROR will publish to."]
+            #[doc = "DPPI channel that event END will publish to."]
             #[inline(always)]
             pub fn set_chidx(&mut self, val: u8) {
                 self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -13039,18 +13039,18 @@ pub mod shared {
                 Publish(0)
             }
         }
-        #[doc = "Subscribe configuration for task RSSISTOP"]
+        #[doc = "Subscribe configuration for task START"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Subscribe(pub u32);
         impl Subscribe {
-            #[doc = "DPPI channel that task RSSISTOP will subscribe to"]
+            #[doc = "DPPI channel that task START will subscribe to"]
             #[inline(always)]
             pub const fn chidx(&self) -> u8 {
                 let val = (self.0 >> 0usize) & 0xff;
                 val as u8
             }
-            #[doc = "DPPI channel that task RSSISTOP will subscribe to"]
+            #[doc = "DPPI channel that task START will subscribe to"]
             #[inline(always)]
             pub fn set_chidx(&mut self, val: u8) {
                 self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -13612,62 +13612,62 @@ pub mod spim_ns {
                 Frequency(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for event STOPPED"]
+            #[doc = "Write '1' to disable interrupt for event STOPPED"]
             #[inline(always)]
             pub const fn stopped(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event STOPPED"]
+            #[doc = "Write '1' to disable interrupt for event STOPPED"]
             #[inline(always)]
             pub fn set_stopped(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for event ENDRX"]
+            #[doc = "Write '1' to disable interrupt for event ENDRX"]
             #[inline(always)]
             pub const fn endrx(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event ENDRX"]
+            #[doc = "Write '1' to disable interrupt for event ENDRX"]
             #[inline(always)]
             pub fn set_endrx(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
             }
-            #[doc = "Write '1' to enable interrupt for event END"]
+            #[doc = "Write '1' to disable interrupt for event END"]
             #[inline(always)]
             pub const fn end(&self) -> bool {
                 let val = (self.0 >> 6usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event END"]
+            #[doc = "Write '1' to disable interrupt for event END"]
             #[inline(always)]
             pub fn set_end(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
             }
-            #[doc = "Write '1' to enable interrupt for event ENDTX"]
+            #[doc = "Write '1' to disable interrupt for event ENDTX"]
             #[inline(always)]
             pub const fn endtx(&self) -> bool {
                 let val = (self.0 >> 8usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event ENDTX"]
+            #[doc = "Write '1' to disable interrupt for event ENDTX"]
             #[inline(always)]
             pub fn set_endtx(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
             }
-            #[doc = "Write '1' to enable interrupt for event STARTED"]
+            #[doc = "Write '1' to disable interrupt for event STARTED"]
             #[inline(always)]
             pub const fn started(&self) -> bool {
                 let val = (self.0 >> 19usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event STARTED"]
+            #[doc = "Write '1' to disable interrupt for event STARTED"]
             #[inline(always)]
             pub fn set_started(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
@@ -15517,18 +15517,18 @@ pub mod temp_ns {
                 B5(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for event DATARDY"]
+            #[doc = "Write '1' to disable interrupt for event DATARDY"]
             #[inline(always)]
             pub const fn datardy(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event DATARDY"]
+            #[doc = "Write '1' to disable interrupt for event DATARDY"]
             #[inline(always)]
             pub fn set_datardy(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -19328,29 +19328,29 @@ pub mod wdt_ns {
                 Inten(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Nmien(pub u32);
         impl Nmien {
-            #[doc = "Write '1' to enable interrupt for event TIMEOUT"]
+            #[doc = "Write '1' to disable interrupt for event TIMEOUT"]
             #[inline(always)]
             pub const fn timeout(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event TIMEOUT"]
+            #[doc = "Write '1' to disable interrupt for event TIMEOUT"]
             #[inline(always)]
             pub fn set_timeout(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for event STOPPED"]
+            #[doc = "Write '1' to disable interrupt for event STOPPED"]
             #[inline(always)]
             pub const fn stopped(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for event STOPPED"]
+            #[doc = "Write '1' to disable interrupt for event STOPPED"]
             #[inline(always)]
             pub fn set_stopped(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);

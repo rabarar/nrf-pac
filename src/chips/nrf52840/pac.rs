@@ -486,40 +486,40 @@ pub mod aar {
                 Enable(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for END event"]
+            #[doc = "Write '1' to disable interrupt for END event"]
             #[inline(always)]
             pub const fn end(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for END event"]
+            #[doc = "Write '1' to disable interrupt for END event"]
             #[inline(always)]
             pub fn set_end(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for RESOLVED event"]
+            #[doc = "Write '1' to disable interrupt for RESOLVED event"]
             #[inline(always)]
             pub const fn resolved(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for RESOLVED event"]
+            #[doc = "Write '1' to disable interrupt for RESOLVED event"]
             #[inline(always)]
             pub fn set_resolved(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for NOTRESOLVED event"]
+            #[doc = "Write '1' to disable interrupt for NOTRESOLVED event"]
             #[inline(always)]
             pub const fn notresolved(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for NOTRESOLVED event"]
+            #[doc = "Write '1' to disable interrupt for NOTRESOLVED event"]
             #[inline(always)]
             pub fn set_notresolved(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
@@ -1754,73 +1754,73 @@ pub mod clock {
                 Hfxodebounce(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for HFCLKSTARTED event"]
+            #[doc = "Write '1' to disable interrupt for HFCLKSTARTED event"]
             #[inline(always)]
             pub const fn hfclkstarted(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for HFCLKSTARTED event"]
+            #[doc = "Write '1' to disable interrupt for HFCLKSTARTED event"]
             #[inline(always)]
             pub fn set_hfclkstarted(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for LFCLKSTARTED event"]
+            #[doc = "Write '1' to disable interrupt for LFCLKSTARTED event"]
             #[inline(always)]
             pub const fn lfclkstarted(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for LFCLKSTARTED event"]
+            #[doc = "Write '1' to disable interrupt for LFCLKSTARTED event"]
             #[inline(always)]
             pub fn set_lfclkstarted(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for DONE event"]
+            #[doc = "Write '1' to disable interrupt for DONE event"]
             #[inline(always)]
             pub const fn done(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for DONE event"]
+            #[doc = "Write '1' to disable interrupt for DONE event"]
             #[inline(always)]
             pub fn set_done(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
             }
-            #[doc = "Write '1' to enable interrupt for CTTO event"]
+            #[doc = "Write '1' to disable interrupt for CTTO event"]
             #[inline(always)]
             pub const fn ctto(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CTTO event"]
+            #[doc = "Write '1' to disable interrupt for CTTO event"]
             #[inline(always)]
             pub fn set_ctto(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
             }
-            #[doc = "Write '1' to enable interrupt for CTSTARTED event"]
+            #[doc = "Write '1' to disable interrupt for CTSTARTED event"]
             #[inline(always)]
             pub const fn ctstarted(&self) -> bool {
                 let val = (self.0 >> 10usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CTSTARTED event"]
+            #[doc = "Write '1' to disable interrupt for CTSTARTED event"]
             #[inline(always)]
             pub fn set_ctstarted(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
             }
-            #[doc = "Write '1' to enable interrupt for CTSTOPPED event"]
+            #[doc = "Write '1' to disable interrupt for CTSTOPPED event"]
             #[inline(always)]
             pub const fn ctstopped(&self) -> bool {
                 let val = (self.0 >> 11usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CTSTOPPED event"]
+            #[doc = "Write '1' to disable interrupt for CTSTOPPED event"]
             #[inline(always)]
             pub fn set_ctstopped(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
@@ -5059,9 +5059,9 @@ pub mod gpio {
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub enum Dir {
-            #[doc = "Pin set as input"]
+            #[doc = "Configure pin as an input pin"]
             INPUT = 0x0,
-            #[doc = "Pin set as output"]
+            #[doc = "Configure pin as an output pin"]
             OUTPUT = 0x01,
         }
         impl Dir {
@@ -6631,51 +6631,51 @@ pub mod lpcomp {
                 Hyst(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for READY event"]
+            #[doc = "Write '1' to disable interrupt for READY event"]
             #[inline(always)]
             pub const fn ready(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for READY event"]
+            #[doc = "Write '1' to disable interrupt for READY event"]
             #[inline(always)]
             pub fn set_ready(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for DOWN event"]
+            #[doc = "Write '1' to disable interrupt for DOWN event"]
             #[inline(always)]
             pub const fn down(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for DOWN event"]
+            #[doc = "Write '1' to disable interrupt for DOWN event"]
             #[inline(always)]
             pub fn set_down(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for UP event"]
+            #[doc = "Write '1' to disable interrupt for UP event"]
             #[inline(always)]
             pub const fn up(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for UP event"]
+            #[doc = "Write '1' to disable interrupt for UP event"]
             #[inline(always)]
             pub fn set_up(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
-            #[doc = "Write '1' to enable interrupt for CROSS event"]
+            #[doc = "Write '1' to disable interrupt for CROSS event"]
             #[inline(always)]
             pub const fn cross(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CROSS event"]
+            #[doc = "Write '1' to disable interrupt for CROSS event"]
             #[inline(always)]
             pub fn set_cross(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
@@ -7430,139 +7430,139 @@ pub mod mwu {
                 Inten(0)
             }
         }
-        #[doc = "Enable non-maskable interrupt"]
+        #[doc = "Enable or disable non-maskable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Nmien(pub u32);
         impl Nmien {
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[0\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[0\\].WA event"]
             #[inline(always)]
             pub const fn region0wa(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[0\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[0\\].WA event"]
             #[inline(always)]
             pub fn set_region0wa(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[0\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[0\\].RA event"]
             #[inline(always)]
             pub const fn region0ra(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[0\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[0\\].RA event"]
             #[inline(always)]
             pub fn set_region0ra(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[1\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[1\\].WA event"]
             #[inline(always)]
             pub const fn region1wa(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[1\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[1\\].WA event"]
             #[inline(always)]
             pub fn set_region1wa(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[1\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[1\\].RA event"]
             #[inline(always)]
             pub const fn region1ra(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[1\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[1\\].RA event"]
             #[inline(always)]
             pub fn set_region1ra(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[2\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[2\\].WA event"]
             #[inline(always)]
             pub const fn region2wa(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[2\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[2\\].WA event"]
             #[inline(always)]
             pub fn set_region2wa(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[2\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[2\\].RA event"]
             #[inline(always)]
             pub const fn region2ra(&self) -> bool {
                 let val = (self.0 >> 5usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[2\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[2\\].RA event"]
             #[inline(always)]
             pub fn set_region2ra(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[3\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[3\\].WA event"]
             #[inline(always)]
             pub const fn region3wa(&self) -> bool {
                 let val = (self.0 >> 6usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[3\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[3\\].WA event"]
             #[inline(always)]
             pub fn set_region3wa(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[3\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[3\\].RA event"]
             #[inline(always)]
             pub const fn region3ra(&self) -> bool {
                 let val = (self.0 >> 7usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for REGION\\[3\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for REGION\\[3\\].RA event"]
             #[inline(always)]
             pub fn set_region3ra(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[0\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[0\\].WA event"]
             #[inline(always)]
             pub const fn pregion0wa(&self) -> bool {
                 let val = (self.0 >> 24usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[0\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[0\\].WA event"]
             #[inline(always)]
             pub fn set_pregion0wa(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[0\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[0\\].RA event"]
             #[inline(always)]
             pub const fn pregion0ra(&self) -> bool {
                 let val = (self.0 >> 25usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[0\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[0\\].RA event"]
             #[inline(always)]
             pub fn set_pregion0ra(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[1\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[1\\].WA event"]
             #[inline(always)]
             pub const fn pregion1wa(&self) -> bool {
                 let val = (self.0 >> 26usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[1\\].WA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[1\\].WA event"]
             #[inline(always)]
             pub fn set_pregion1wa(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[1\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[1\\].RA event"]
             #[inline(always)]
             pub const fn pregion1ra(&self) -> bool {
                 let val = (self.0 >> 27usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable non-maskable interrupt for PREGION\\[1\\].RA event"]
+            #[doc = "Enable or disable non-maskable interrupt for PREGION\\[1\\].RA event"]
             #[inline(always)]
             pub fn set_pregion1ra(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
@@ -7574,12 +7574,12 @@ pub mod mwu {
                 Nmien(0)
             }
         }
-        #[doc = "Disable regions watch"]
+        #[doc = "Enable/disable regions watch"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Regionen(pub u32);
         impl Regionen {
-            #[doc = "Disable write access watch in region\\[0\\]"]
+            #[doc = "Enable/disable write access watch in region\\[0\\]"]
             #[inline(always)]
             pub const fn rgn_wa(&self, n: usize) -> bool {
                 assert!(n < 4usize);
@@ -7587,14 +7587,14 @@ pub mod mwu {
                 let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
-            #[doc = "Disable write access watch in region\\[0\\]"]
+            #[doc = "Enable/disable write access watch in region\\[0\\]"]
             #[inline(always)]
             pub fn set_rgn_wa(&mut self, n: usize, val: bool) {
                 assert!(n < 4usize);
                 let offs = 0usize + n * 2usize;
                 self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
-            #[doc = "Disable read access watch in region\\[0\\]"]
+            #[doc = "Enable/disable read access watch in region\\[0\\]"]
             #[inline(always)]
             pub const fn rgn_ra(&self, n: usize) -> bool {
                 assert!(n < 4usize);
@@ -7602,14 +7602,14 @@ pub mod mwu {
                 let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
-            #[doc = "Disable read access watch in region\\[0\\]"]
+            #[doc = "Enable/disable read access watch in region\\[0\\]"]
             #[inline(always)]
             pub fn set_rgn_ra(&mut self, n: usize, val: bool) {
                 assert!(n < 4usize);
                 let offs = 1usize + n * 2usize;
                 self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
-            #[doc = "Disable write access watch in PREGION\\[0\\]"]
+            #[doc = "Enable/disable write access watch in PREGION\\[0\\]"]
             #[inline(always)]
             pub const fn prgn_wa(&self, n: usize) -> bool {
                 assert!(n < 2usize);
@@ -7617,14 +7617,14 @@ pub mod mwu {
                 let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
-            #[doc = "Disable write access watch in PREGION\\[0\\]"]
+            #[doc = "Enable/disable write access watch in PREGION\\[0\\]"]
             #[inline(always)]
             pub fn set_prgn_wa(&mut self, n: usize, val: bool) {
                 assert!(n < 2usize);
                 let offs = 24usize + n * 2usize;
                 self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
-            #[doc = "Disable read access watch in PREGION\\[0\\]"]
+            #[doc = "Enable/disable read access watch in PREGION\\[0\\]"]
             #[inline(always)]
             pub const fn prgn_ra(&self, n: usize) -> bool {
                 assert!(n < 2usize);
@@ -7632,7 +7632,7 @@ pub mod mwu {
                 let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
-            #[doc = "Disable read access watch in PREGION\\[0\\]"]
+            #[doc = "Enable/disable read access watch in PREGION\\[0\\]"]
             #[inline(always)]
             pub fn set_prgn_ra(&mut self, n: usize, val: bool) {
                 assert!(n < 2usize);
@@ -8599,14 +8599,14 @@ pub mod nfct {
             }
             #[doc = "Parity status of received frame"]
             #[inline(always)]
-            pub const fn paritystatus(&self) -> super::vals::Paritystatus {
+            pub const fn paritystatus(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
-                super::vals::Paritystatus::from_bits(val as u8)
+                val != 0
             }
             #[doc = "Parity status of received frame"]
             #[inline(always)]
-            pub fn set_paritystatus(&mut self, val: super::vals::Paritystatus) {
-                self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
+            pub fn set_paritystatus(&mut self, val: bool) {
+                self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
             #[doc = "Overrun detected"]
             #[inline(always)]
@@ -9228,36 +9228,6 @@ pub mod nfct {
             #[inline(always)]
             fn from(val: Nfctagstate) -> u8 {
                 Nfctagstate::to_bits(val)
-            }
-        }
-        #[repr(u8)]
-        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum Paritystatus {
-            #[doc = "Frame received with parity OK"]
-            PARITY_OK = 0x0,
-            #[doc = "Frame received with parity error"]
-            PARITY_ERROR = 0x01,
-        }
-        impl Paritystatus {
-            #[inline(always)]
-            pub const fn from_bits(val: u8) -> Paritystatus {
-                unsafe { core::mem::transmute(val & 0x01) }
-            }
-            #[inline(always)]
-            pub const fn to_bits(self) -> u8 {
-                unsafe { core::mem::transmute(self) }
-            }
-        }
-        impl From<u8> for Paritystatus {
-            #[inline(always)]
-            fn from(val: u8) -> Paritystatus {
-                Paritystatus::from_bits(val)
-            }
-        }
-        impl From<Paritystatus> for u8 {
-            #[inline(always)]
-            fn from(val: Paritystatus) -> u8 {
-                Paritystatus::to_bits(val)
             }
         }
         #[repr(u8)]
@@ -11065,12 +11035,12 @@ pub mod ppi {
         }
     }
     pub mod regs {
-        #[doc = "Channel enable clear register"]
+        #[doc = "Channel enable register"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Chen(pub u32);
         impl Chen {
-            #[doc = "Channel 0 enable clear register. Writing '0' has no effect"]
+            #[doc = "Enable or disable channel 0"]
             #[inline(always)]
             pub const fn ch(&self, n: usize) -> bool {
                 assert!(n < 32usize);
@@ -11078,7 +11048,7 @@ pub mod ppi {
                 let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
-            #[doc = "Channel 0 enable clear register. Writing '0' has no effect"]
+            #[doc = "Enable or disable channel 0"]
             #[inline(always)]
             pub fn set_ch(&mut self, n: usize, val: bool) {
                 assert!(n < 32usize);
@@ -12177,62 +12147,62 @@ pub mod qdec {
                 Enable(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for SAMPLERDY event"]
+            #[doc = "Write '1' to disable interrupt for SAMPLERDY event"]
             #[inline(always)]
             pub const fn samplerdy(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for SAMPLERDY event"]
+            #[doc = "Write '1' to disable interrupt for SAMPLERDY event"]
             #[inline(always)]
             pub fn set_samplerdy(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for REPORTRDY event"]
+            #[doc = "Write '1' to disable interrupt for REPORTRDY event"]
             #[inline(always)]
             pub const fn reportrdy(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for REPORTRDY event"]
+            #[doc = "Write '1' to disable interrupt for REPORTRDY event"]
             #[inline(always)]
             pub fn set_reportrdy(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for ACCOF event"]
+            #[doc = "Write '1' to disable interrupt for ACCOF event"]
             #[inline(always)]
             pub const fn accof(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for ACCOF event"]
+            #[doc = "Write '1' to disable interrupt for ACCOF event"]
             #[inline(always)]
             pub fn set_accof(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
-            #[doc = "Write '1' to enable interrupt for DBLRDY event"]
+            #[doc = "Write '1' to disable interrupt for DBLRDY event"]
             #[inline(always)]
             pub const fn dblrdy(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for DBLRDY event"]
+            #[doc = "Write '1' to disable interrupt for DBLRDY event"]
             #[inline(always)]
             pub fn set_dblrdy(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
             }
-            #[doc = "Write '1' to enable interrupt for STOPPED event"]
+            #[doc = "Write '1' to disable interrupt for STOPPED event"]
             #[inline(always)]
             pub const fn stopped(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for STOPPED event"]
+            #[doc = "Write '1' to disable interrupt for STOPPED event"]
             #[inline(always)]
             pub fn set_stopped(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
@@ -14654,249 +14624,249 @@ pub mod radio {
                 Frequency(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for READY event"]
+            #[doc = "Write '1' to disable interrupt for READY event"]
             #[inline(always)]
             pub const fn ready(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for READY event"]
+            #[doc = "Write '1' to disable interrupt for READY event"]
             #[inline(always)]
             pub fn set_ready(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for ADDRESS event"]
+            #[doc = "Write '1' to disable interrupt for ADDRESS event"]
             #[inline(always)]
             pub const fn address(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for ADDRESS event"]
+            #[doc = "Write '1' to disable interrupt for ADDRESS event"]
             #[inline(always)]
             pub fn set_address(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for PAYLOAD event"]
+            #[doc = "Write '1' to disable interrupt for PAYLOAD event"]
             #[inline(always)]
             pub const fn payload(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for PAYLOAD event"]
+            #[doc = "Write '1' to disable interrupt for PAYLOAD event"]
             #[inline(always)]
             pub fn set_payload(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
-            #[doc = "Write '1' to enable interrupt for END event"]
+            #[doc = "Write '1' to disable interrupt for END event"]
             #[inline(always)]
             pub const fn end(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for END event"]
+            #[doc = "Write '1' to disable interrupt for END event"]
             #[inline(always)]
             pub fn set_end(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
             }
-            #[doc = "Write '1' to enable interrupt for DISABLED event"]
+            #[doc = "Write '1' to disable interrupt for DISABLED event"]
             #[inline(always)]
             pub const fn disabled(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for DISABLED event"]
+            #[doc = "Write '1' to disable interrupt for DISABLED event"]
             #[inline(always)]
             pub fn set_disabled(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
             }
-            #[doc = "Write '1' to enable interrupt for DEVMATCH event"]
+            #[doc = "Write '1' to disable interrupt for DEVMATCH event"]
             #[inline(always)]
             pub const fn devmatch(&self) -> bool {
                 let val = (self.0 >> 5usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for DEVMATCH event"]
+            #[doc = "Write '1' to disable interrupt for DEVMATCH event"]
             #[inline(always)]
             pub fn set_devmatch(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
             }
-            #[doc = "Write '1' to enable interrupt for DEVMISS event"]
+            #[doc = "Write '1' to disable interrupt for DEVMISS event"]
             #[inline(always)]
             pub const fn devmiss(&self) -> bool {
                 let val = (self.0 >> 6usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for DEVMISS event"]
+            #[doc = "Write '1' to disable interrupt for DEVMISS event"]
             #[inline(always)]
             pub fn set_devmiss(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
             }
-            #[doc = "Write '1' to enable interrupt for RSSIEND event"]
+            #[doc = "Write '1' to disable interrupt for RSSIEND event"]
             #[inline(always)]
             pub const fn rssiend(&self) -> bool {
                 let val = (self.0 >> 7usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for RSSIEND event"]
+            #[doc = "Write '1' to disable interrupt for RSSIEND event"]
             #[inline(always)]
             pub fn set_rssiend(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
             }
-            #[doc = "Write '1' to enable interrupt for BCMATCH event"]
+            #[doc = "Write '1' to disable interrupt for BCMATCH event"]
             #[inline(always)]
             pub const fn bcmatch(&self) -> bool {
                 let val = (self.0 >> 10usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for BCMATCH event"]
+            #[doc = "Write '1' to disable interrupt for BCMATCH event"]
             #[inline(always)]
             pub fn set_bcmatch(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
             }
-            #[doc = "Write '1' to enable interrupt for CRCOK event"]
+            #[doc = "Write '1' to disable interrupt for CRCOK event"]
             #[inline(always)]
             pub const fn crcok(&self) -> bool {
                 let val = (self.0 >> 12usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CRCOK event"]
+            #[doc = "Write '1' to disable interrupt for CRCOK event"]
             #[inline(always)]
             pub fn set_crcok(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
             }
-            #[doc = "Write '1' to enable interrupt for CRCERROR event"]
+            #[doc = "Write '1' to disable interrupt for CRCERROR event"]
             #[inline(always)]
             pub const fn crcerror(&self) -> bool {
                 let val = (self.0 >> 13usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CRCERROR event"]
+            #[doc = "Write '1' to disable interrupt for CRCERROR event"]
             #[inline(always)]
             pub fn set_crcerror(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
             }
-            #[doc = "Write '1' to enable interrupt for FRAMESTART event"]
+            #[doc = "Write '1' to disable interrupt for FRAMESTART event"]
             #[inline(always)]
             pub const fn framestart(&self) -> bool {
                 let val = (self.0 >> 14usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for FRAMESTART event"]
+            #[doc = "Write '1' to disable interrupt for FRAMESTART event"]
             #[inline(always)]
             pub fn set_framestart(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
             }
-            #[doc = "Write '1' to enable interrupt for EDEND event"]
+            #[doc = "Write '1' to disable interrupt for EDEND event"]
             #[inline(always)]
             pub const fn edend(&self) -> bool {
                 let val = (self.0 >> 15usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for EDEND event"]
+            #[doc = "Write '1' to disable interrupt for EDEND event"]
             #[inline(always)]
             pub fn set_edend(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
             }
-            #[doc = "Write '1' to enable interrupt for EDSTOPPED event"]
+            #[doc = "Write '1' to disable interrupt for EDSTOPPED event"]
             #[inline(always)]
             pub const fn edstopped(&self) -> bool {
                 let val = (self.0 >> 16usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for EDSTOPPED event"]
+            #[doc = "Write '1' to disable interrupt for EDSTOPPED event"]
             #[inline(always)]
             pub fn set_edstopped(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
             }
-            #[doc = "Write '1' to enable interrupt for CCAIDLE event"]
+            #[doc = "Write '1' to disable interrupt for CCAIDLE event"]
             #[inline(always)]
             pub const fn ccaidle(&self) -> bool {
                 let val = (self.0 >> 17usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CCAIDLE event"]
+            #[doc = "Write '1' to disable interrupt for CCAIDLE event"]
             #[inline(always)]
             pub fn set_ccaidle(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
             }
-            #[doc = "Write '1' to enable interrupt for CCABUSY event"]
+            #[doc = "Write '1' to disable interrupt for CCABUSY event"]
             #[inline(always)]
             pub const fn ccabusy(&self) -> bool {
                 let val = (self.0 >> 18usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CCABUSY event"]
+            #[doc = "Write '1' to disable interrupt for CCABUSY event"]
             #[inline(always)]
             pub fn set_ccabusy(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
             }
-            #[doc = "Write '1' to enable interrupt for CCASTOPPED event"]
+            #[doc = "Write '1' to disable interrupt for CCASTOPPED event"]
             #[inline(always)]
             pub const fn ccastopped(&self) -> bool {
                 let val = (self.0 >> 19usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for CCASTOPPED event"]
+            #[doc = "Write '1' to disable interrupt for CCASTOPPED event"]
             #[inline(always)]
             pub fn set_ccastopped(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
             }
-            #[doc = "Write '1' to enable interrupt for RATEBOOST event"]
+            #[doc = "Write '1' to disable interrupt for RATEBOOST event"]
             #[inline(always)]
             pub const fn rateboost(&self) -> bool {
                 let val = (self.0 >> 20usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for RATEBOOST event"]
+            #[doc = "Write '1' to disable interrupt for RATEBOOST event"]
             #[inline(always)]
             pub fn set_rateboost(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
             }
-            #[doc = "Write '1' to enable interrupt for TXREADY event"]
+            #[doc = "Write '1' to disable interrupt for TXREADY event"]
             #[inline(always)]
             pub const fn txready(&self) -> bool {
                 let val = (self.0 >> 21usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for TXREADY event"]
+            #[doc = "Write '1' to disable interrupt for TXREADY event"]
             #[inline(always)]
             pub fn set_txready(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
             }
-            #[doc = "Write '1' to enable interrupt for RXREADY event"]
+            #[doc = "Write '1' to disable interrupt for RXREADY event"]
             #[inline(always)]
             pub const fn rxready(&self) -> bool {
                 let val = (self.0 >> 22usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for RXREADY event"]
+            #[doc = "Write '1' to disable interrupt for RXREADY event"]
             #[inline(always)]
             pub fn set_rxready(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
             }
-            #[doc = "Write '1' to enable interrupt for MHRMATCH event"]
+            #[doc = "Write '1' to disable interrupt for MHRMATCH event"]
             #[inline(always)]
             pub const fn mhrmatch(&self) -> bool {
                 let val = (self.0 >> 23usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for MHRMATCH event"]
+            #[doc = "Write '1' to disable interrupt for MHRMATCH event"]
             #[inline(always)]
             pub fn set_mhrmatch(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
             }
-            #[doc = "Write '1' to enable interrupt for PHYEND event"]
+            #[doc = "Write '1' to disable interrupt for PHYEND event"]
             #[inline(always)]
             pub const fn phyend(&self) -> bool {
                 let val = (self.0 >> 27usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for PHYEND event"]
+            #[doc = "Write '1' to disable interrupt for PHYEND event"]
             #[inline(always)]
             pub fn set_phyend(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
@@ -17158,73 +17128,73 @@ pub mod rtc {
                 Evtenset(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for TICK event"]
+            #[doc = "Write '1' to disable interrupt for TICK event"]
             #[inline(always)]
             pub const fn tick(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for TICK event"]
+            #[doc = "Write '1' to disable interrupt for TICK event"]
             #[inline(always)]
             pub fn set_tick(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Write '1' to enable interrupt for OVRFLW event"]
+            #[doc = "Write '1' to disable interrupt for OVRFLW event"]
             #[inline(always)]
             pub const fn ovrflw(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for OVRFLW event"]
+            #[doc = "Write '1' to disable interrupt for OVRFLW event"]
             #[inline(always)]
             pub fn set_ovrflw(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[0\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[0\\] event"]
             #[inline(always)]
             pub const fn compare0(&self) -> bool {
                 let val = (self.0 >> 16usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[0\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[0\\] event"]
             #[inline(always)]
             pub fn set_compare0(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[1\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[1\\] event"]
             #[inline(always)]
             pub const fn compare1(&self) -> bool {
                 let val = (self.0 >> 17usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[1\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[1\\] event"]
             #[inline(always)]
             pub fn set_compare1(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[2\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[2\\] event"]
             #[inline(always)]
             pub const fn compare2(&self) -> bool {
                 let val = (self.0 >> 18usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[2\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[2\\] event"]
             #[inline(always)]
             pub fn set_compare2(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[3\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[3\\] event"]
             #[inline(always)]
             pub const fn compare3(&self) -> bool {
                 let val = (self.0 >> 19usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for COMPARE\\[3\\] event"]
+            #[doc = "Write '1' to disable interrupt for COMPARE\\[3\\] event"]
             #[inline(always)]
             pub fn set_compare3(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
@@ -18558,7 +18528,7 @@ pub mod saadc {
 }
 pub mod shared {
     pub mod regs {
-        #[doc = "Pin select for MISO signal"]
+        #[doc = "Pin select for LRCK signal."]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Psel(pub u32);
@@ -18830,18 +18800,18 @@ pub mod spi {
                 Frequency(0)
             }
         }
-        #[doc = "Enable interrupt"]
+        #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Inten(pub u32);
         impl Inten {
-            #[doc = "Write '1' to enable interrupt for READY event"]
+            #[doc = "Write '1' to disable interrupt for READY event"]
             #[inline(always)]
             pub const fn ready(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Write '1' to enable interrupt for READY event"]
+            #[doc = "Write '1' to disable interrupt for READY event"]
             #[inline(always)]
             pub fn set_ready(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
