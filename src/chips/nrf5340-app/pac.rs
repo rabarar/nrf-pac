@@ -1,4 +1,4 @@
-#![doc = "Peripheral access API (generated using chiptool v0.1.0 (218daa7 2024-01-15))"]
+#![doc = "Peripheral access API (generated using chiptool v0.1.0 (e77e8bb 2024-11-13))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Interrupt {
     #[doc = "0 - FPU"]
@@ -7,8 +7,8 @@ pub enum Interrupt {
     CACHE = 1,
     #[doc = "3 - SPU"]
     SPU = 3,
-    #[doc = "5 - CLOCK_POWER"]
-    CLOCK_POWER = 5,
+    #[doc = "5 - POWER_CLOCK"]
+    POWER_CLOCK = 5,
     #[doc = "8 - SERIAL0"]
     SERIAL0 = 8,
     #[doc = "9 - SERIAL1"]
@@ -96,7 +96,7 @@ mod _vectors {
         fn FPU();
         fn CACHE();
         fn SPU();
-        fn CLOCK_POWER();
+        fn POWER_CLOCK();
         fn SERIAL0();
         fn SERIAL1();
         fn SPIM4();
@@ -148,7 +148,7 @@ mod _vectors {
         Vector { _handler: SPU },
         Vector { _reserved: 0 },
         Vector {
-            _handler: CLOCK_POWER,
+            _handler: POWER_CLOCK,
         },
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
@@ -222,302 +222,298 @@ mod _vectors {
     ];
 }
 #[doc = "CACHEDATA"]
-pub const CACHEDATA_S: cachedata_s::Cachedata =
-    unsafe { cachedata_s::Cachedata::from_ptr(0x00f0_0000usize as _) };
+pub const CACHEDATA_S: cachedata::Cachedata =
+    unsafe { cachedata::Cachedata::from_ptr(0x00f0_0000usize as _) };
 #[doc = "CACHEINFO"]
-pub const CACHEINFO_S: cacheinfo_s::Cacheinfo =
-    unsafe { cacheinfo_s::Cacheinfo::from_ptr(0x00f0_8000usize as _) };
+pub const CACHEINFO_S: cacheinfo::Cacheinfo =
+    unsafe { cacheinfo::Cacheinfo::from_ptr(0x00f0_8000usize as _) };
 #[doc = "Factory Information Configuration Registers"]
-pub const FICR_S: ficr_s::Ficr = unsafe { ficr_s::Ficr::from_ptr(0x00ff_0000usize as _) };
+pub const FICR_S: ficr::Ficr = unsafe { ficr::Ficr::from_ptr(0x00ff_0000usize as _) };
 #[doc = "User Information Configuration Registers User information configuration registers"]
-pub const UICR_S: uicr_s::Uicr = unsafe { uicr_s::Uicr::from_ptr(0x00ff_8000usize as _) };
+pub const UICR_S: uicr::Uicr = unsafe { uicr::Uicr::from_ptr(0x00ff_8000usize as _) };
 #[doc = "Domain configuration management 0"]
-pub const DCNF_NS: dcnf_ns::Dcnf = unsafe { dcnf_ns::Dcnf::from_ptr(0x4000_0000usize as _) };
+pub const DCNF_NS: dcnf::Dcnf = unsafe { dcnf::Dcnf::from_ptr(0x4000_0000usize as _) };
 #[doc = "FPU control peripheral 0"]
-pub const FPU_NS: fpu_ns::Fpu = unsafe { fpu_ns::Fpu::from_ptr(0x4000_0000usize as _) };
+pub const FPU_NS: fpu::Fpu = unsafe { fpu::Fpu::from_ptr(0x4000_0000usize as _) };
 #[doc = "Oscillator control 0"]
-pub const OSCILLATORS_NS: oscillators_ns::Oscillators =
-    unsafe { oscillators_ns::Oscillators::from_ptr(0x4000_4000usize as _) };
+pub const OSCILLATORS_NS: oscillators::Oscillators =
+    unsafe { oscillators::Oscillators::from_ptr(0x4000_4000usize as _) };
 #[doc = "Voltage regulators 0"]
-pub const REGULATORS_NS: regulators_ns::Regulators =
-    unsafe { regulators_ns::Regulators::from_ptr(0x4000_4000usize as _) };
+pub const REGULATORS_NS: regulators::Regulators =
+    unsafe { regulators::Regulators::from_ptr(0x4000_4000usize as _) };
 #[doc = "Clock management 0"]
-pub const CLOCK_NS: clock_ns::Clock = unsafe { clock_ns::Clock::from_ptr(0x4000_5000usize as _) };
+pub const CLOCK_NS: clock::Clock = unsafe { clock::Clock::from_ptr(0x4000_5000usize as _) };
 #[doc = "Power control 0"]
-pub const POWER_NS: power_ns::Power = unsafe { power_ns::Power::from_ptr(0x4000_5000usize as _) };
+pub const POWER_NS: power::Power = unsafe { power::Power::from_ptr(0x4000_5000usize as _) };
 #[doc = "Reset control 0"]
-pub const RESET_NS: reset_ns::Reset = unsafe { reset_ns::Reset::from_ptr(0x4000_5000usize as _) };
+pub const RESET_NS: reset::Reset = unsafe { reset::Reset::from_ptr(0x4000_5000usize as _) };
 #[doc = "Control access port 0"]
-pub const CTRLAP_NS: ctrlap_ns::Ctrlap =
-    unsafe { ctrlap_ns::Ctrlap::from_ptr(0x4000_6000usize as _) };
+pub const CTRLAP_NS: ctrlapperi::Ctrlapperi =
+    unsafe { ctrlapperi::Ctrlapperi::from_ptr(0x4000_6000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 0"]
-pub const SPIM0_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_8000usize as _) };
+pub const SPIM0_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_8000usize as _) };
 #[doc = "SPI Slave 0"]
-pub const SPIS0_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_8000usize as _) };
+pub const SPIS0_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 0"]
-pub const TWIM0_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_8000usize as _) };
+pub const TWIM0_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 0"]
-pub const TWIS0_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_8000usize as _) };
+pub const TWIS0_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_8000usize as _) };
 #[doc = "UART with EasyDMA 0"]
-pub const UARTE0_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_8000usize as _) };
+pub const UARTE0_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_8000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 2"]
-pub const SPIM1_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_9000usize as _) };
+pub const SPIM1_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_9000usize as _) };
 #[doc = "SPI Slave 2"]
-pub const SPIS1_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_9000usize as _) };
+pub const SPIS1_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 2"]
-pub const TWIM1_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_9000usize as _) };
+pub const TWIM1_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 2"]
-pub const TWIS1_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_9000usize as _) };
+pub const TWIS1_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_9000usize as _) };
 #[doc = "UART with EasyDMA 2"]
-pub const UARTE1_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_9000usize as _) };
+pub const UARTE1_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_9000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 4"]
-pub const SPIM4_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_a000usize as _) };
+pub const SPIM4_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_a000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 6"]
-pub const SPIM2_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_b000usize as _) };
+pub const SPIM2_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_b000usize as _) };
 #[doc = "SPI Slave 4"]
-pub const SPIS2_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_b000usize as _) };
+pub const SPIS2_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 4"]
-pub const TWIM2_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_b000usize as _) };
+pub const TWIM2_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 4"]
-pub const TWIS2_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_b000usize as _) };
+pub const TWIS2_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_b000usize as _) };
 #[doc = "UART with EasyDMA 4"]
-pub const UARTE2_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_b000usize as _) };
+pub const UARTE2_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_b000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 8"]
-pub const SPIM3_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_c000usize as _) };
+pub const SPIM3_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_c000usize as _) };
 #[doc = "SPI Slave 6"]
-pub const SPIS3_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_c000usize as _) };
+pub const SPIS3_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_c000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 6"]
-pub const TWIM3_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_c000usize as _) };
+pub const TWIM3_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_c000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 6"]
-pub const TWIS3_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_c000usize as _) };
+pub const TWIS3_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_c000usize as _) };
 #[doc = "UART with EasyDMA 6"]
-pub const UARTE3_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_c000usize as _) };
+pub const UARTE3_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_c000usize as _) };
 #[doc = "Analog to Digital Converter 0"]
-pub const SAADC_NS: saadc_ns::Saadc = unsafe { saadc_ns::Saadc::from_ptr(0x4000_e000usize as _) };
+pub const SAADC_NS: saadc::Saadc = unsafe { saadc::Saadc::from_ptr(0x4000_e000usize as _) };
 #[doc = "Timer/Counter 0"]
-pub const TIMER0_NS: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x4000_f000usize as _) };
+pub const TIMER0_NS: timer::Timer = unsafe { timer::Timer::from_ptr(0x4000_f000usize as _) };
 #[doc = "Timer/Counter 2"]
-pub const TIMER1_NS: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x4001_0000usize as _) };
+pub const TIMER1_NS: timer::Timer = unsafe { timer::Timer::from_ptr(0x4001_0000usize as _) };
 #[doc = "Timer/Counter 4"]
-pub const TIMER2_NS: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x4001_1000usize as _) };
+pub const TIMER2_NS: timer::Timer = unsafe { timer::Timer::from_ptr(0x4001_1000usize as _) };
 #[doc = "Real-time counter 0"]
-pub const RTC0_NS: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x4001_4000usize as _) };
+pub const RTC0_NS: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x4001_4000usize as _) };
 #[doc = "Real-time counter 2"]
-pub const RTC1_NS: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x4001_5000usize as _) };
+pub const RTC1_NS: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x4001_5000usize as _) };
 #[doc = "Distributed programmable peripheral interconnect controller 0"]
-pub const DPPIC_NS: dppic_ns::Dppic = unsafe { dppic_ns::Dppic::from_ptr(0x4001_7000usize as _) };
+pub const DPPIC_NS: dppic::Dppic = unsafe { dppic::Dppic::from_ptr(0x4001_7000usize as _) };
 #[doc = "Watchdog Timer 0"]
-pub const WDT0_NS: wdt_ns::Wdt = unsafe { wdt_ns::Wdt::from_ptr(0x4001_8000usize as _) };
+pub const WDT0_NS: wdt::Wdt = unsafe { wdt::Wdt::from_ptr(0x4001_8000usize as _) };
 #[doc = "Watchdog Timer 2"]
-pub const WDT1_NS: wdt_ns::Wdt = unsafe { wdt_ns::Wdt::from_ptr(0x4001_9000usize as _) };
+pub const WDT1_NS: wdt::Wdt = unsafe { wdt::Wdt::from_ptr(0x4001_9000usize as _) };
 #[doc = "Comparator 0"]
-pub const COMP_NS: comp_ns::Comp = unsafe { comp_ns::Comp::from_ptr(0x4001_a000usize as _) };
+pub const COMP_NS: comp::Comp = unsafe { comp::Comp::from_ptr(0x4001_a000usize as _) };
 #[doc = "Low-power comparator 0"]
-pub const LPCOMP_NS: lpcomp_ns::Lpcomp =
-    unsafe { lpcomp_ns::Lpcomp::from_ptr(0x4001_a000usize as _) };
+pub const LPCOMP_NS: lpcomp::Lpcomp = unsafe { lpcomp::Lpcomp::from_ptr(0x4001_a000usize as _) };
 #[doc = "Event generator unit 0"]
-pub const EGU0_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_b000usize as _) };
+pub const EGU0_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_b000usize as _) };
 #[doc = "Event generator unit 2"]
-pub const EGU1_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_c000usize as _) };
+pub const EGU1_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_c000usize as _) };
 #[doc = "Event generator unit 4"]
-pub const EGU2_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_d000usize as _) };
+pub const EGU2_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_d000usize as _) };
 #[doc = "Event generator unit 6"]
-pub const EGU3_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_e000usize as _) };
+pub const EGU3_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_e000usize as _) };
 #[doc = "Event generator unit 8"]
-pub const EGU4_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_f000usize as _) };
+pub const EGU4_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_f000usize as _) };
 #[doc = "Event generator unit 10"]
-pub const EGU5_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4002_0000usize as _) };
+pub const EGU5_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4002_0000usize as _) };
 #[doc = "Pulse width modulation unit 0"]
-pub const PWM0_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_1000usize as _) };
+pub const PWM0_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_1000usize as _) };
 #[doc = "Pulse width modulation unit 2"]
-pub const PWM1_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_2000usize as _) };
+pub const PWM1_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_2000usize as _) };
 #[doc = "Pulse width modulation unit 4"]
-pub const PWM2_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_3000usize as _) };
+pub const PWM2_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_3000usize as _) };
 #[doc = "Pulse width modulation unit 6"]
-pub const PWM3_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_4000usize as _) };
+pub const PWM3_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_4000usize as _) };
 #[doc = "Pulse Density Modulation (Digital Microphone) Interface 0"]
-pub const PDM0_NS: pdm_ns::Pdm = unsafe { pdm_ns::Pdm::from_ptr(0x4002_6000usize as _) };
+pub const PDM0_NS: pdm::Pdm = unsafe { pdm::Pdm::from_ptr(0x4002_6000usize as _) };
 #[doc = "Inter-IC Sound 0"]
-pub const I2S0_NS: i2s_ns::I2s = unsafe { i2s_ns::I2s::from_ptr(0x4002_8000usize as _) };
+pub const I2S0_NS: i2s::I2s = unsafe { i2s::I2s::from_ptr(0x4002_8000usize as _) };
 #[doc = "Interprocessor communication 0"]
-pub const IPC_NS: ipc_ns::Ipc = unsafe { ipc_ns::Ipc::from_ptr(0x4002_a000usize as _) };
+pub const IPC_NS: ipc::Ipc = unsafe { ipc::Ipc::from_ptr(0x4002_a000usize as _) };
 #[doc = "External flash interface 0"]
-pub const QSPI_NS: qspi_ns::Qspi = unsafe { qspi_ns::Qspi::from_ptr(0x4002_b000usize as _) };
+pub const QSPI_NS: qspi::Qspi = unsafe { qspi::Qspi::from_ptr(0x4002_b000usize as _) };
 #[doc = "NFC-A compatible radio 0"]
-pub const NFCT_NS: nfct_ns::Nfct = unsafe { nfct_ns::Nfct::from_ptr(0x4002_d000usize as _) };
+pub const NFCT_NS: nfct::Nfct = unsafe { nfct::Nfct::from_ptr(0x4002_d000usize as _) };
 #[doc = "GPIO Tasks and Events 1"]
-pub const GPIOTE1_NS: gpiote_s::Gpiote =
-    unsafe { gpiote_s::Gpiote::from_ptr(0x4002_f000usize as _) };
+pub const GPIOTE1_NS: gpiote::Gpiote = unsafe { gpiote::Gpiote::from_ptr(0x4002_f000usize as _) };
 #[doc = "MUTEX 0"]
-pub const MUTEX_NS: mutex_ns::Mutex = unsafe { mutex_ns::Mutex::from_ptr(0x4003_0000usize as _) };
+pub const MUTEX_NS: mutex::Mutex = unsafe { mutex::Mutex::from_ptr(0x4003_0000usize as _) };
 #[doc = "Quadrature Decoder 0"]
-pub const QDEC0_NS: qdec_ns::Qdec = unsafe { qdec_ns::Qdec::from_ptr(0x4003_3000usize as _) };
+pub const QDEC0_NS: qdec::Qdec = unsafe { qdec::Qdec::from_ptr(0x4003_3000usize as _) };
 #[doc = "Quadrature Decoder 2"]
-pub const QDEC1_NS: qdec_ns::Qdec = unsafe { qdec_ns::Qdec::from_ptr(0x4003_4000usize as _) };
+pub const QDEC1_NS: qdec::Qdec = unsafe { qdec::Qdec::from_ptr(0x4003_4000usize as _) };
 #[doc = "Universal serial bus device 0"]
-pub const USBD_NS: usbd_ns::Usbd = unsafe { usbd_ns::Usbd::from_ptr(0x4003_6000usize as _) };
+pub const USBD_NS: usbd::Usbd = unsafe { usbd::Usbd::from_ptr(0x4003_6000usize as _) };
 #[doc = "USB Regulator 0"]
-pub const USBREGULATOR_NS: usbregulator_ns::Usbregulator =
-    unsafe { usbregulator_ns::Usbregulator::from_ptr(0x4003_7000usize as _) };
+pub const USBREGULATOR_NS: usbreg::Usbreg =
+    unsafe { usbreg::Usbreg::from_ptr(0x4003_7000usize as _) };
 #[doc = "Key management unit 0"]
-pub const KMU_NS: kmu_ns::Kmu = unsafe { kmu_ns::Kmu::from_ptr(0x4003_9000usize as _) };
+pub const KMU_NS: kmu::Kmu = unsafe { kmu::Kmu::from_ptr(0x4003_9000usize as _) };
 #[doc = "Non-volatile memory controller 0"]
-pub const NVMC_NS: nvmc_ns::Nvmc = unsafe { nvmc_ns::Nvmc::from_ptr(0x4003_9000usize as _) };
+pub const NVMC_NS: nvmc::Nvmc = unsafe { nvmc::Nvmc::from_ptr(0x4003_9000usize as _) };
 #[doc = "Volatile Memory controller 0"]
-pub const VMC_NS: vmc_ns::Vmc = unsafe { vmc_ns::Vmc::from_ptr(0x4008_1000usize as _) };
+pub const VMC_NS: vmc::Vmc = unsafe { vmc::Vmc::from_ptr(0x4008_1000usize as _) };
 #[doc = "GPIO Port 0"]
-pub const P0_NS: gpio_ns::Gpio = unsafe { gpio_ns::Gpio::from_ptr(0x4084_2500usize as _) };
+pub const P0_NS: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4084_2500usize as _) };
 #[doc = "GPIO Port 1"]
-pub const P1_NS: gpio_ns::Gpio = unsafe { gpio_ns::Gpio::from_ptr(0x4084_2800usize as _) };
+pub const P1_NS: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4084_2800usize as _) };
 #[doc = "Domain configuration management 1"]
-pub const DCNF_S: dcnf_ns::Dcnf = unsafe { dcnf_ns::Dcnf::from_ptr(0x5000_0000usize as _) };
+pub const DCNF_S: dcnf::Dcnf = unsafe { dcnf::Dcnf::from_ptr(0x5000_0000usize as _) };
 #[doc = "FPU control peripheral 1"]
-pub const FPU_S: fpu_ns::Fpu = unsafe { fpu_ns::Fpu::from_ptr(0x5000_0000usize as _) };
+pub const FPU_S: fpu::Fpu = unsafe { fpu::Fpu::from_ptr(0x5000_0000usize as _) };
 #[doc = "Cache"]
-pub const CACHE_S: cache_s::Cache = unsafe { cache_s::Cache::from_ptr(0x5000_1000usize as _) };
+pub const CACHE_S: cache::Cache = unsafe { cache::Cache::from_ptr(0x5000_1000usize as _) };
 #[doc = "System protection unit"]
-pub const SPU_S: spu_s::Spu = unsafe { spu_s::Spu::from_ptr(0x5000_3000usize as _) };
+pub const SPU_S: spu::Spu = unsafe { spu::Spu::from_ptr(0x5000_3000usize as _) };
 #[doc = "Oscillator control 1"]
-pub const OSCILLATORS_S: oscillators_ns::Oscillators =
-    unsafe { oscillators_ns::Oscillators::from_ptr(0x5000_4000usize as _) };
+pub const OSCILLATORS_S: oscillators::Oscillators =
+    unsafe { oscillators::Oscillators::from_ptr(0x5000_4000usize as _) };
 #[doc = "Voltage regulators 1"]
-pub const REGULATORS_S: regulators_ns::Regulators =
-    unsafe { regulators_ns::Regulators::from_ptr(0x5000_4000usize as _) };
+pub const REGULATORS_S: regulators::Regulators =
+    unsafe { regulators::Regulators::from_ptr(0x5000_4000usize as _) };
 #[doc = "Clock management 1"]
-pub const CLOCK_S: clock_ns::Clock = unsafe { clock_ns::Clock::from_ptr(0x5000_5000usize as _) };
+pub const CLOCK_S: clock::Clock = unsafe { clock::Clock::from_ptr(0x5000_5000usize as _) };
 #[doc = "Power control 1"]
-pub const POWER_S: power_ns::Power = unsafe { power_ns::Power::from_ptr(0x5000_5000usize as _) };
+pub const POWER_S: power::Power = unsafe { power::Power::from_ptr(0x5000_5000usize as _) };
 #[doc = "Reset control 1"]
-pub const RESET_S: reset_ns::Reset = unsafe { reset_ns::Reset::from_ptr(0x5000_5000usize as _) };
+pub const RESET_S: reset::Reset = unsafe { reset::Reset::from_ptr(0x5000_5000usize as _) };
 #[doc = "Control access port 1"]
-pub const CTRLAP_S: ctrlap_ns::Ctrlap =
-    unsafe { ctrlap_ns::Ctrlap::from_ptr(0x5000_6000usize as _) };
+pub const CTRLAP_S: ctrlapperi::Ctrlapperi =
+    unsafe { ctrlapperi::Ctrlapperi::from_ptr(0x5000_6000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 1"]
-pub const SPIM0_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_8000usize as _) };
+pub const SPIM0_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_8000usize as _) };
 #[doc = "SPI Slave 1"]
-pub const SPIS0_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_8000usize as _) };
+pub const SPIS0_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 1"]
-pub const TWIM0_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_8000usize as _) };
+pub const TWIM0_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 1"]
-pub const TWIS0_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_8000usize as _) };
+pub const TWIS0_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_8000usize as _) };
 #[doc = "UART with EasyDMA 1"]
-pub const UARTE0_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_8000usize as _) };
+pub const UARTE0_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_8000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 3"]
-pub const SPIM1_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_9000usize as _) };
+pub const SPIM1_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_9000usize as _) };
 #[doc = "SPI Slave 3"]
-pub const SPIS1_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_9000usize as _) };
+pub const SPIS1_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 3"]
-pub const TWIM1_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_9000usize as _) };
+pub const TWIM1_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 3"]
-pub const TWIS1_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_9000usize as _) };
+pub const TWIS1_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_9000usize as _) };
 #[doc = "UART with EasyDMA 3"]
-pub const UARTE1_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_9000usize as _) };
+pub const UARTE1_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_9000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 5"]
-pub const SPIM4_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_a000usize as _) };
+pub const SPIM4_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_a000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 7"]
-pub const SPIM2_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_b000usize as _) };
+pub const SPIM2_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_b000usize as _) };
 #[doc = "SPI Slave 5"]
-pub const SPIS2_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_b000usize as _) };
+pub const SPIS2_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 5"]
-pub const TWIM2_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_b000usize as _) };
+pub const TWIM2_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 5"]
-pub const TWIS2_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_b000usize as _) };
+pub const TWIS2_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_b000usize as _) };
 #[doc = "UART with EasyDMA 5"]
-pub const UARTE2_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_b000usize as _) };
+pub const UARTE2_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_b000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 9"]
-pub const SPIM3_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_c000usize as _) };
+pub const SPIM3_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_c000usize as _) };
 #[doc = "SPI Slave 7"]
-pub const SPIS3_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_c000usize as _) };
+pub const SPIS3_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_c000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 7"]
-pub const TWIM3_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_c000usize as _) };
+pub const TWIM3_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_c000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 7"]
-pub const TWIS3_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_c000usize as _) };
+pub const TWIS3_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_c000usize as _) };
 #[doc = "UART with EasyDMA 7"]
-pub const UARTE3_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_c000usize as _) };
+pub const UARTE3_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_c000usize as _) };
 #[doc = "GPIO Tasks and Events 0"]
-pub const GPIOTE0_S: gpiote_s::Gpiote =
-    unsafe { gpiote_s::Gpiote::from_ptr(0x5000_d000usize as _) };
+pub const GPIOTE0_S: gpiote::Gpiote = unsafe { gpiote::Gpiote::from_ptr(0x5000_d000usize as _) };
 #[doc = "Analog to Digital Converter 1"]
-pub const SAADC_S: saadc_ns::Saadc = unsafe { saadc_ns::Saadc::from_ptr(0x5000_e000usize as _) };
+pub const SAADC_S: saadc::Saadc = unsafe { saadc::Saadc::from_ptr(0x5000_e000usize as _) };
 #[doc = "Timer/Counter 1"]
-pub const TIMER0_S: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x5000_f000usize as _) };
+pub const TIMER0_S: timer::Timer = unsafe { timer::Timer::from_ptr(0x5000_f000usize as _) };
 #[doc = "Timer/Counter 3"]
-pub const TIMER1_S: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x5001_0000usize as _) };
+pub const TIMER1_S: timer::Timer = unsafe { timer::Timer::from_ptr(0x5001_0000usize as _) };
 #[doc = "Timer/Counter 5"]
-pub const TIMER2_S: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x5001_1000usize as _) };
+pub const TIMER2_S: timer::Timer = unsafe { timer::Timer::from_ptr(0x5001_1000usize as _) };
 #[doc = "Real-time counter 1"]
-pub const RTC0_S: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x5001_4000usize as _) };
+pub const RTC0_S: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x5001_4000usize as _) };
 #[doc = "Real-time counter 3"]
-pub const RTC1_S: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x5001_5000usize as _) };
+pub const RTC1_S: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x5001_5000usize as _) };
 #[doc = "Distributed programmable peripheral interconnect controller 1"]
-pub const DPPIC_S: dppic_ns::Dppic = unsafe { dppic_ns::Dppic::from_ptr(0x5001_7000usize as _) };
+pub const DPPIC_S: dppic::Dppic = unsafe { dppic::Dppic::from_ptr(0x5001_7000usize as _) };
 #[doc = "Watchdog Timer 1"]
-pub const WDT0_S: wdt_ns::Wdt = unsafe { wdt_ns::Wdt::from_ptr(0x5001_8000usize as _) };
+pub const WDT0_S: wdt::Wdt = unsafe { wdt::Wdt::from_ptr(0x5001_8000usize as _) };
 #[doc = "Watchdog Timer 3"]
-pub const WDT1_S: wdt_ns::Wdt = unsafe { wdt_ns::Wdt::from_ptr(0x5001_9000usize as _) };
+pub const WDT1_S: wdt::Wdt = unsafe { wdt::Wdt::from_ptr(0x5001_9000usize as _) };
 #[doc = "Comparator 1"]
-pub const COMP_S: comp_ns::Comp = unsafe { comp_ns::Comp::from_ptr(0x5001_a000usize as _) };
+pub const COMP_S: comp::Comp = unsafe { comp::Comp::from_ptr(0x5001_a000usize as _) };
 #[doc = "Low-power comparator 1"]
-pub const LPCOMP_S: lpcomp_ns::Lpcomp =
-    unsafe { lpcomp_ns::Lpcomp::from_ptr(0x5001_a000usize as _) };
+pub const LPCOMP_S: lpcomp::Lpcomp = unsafe { lpcomp::Lpcomp::from_ptr(0x5001_a000usize as _) };
 #[doc = "Event generator unit 1"]
-pub const EGU0_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_b000usize as _) };
+pub const EGU0_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_b000usize as _) };
 #[doc = "Event generator unit 3"]
-pub const EGU1_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_c000usize as _) };
+pub const EGU1_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_c000usize as _) };
 #[doc = "Event generator unit 5"]
-pub const EGU2_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_d000usize as _) };
+pub const EGU2_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_d000usize as _) };
 #[doc = "Event generator unit 7"]
-pub const EGU3_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_e000usize as _) };
+pub const EGU3_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_e000usize as _) };
 #[doc = "Event generator unit 9"]
-pub const EGU4_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_f000usize as _) };
+pub const EGU4_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_f000usize as _) };
 #[doc = "Event generator unit 11"]
-pub const EGU5_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5002_0000usize as _) };
+pub const EGU5_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5002_0000usize as _) };
 #[doc = "Pulse width modulation unit 1"]
-pub const PWM0_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_1000usize as _) };
+pub const PWM0_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_1000usize as _) };
 #[doc = "Pulse width modulation unit 3"]
-pub const PWM1_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_2000usize as _) };
+pub const PWM1_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_2000usize as _) };
 #[doc = "Pulse width modulation unit 5"]
-pub const PWM2_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_3000usize as _) };
+pub const PWM2_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_3000usize as _) };
 #[doc = "Pulse width modulation unit 7"]
-pub const PWM3_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_4000usize as _) };
+pub const PWM3_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_4000usize as _) };
 #[doc = "Pulse Density Modulation (Digital Microphone) Interface 1"]
-pub const PDM0_S: pdm_ns::Pdm = unsafe { pdm_ns::Pdm::from_ptr(0x5002_6000usize as _) };
+pub const PDM0_S: pdm::Pdm = unsafe { pdm::Pdm::from_ptr(0x5002_6000usize as _) };
 #[doc = "Inter-IC Sound 1"]
-pub const I2S0_S: i2s_ns::I2s = unsafe { i2s_ns::I2s::from_ptr(0x5002_8000usize as _) };
+pub const I2S0_S: i2s::I2s = unsafe { i2s::I2s::from_ptr(0x5002_8000usize as _) };
 #[doc = "Interprocessor communication 1"]
-pub const IPC_S: ipc_ns::Ipc = unsafe { ipc_ns::Ipc::from_ptr(0x5002_a000usize as _) };
+pub const IPC_S: ipc::Ipc = unsafe { ipc::Ipc::from_ptr(0x5002_a000usize as _) };
 #[doc = "External flash interface 1"]
-pub const QSPI_S: qspi_ns::Qspi = unsafe { qspi_ns::Qspi::from_ptr(0x5002_b000usize as _) };
+pub const QSPI_S: qspi::Qspi = unsafe { qspi::Qspi::from_ptr(0x5002_b000usize as _) };
 #[doc = "NFC-A compatible radio 1"]
-pub const NFCT_S: nfct_ns::Nfct = unsafe { nfct_ns::Nfct::from_ptr(0x5002_d000usize as _) };
+pub const NFCT_S: nfct::Nfct = unsafe { nfct::Nfct::from_ptr(0x5002_d000usize as _) };
 #[doc = "MUTEX 1"]
-pub const MUTEX_S: mutex_ns::Mutex = unsafe { mutex_ns::Mutex::from_ptr(0x5003_0000usize as _) };
+pub const MUTEX_S: mutex::Mutex = unsafe { mutex::Mutex::from_ptr(0x5003_0000usize as _) };
 #[doc = "Quadrature Decoder 1"]
-pub const QDEC0_S: qdec_ns::Qdec = unsafe { qdec_ns::Qdec::from_ptr(0x5003_3000usize as _) };
+pub const QDEC0_S: qdec::Qdec = unsafe { qdec::Qdec::from_ptr(0x5003_3000usize as _) };
 #[doc = "Quadrature Decoder 3"]
-pub const QDEC1_S: qdec_ns::Qdec = unsafe { qdec_ns::Qdec::from_ptr(0x5003_4000usize as _) };
+pub const QDEC1_S: qdec::Qdec = unsafe { qdec::Qdec::from_ptr(0x5003_4000usize as _) };
 #[doc = "Universal serial bus device 1"]
-pub const USBD_S: usbd_ns::Usbd = unsafe { usbd_ns::Usbd::from_ptr(0x5003_6000usize as _) };
+pub const USBD_S: usbd::Usbd = unsafe { usbd::Usbd::from_ptr(0x5003_6000usize as _) };
 #[doc = "USB Regulator 1"]
-pub const USBREGULATOR_S: usbregulator_ns::Usbregulator =
-    unsafe { usbregulator_ns::Usbregulator::from_ptr(0x5003_7000usize as _) };
+pub const USBREGULATOR_S: usbreg::Usbreg =
+    unsafe { usbreg::Usbreg::from_ptr(0x5003_7000usize as _) };
 #[doc = "Key management unit 1"]
-pub const KMU_S: kmu_ns::Kmu = unsafe { kmu_ns::Kmu::from_ptr(0x5003_9000usize as _) };
+pub const KMU_S: kmu::Kmu = unsafe { kmu::Kmu::from_ptr(0x5003_9000usize as _) };
 #[doc = "Non-volatile memory controller 1"]
-pub const NVMC_S: nvmc_ns::Nvmc = unsafe { nvmc_ns::Nvmc::from_ptr(0x5003_9000usize as _) };
+pub const NVMC_S: nvmc::Nvmc = unsafe { nvmc::Nvmc::from_ptr(0x5003_9000usize as _) };
 #[doc = "Volatile Memory controller 1"]
-pub const VMC_S: vmc_ns::Vmc = unsafe { vmc_ns::Vmc::from_ptr(0x5008_1000usize as _) };
+pub const VMC_S: vmc::Vmc = unsafe { vmc::Vmc::from_ptr(0x5008_1000usize as _) };
 #[doc = "GPIO Port 2"]
-pub const P0_S: gpio_ns::Gpio = unsafe { gpio_ns::Gpio::from_ptr(0x5084_2500usize as _) };
+pub const P0_S: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x5084_2500usize as _) };
 #[doc = "GPIO Port 3"]
-pub const P1_S: gpio_ns::Gpio = unsafe { gpio_ns::Gpio::from_ptr(0x5084_2800usize as _) };
+pub const P1_S: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x5084_2800usize as _) };
 #[doc = "ARM TrustZone CryptoCell register interface"]
-pub const CRYPTOCELL_S: cryptocell_s::Cryptocell =
-    unsafe { cryptocell_s::Cryptocell::from_ptr(0x5084_4000usize as _) };
+pub const CRYPTOCELL_S: cryptocell::Cryptocell =
+    unsafe { cryptocell::Cryptocell::from_ptr(0x5084_4000usize as _) };
 #[doc = "Cross-Trigger Interface control. NOTE: this is not a separate peripheral, but describes CM33 functionality."]
-pub const CTI_S: cti_s::Cti = unsafe { cti_s::Cti::from_ptr(0xe004_2000usize as _) };
+pub const CTI_S: cti::Cti = unsafe { cti::Cti::from_ptr(0xe004_2000usize as _) };
 #[doc = "Trace and debug control"]
-pub const TAD_S: tad_s::Tad = unsafe { tad_s::Tad::from_ptr(0xe008_0000usize as _) };
+pub const TAD_S: tad::Tad = unsafe { tad::Tad::from_ptr(0xe008_0000usize as _) };
 #[doc = r" Number available in the NVIC for configuring priority"]
 #[cfg(feature = "rt")]
 pub const NVIC_PRIO_BITS: u8 = 3;
@@ -525,7 +521,7 @@ pub const NVIC_PRIO_BITS: u8 = 3;
 pub use cortex_m_rt::interrupt;
 #[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
-pub mod cache_s {
+pub mod cache {
     #[doc = "Cache"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cache {
@@ -907,7 +903,7 @@ pub mod cache_s {
         }
     }
 }
-pub mod cachedata_s {
+pub mod cachedata {
     #[doc = "CACHEDATA"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cachedata {
@@ -992,7 +988,7 @@ pub mod cachedata_s {
         }
     }
 }
-pub mod cacheinfo_s {
+pub mod cacheinfo {
     #[doc = "CACHEINFO"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cacheinfo {
@@ -1121,7 +1117,7 @@ pub mod cacheinfo_s {
         }
     }
 }
-pub mod clock_ns {
+pub mod clock {
     #[doc = "Clock management 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clock {
@@ -2534,7 +2530,7 @@ pub mod common {
         }
     }
 }
-pub mod comp_ns {
+pub mod comp {
     #[doc = "Comparator 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Comp {
@@ -3370,7 +3366,7 @@ pub mod comp_ns {
         }
     }
 }
-pub mod cryptocell_s {
+pub mod cryptocell {
     #[doc = "ARM TrustZone CryptoCell register interface"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cryptocell {
@@ -3419,7 +3415,7 @@ pub mod cryptocell_s {
         }
     }
 }
-pub mod cti_s {
+pub mod cti {
     #[doc = "Cross-Trigger Interface control. NOTE: this is not a separate peripheral, but describes CM33 functionality."]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cti {
@@ -5369,7 +5365,7 @@ pub mod cti_s {
         }
     }
 }
-pub mod ctrlap_ns {
+pub mod ctrlapperi {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Approtect {
@@ -5399,12 +5395,12 @@ pub mod ctrlap_ns {
     }
     #[doc = "Control access port 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Ctrlap {
+    pub struct Ctrlapperi {
         ptr: *mut u8,
     }
-    unsafe impl Send for Ctrlap {}
-    unsafe impl Sync for Ctrlap {}
-    impl Ctrlap {
+    unsafe impl Send for Ctrlapperi {}
+    unsafe impl Sync for Ctrlapperi {}
+    impl Ctrlapperi {
         #[inline(always)]
         pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
             Self { ptr: ptr as _ }
@@ -5757,7 +5753,7 @@ pub mod ctrlap_ns {
         }
     }
 }
-pub mod dcnf_ns {
+pub mod dcnf {
     #[doc = "Domain configuration management 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dcnf {
@@ -6338,7 +6334,7 @@ pub mod dcnf_ns {
         }
     }
 }
-pub mod dppic_ns {
+pub mod dppic {
     #[doc = "Distributed programmable peripheral interconnect controller 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dppic {
@@ -6504,7 +6500,7 @@ pub mod dppic_ns {
         }
     }
 }
-pub mod egu_ns {
+pub mod egu {
     #[doc = "Event generator unit 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Egu {
@@ -6600,7 +6596,7 @@ pub mod egu_ns {
         }
     }
 }
-pub mod ficr_s {
+pub mod ficr {
     #[doc = "Factory Information Configuration Registers"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ficr {
@@ -6769,7 +6765,7 @@ pub mod ficr_s {
         }
         #[doc = "Description cluster: Address of the PAR register which will be written"]
         #[inline(always)]
-        pub const fn addr(self) -> crate::common::Reg<u32, crate::common::RW> {
+        pub const fn addr(self) -> crate::common::Reg<u32, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
         }
         #[doc = "Description cluster: Data"]
@@ -7437,6 +7433,8 @@ pub mod ficr_s {
         impl Package {
             #[doc = "QKxx - 94-pin aQFN"]
             pub const QK: Self = Self(0x2000);
+            #[doc = "CLxx - WLCSP"]
+            pub const CL: Self = Self(0x2005);
             #[doc = "Unspecified"]
             pub const UNSPECIFIED: Self = Self(0xffff_ffff);
         }
@@ -7532,6 +7530,8 @@ pub mod ficr_s {
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub struct Variant(pub u32);
         impl Variant {
+            #[doc = "CLAA"]
+            pub const CLAA: Self = Self(0x434c_4141);
             #[doc = "QKAA"]
             pub const QKAA: Self = Self(0x514b_4141);
             #[doc = "Unspecified"]
@@ -7559,7 +7559,7 @@ pub mod ficr_s {
         }
     }
 }
-pub mod fpu_ns {
+pub mod fpu {
     #[doc = "FPU control peripheral 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fpu {
@@ -7703,7 +7703,7 @@ pub mod fpu_ns {
         }
     }
 }
-pub mod gpio_ns {
+pub mod gpio {
     #[doc = "GPIO Port 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gpio {
@@ -8374,7 +8374,7 @@ pub mod gpio_ns {
         }
     }
 }
-pub mod gpiote_s {
+pub mod gpiote {
     #[doc = "GPIO Tasks and Events 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gpiote {
@@ -8820,7 +8820,7 @@ pub mod gpiote_s {
         }
     }
 }
-pub mod i2s_ns {
+pub mod i2s {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Config {
@@ -9820,7 +9820,7 @@ pub mod i2s_ns {
         }
     }
 }
-pub mod ipc_ns {
+pub mod ipc {
     #[doc = "Interprocessor communication 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipc {
@@ -10667,7 +10667,7 @@ pub mod ipc_ns {
         }
     }
 }
-pub mod kmu_ns {
+pub mod kmu {
     #[doc = "Key management unit 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Kmu {
@@ -10887,7 +10887,7 @@ pub mod kmu_ns {
         }
     }
 }
-pub mod lpcomp_ns {
+pub mod lpcomp {
     #[doc = "Low-power comparator 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lpcomp {
@@ -11553,7 +11553,7 @@ pub mod lpcomp_ns {
         }
     }
 }
-pub mod mutex_ns {
+pub mod mutex {
     #[doc = "MUTEX 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Mutex {
@@ -11603,7 +11603,7 @@ pub mod mutex_ns {
         }
     }
 }
-pub mod nfct_ns {
+pub mod nfct {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Framestatus {
@@ -13407,7 +13407,7 @@ pub mod nfct_ns {
         }
     }
 }
-pub mod nvmc_ns {
+pub mod nvmc {
     #[doc = "Non-volatile memory controller 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Nvmc {
@@ -13738,7 +13738,7 @@ pub mod nvmc_ns {
         }
     }
 }
-pub mod oscillators_ns {
+pub mod oscillators {
     #[doc = "Oscillator control 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Oscillators {
@@ -13912,7 +13912,7 @@ pub mod oscillators_ns {
         }
     }
 }
-pub mod pdm_ns {
+pub mod pdm {
     #[doc = "Pulse Density Modulation (Digital Microphone) Interface 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pdm {
@@ -14538,7 +14538,7 @@ pub mod pdm_ns {
         }
     }
 }
-pub mod power_ns {
+pub mod power {
     #[doc = "Power control 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Power {
@@ -14711,7 +14711,7 @@ pub mod power_ns {
         }
     }
 }
-pub mod pwm_ns {
+pub mod pwm {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -15561,7 +15561,7 @@ pub mod pwm_ns {
         }
     }
 }
-pub mod qdec_ns {
+pub mod qdec {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -16285,7 +16285,7 @@ pub mod qdec_ns {
         }
     }
 }
-pub mod qspi_ns {
+pub mod qspi {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DmaEnc {
@@ -16522,7 +16522,7 @@ pub mod qspi_ns {
         }
         #[doc = "Enable QSPI peripheral and acquire the pins selected in PSELn registers"]
         #[inline(always)]
-        pub const fn enable(self) -> crate::common::Reg<regs::QspiNsEnable, crate::common::RW> {
+        pub const fn enable(self) -> crate::common::Reg<regs::QspiEnable, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0500usize) as _) }
         }
         #[doc = "Unspecified"]
@@ -17052,24 +17052,24 @@ pub mod qspi_ns {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Dpmdur(pub u32);
         impl Dpmdur {
-            #[doc = "Duration needed by external flash to enter DPM. Duration is given as ENTER * 256 * 62.5 ns."]
+            #[doc = "Duration needed by external flash to enter DPM. Duration is given as ENTER * 256 * 31.25 ns"]
             #[inline(always)]
             pub const fn enter(&self) -> u16 {
                 let val = (self.0 >> 0usize) & 0xffff;
                 val as u16
             }
-            #[doc = "Duration needed by external flash to enter DPM. Duration is given as ENTER * 256 * 62.5 ns."]
+            #[doc = "Duration needed by external flash to enter DPM. Duration is given as ENTER * 256 * 31.25 ns"]
             #[inline(always)]
             pub fn set_enter(&mut self, val: u16) {
                 self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
             }
-            #[doc = "Duration needed by external flash to exit DPM. Duration is given as EXIT * 256 * 62.5 ns."]
+            #[doc = "Duration needed by external flash to exit DPM. Duration is given as EXIT * 256 * 31.25 ns."]
             #[inline(always)]
             pub const fn exit(&self) -> u16 {
                 let val = (self.0 >> 16usize) & 0xffff;
                 val as u16
             }
-            #[doc = "Duration needed by external flash to exit DPM. Duration is given as EXIT * 256 * 62.5 ns."]
+            #[doc = "Duration needed by external flash to exit DPM. Duration is given as EXIT * 256 * 31.25 ns."]
             #[inline(always)]
             pub fn set_exit(&mut self, val: u16) {
                 self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
@@ -17154,13 +17154,13 @@ pub mod qspi_ns {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Ifconfig1(pub u32);
         impl Ifconfig1 {
-            #[doc = "Minimum amount of time that the CSN pin must stay high before it can go low again. Value is specified in number of 16 MHz periods (62.5 ns)."]
+            #[doc = "Minimum amount of time that the CSN pin must stay high before it can go low again. Value is specified in number of 32 MHz periods (31.25 ns)."]
             #[inline(always)]
             pub const fn sckdelay(&self) -> u8 {
                 let val = (self.0 >> 0usize) & 0xff;
                 val as u8
             }
-            #[doc = "Minimum amount of time that the CSN pin must stay high before it can go low again. Value is specified in number of 16 MHz periods (62.5 ns)."]
+            #[doc = "Minimum amount of time that the CSN pin must stay high before it can go low again. Value is specified in number of 32 MHz periods (31.25 ns)."]
             #[inline(always)]
             pub fn set_sckdelay(&mut self, val: u8) {
                 self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -17278,8 +17278,8 @@ pub mod qspi_ns {
         #[doc = "Enable QSPI peripheral and acquire the pins selected in PSELn registers"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct QspiNsEnable(pub u32);
-        impl QspiNsEnable {
+        pub struct QspiEnable(pub u32);
+        impl QspiEnable {
             #[doc = "Enable or disable QSPI"]
             #[inline(always)]
             pub const fn enable(&self) -> bool {
@@ -17292,10 +17292,10 @@ pub mod qspi_ns {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
         }
-        impl Default for QspiNsEnable {
+        impl Default for QspiEnable {
             #[inline(always)]
-            fn default() -> QspiNsEnable {
-                QspiNsEnable(0)
+            fn default() -> QspiEnable {
+                QspiEnable(0)
             }
         }
         #[doc = "Read transfer length"]
@@ -17726,7 +17726,7 @@ pub mod qspi_ns {
         }
     }
 }
-pub mod regulators_ns {
+pub mod regulators {
     #[doc = "Voltage regulators 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Regulators {
@@ -18117,7 +18117,7 @@ pub mod regulators_ns {
         }
     }
 }
-pub mod reset_ns {
+pub mod reset {
     #[doc = "ULP network core control"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Network {
@@ -18358,7 +18358,7 @@ pub mod reset_ns {
         }
     }
 }
-pub mod rtc_ns {
+pub mod rtc {
     #[doc = "Real-time counter 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rtc {
@@ -18966,7 +18966,7 @@ pub mod rtc_ns {
         }
     }
 }
-pub mod saadc_ns {
+pub mod saadc {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ch {
@@ -20472,7 +20472,7 @@ pub mod shared {
         }
     }
 }
-pub mod spim_ns {
+pub mod spim {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iftiming {
@@ -20494,7 +20494,7 @@ pub mod spim_ns {
         pub const fn rxdelay(self) -> crate::common::Reg<regs::Rxdelay, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
         }
-        #[doc = "Minimum duration between edge of CSN and edge of SCK and minimum duration CSN must stay high between transactions"]
+        #[doc = "Minimum duration between edge of CSN and edge of SCK. When SHORTS.END_START is used, this is also the minimum duration CSN must stay high between transactions."]
         #[inline(always)]
         pub const fn csndur(self) -> crate::common::Reg<regs::Csndur, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
@@ -20863,18 +20863,18 @@ pub mod spim_ns {
                 Config(0)
             }
         }
-        #[doc = "Minimum duration between edge of CSN and edge of SCK and minimum duration CSN must stay high between transactions"]
+        #[doc = "Minimum duration between edge of CSN and edge of SCK. When SHORTS.END_START is used, this is also the minimum duration CSN must stay high between transactions."]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Csndur(pub u32);
         impl Csndur {
-            #[doc = "Minimum duration between edge of CSN and edge of SCK and minimum duration CSN must stay high between transactions. The value is specified in number of 64 MHz clock cycles (15.625 ns)."]
+            #[doc = "Minimum duration between edge of CSN and edge of SCK. When SHORTS.END_START is used, this is the minimum duration CSN must stay high between transactions. The value is specified in number of 64 MHz clock cycles (15.625 ns)."]
             #[inline(always)]
             pub const fn csndur(&self) -> u8 {
                 let val = (self.0 >> 0usize) & 0xff;
                 val as u8
             }
-            #[doc = "Minimum duration between edge of CSN and edge of SCK and minimum duration CSN must stay high between transactions. The value is specified in number of 64 MHz clock cycles (15.625 ns)."]
+            #[doc = "Minimum duration between edge of CSN and edge of SCK. When SHORTS.END_START is used, this is the minimum duration CSN must stay high between transactions. The value is specified in number of 64 MHz clock cycles (15.625 ns)."]
             #[inline(always)]
             pub fn set_csndur(&mut self, val: u8) {
                 self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -21562,7 +21562,7 @@ pub mod spim_ns {
         }
     }
 }
-pub mod spis_ns {
+pub mod spis {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -22429,7 +22429,7 @@ pub mod spis_ns {
         }
     }
 }
-pub mod spu_s {
+pub mod spu {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dppi {
@@ -24302,7 +24302,7 @@ pub mod spu_s {
         }
     }
 }
-pub mod tad_s {
+pub mod tad {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -24659,7 +24659,7 @@ pub mod tad_s {
         }
     }
 }
-pub mod timer_ns {
+pub mod timer {
     #[doc = "Timer/Counter 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Timer {
@@ -25050,7 +25050,7 @@ pub mod timer_ns {
         }
     }
 }
-pub mod twim_ns {
+pub mod twim {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -25931,7 +25931,7 @@ pub mod twim_ns {
         }
     }
 }
-pub mod twis_ns {
+pub mod twis {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -26785,7 +26785,7 @@ pub mod twis_ns {
         }
     }
 }
-pub mod uarte_ns {
+pub mod uarte {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -27775,7 +27775,7 @@ pub mod uarte_ns {
         }
     }
 }
-pub mod uicr_s {
+pub mod uicr {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Config {
@@ -28401,7 +28401,7 @@ pub mod uicr_s {
         }
     }
 }
-pub mod usbd_ns {
+pub mod usbd {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Epin {
@@ -30845,15 +30845,15 @@ pub mod usbd_ns {
         }
     }
 }
-pub mod usbregulator_ns {
+pub mod usbreg {
     #[doc = "USB Regulator 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Usbregulator {
+    pub struct Usbreg {
         ptr: *mut u8,
     }
-    unsafe impl Send for Usbregulator {}
-    unsafe impl Sync for Usbregulator {}
-    impl Usbregulator {
+    unsafe impl Send for Usbreg {}
+    unsafe impl Sync for Usbreg {}
+    impl Usbreg {
         #[inline(always)]
         pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
             Self { ptr: ptr as _ }
@@ -31003,7 +31003,7 @@ pub mod usbregulator_ns {
         }
     }
 }
-pub mod vmc_ns {
+pub mod vmc {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ram {
@@ -31104,7 +31104,7 @@ pub mod vmc_ns {
         }
     }
 }
-pub mod wdt_ns {
+pub mod wdt {
     #[doc = "Watchdog Timer 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wdt {

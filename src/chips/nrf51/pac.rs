@@ -1,4 +1,4 @@
-#![doc = "Peripheral access API (generated using chiptool v0.1.0 (218daa7 2024-01-15))"]
+#![doc = "Peripheral access API (generated using chiptool v0.1.0 (e77e8bb 2024-11-13))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Interrupt {
     #[doc = "0 - POWER_CLOCK"]
@@ -151,7 +151,7 @@ pub const SPI1: spi::Spi = unsafe { spi::Spi::from_ptr(0x4000_4000usize as _) };
 #[doc = "Two-wire interface master 1."]
 pub const TWI1: twi::Twi = unsafe { twi::Twi::from_ptr(0x4000_4000usize as _) };
 #[doc = "SPI slave 1."]
-pub const SPIS1: spis1::Spis1 = unsafe { spis1::Spis1::from_ptr(0x4000_4000usize as _) };
+pub const SPIS1: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_4000usize as _) };
 #[doc = "GPIO tasks and events."]
 pub const GPIOTE: gpiote::Gpiote = unsafe { gpiote::Gpiote::from_ptr(0x4000_6000usize as _) };
 #[doc = "Analog to digital converter."]
@@ -12554,15 +12554,15 @@ pub mod spi {
         }
     }
 }
-pub mod spis1 {
+pub mod spis {
     #[doc = "SPI slave 1."]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Spis1 {
+    pub struct Spis {
         ptr: *mut u8,
     }
-    unsafe impl Send for Spis1 {}
-    unsafe impl Sync for Spis1 {}
-    impl Spis1 {
+    unsafe impl Send for Spis {}
+    unsafe impl Sync for Spis {}
+    impl Spis {
         #[inline(always)]
         pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
             Self { ptr: ptr as _ }
@@ -13025,25 +13025,25 @@ pub mod spis1 {
         impl Status {
             #[doc = "TX buffer overread detected, and prevented."]
             #[inline(always)]
-            pub const fn overread(&self) -> super::vals::Overread {
+            pub const fn overread(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
-                super::vals::Overread::from_bits(val as u8)
+                val != 0
             }
             #[doc = "TX buffer overread detected, and prevented."]
             #[inline(always)]
-            pub fn set_overread(&mut self, val: super::vals::Overread) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            pub fn set_overread(&mut self, val: bool) {
+                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
             #[doc = "RX buffer overflow detected, and prevented."]
             #[inline(always)]
-            pub const fn overflow(&self) -> super::vals::Overflow {
+            pub const fn overflow(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
-                super::vals::Overflow::from_bits(val as u8)
+                val != 0
             }
             #[doc = "RX buffer overflow detected, and prevented."]
             #[inline(always)]
-            pub fn set_overflow(&mut self, val: super::vals::Overflow) {
-                self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
+            pub fn set_overflow(&mut self, val: bool) {
+                self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
         }
         impl Default for Status {
@@ -13178,66 +13178,6 @@ pub mod spis1 {
             #[inline(always)]
             fn from(val: Order) -> u8 {
                 Order::to_bits(val)
-            }
-        }
-        #[repr(u8)]
-        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum Overflow {
-            #[doc = "Error not present."]
-            NOT_PRESENT = 0x0,
-            #[doc = "Error present."]
-            R_PRESENT_W_CLEAR = 0x01,
-        }
-        impl Overflow {
-            #[inline(always)]
-            pub const fn from_bits(val: u8) -> Overflow {
-                unsafe { core::mem::transmute(val & 0x01) }
-            }
-            #[inline(always)]
-            pub const fn to_bits(self) -> u8 {
-                unsafe { core::mem::transmute(self) }
-            }
-        }
-        impl From<u8> for Overflow {
-            #[inline(always)]
-            fn from(val: u8) -> Overflow {
-                Overflow::from_bits(val)
-            }
-        }
-        impl From<Overflow> for u8 {
-            #[inline(always)]
-            fn from(val: Overflow) -> u8 {
-                Overflow::to_bits(val)
-            }
-        }
-        #[repr(u8)]
-        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum Overread {
-            #[doc = "Error not present."]
-            NOT_PRESENT = 0x0,
-            #[doc = "Error present."]
-            R_PRESENT_W_CLEAR = 0x01,
-        }
-        impl Overread {
-            #[inline(always)]
-            pub const fn from_bits(val: u8) -> Overread {
-                unsafe { core::mem::transmute(val & 0x01) }
-            }
-            #[inline(always)]
-            pub const fn to_bits(self) -> u8 {
-                unsafe { core::mem::transmute(self) }
-            }
-        }
-        impl From<u8> for Overread {
-            #[inline(always)]
-            fn from(val: u8) -> Overread {
-                Overread::from_bits(val)
-            }
-        }
-        impl From<Overread> for u8 {
-            #[inline(always)]
-            fn from(val: Overread) -> u8 {
-                Overread::to_bits(val)
             }
         }
         #[repr(u8)]

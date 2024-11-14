@@ -772,14 +772,14 @@ POSSIBILITY OF SUCH DAMAGE.
               <description>Lower half word</description>
               <lsb>0</lsb>
               <msb>15</msb>
-              <access>read-writeOnce</access>
+              <access>read-writeonce</access>
             </field>
             <field>
               <name>UPPER</name>
               <description>Upper half word</description>
               <lsb>16</lsb>
               <msb>31</msb>
-              <access>read-writeOnce</access>
+              <access>read-writeonce</access>
             </field>
           </fields>
         </register>
@@ -5274,7 +5274,7 @@ POSSIBILITY OF SUCH DAMAGE.
             <name>LOCK</name>
             <description>This register locks the ERASEPROTECT.DISABLE register from being written until next reset.</description>
             <addressOffset>0x000</addressOffset>
-            <access>read-writeOnce</access>
+            <access>read-writeonce</access>
             <resetValue>0x00000000</resetValue>
             <fields>
               <field>
@@ -5301,7 +5301,7 @@ POSSIBILITY OF SUCH DAMAGE.
             <name>DISABLE</name>
             <description>This register disables the ERASEPROTECT register and performs an  ERASEALL operation.</description>
             <addressOffset>0x004</addressOffset>
-            <access>read-writeOnce</access>
+            <access>read-writeonce</access>
             <resetValue>0x00000000</resetValue>
             <fields>
               <field>

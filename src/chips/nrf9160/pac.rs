@@ -1,18 +1,18 @@
-#![doc = "Peripheral access API (generated using chiptool v0.1.0 (218daa7 2024-01-15))"]
+#![doc = "Peripheral access API (generated using chiptool v0.1.0 (e77e8bb 2024-11-13))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Interrupt {
     #[doc = "3 - SPU"]
     SPU = 3,
-    #[doc = "5 - CLOCK_POWER"]
-    CLOCK_POWER = 5,
-    #[doc = "8 - UARTE0_SPIM0_SPIS0_TWIM0_TWIS0"]
-    UARTE0_SPIM0_SPIS0_TWIM0_TWIS0 = 8,
-    #[doc = "9 - UARTE1_SPIM1_SPIS1_TWIM1_TWIS1"]
-    UARTE1_SPIM1_SPIS1_TWIM1_TWIS1 = 9,
-    #[doc = "10 - UARTE2_SPIM2_SPIS2_TWIM2_TWIS2"]
-    UARTE2_SPIM2_SPIS2_TWIM2_TWIS2 = 10,
-    #[doc = "11 - UARTE3_SPIM3_SPIS3_TWIM3_TWIS3"]
-    UARTE3_SPIM3_SPIS3_TWIM3_TWIS3 = 11,
+    #[doc = "5 - POWER_CLOCK"]
+    POWER_CLOCK = 5,
+    #[doc = "8 - SPIM0_SPIS0_TWIM0_TWIS0_UARTE0"]
+    SPIM0_SPIS0_TWIM0_TWIS0_UARTE0 = 8,
+    #[doc = "9 - SPIM1_SPIS1_TWIM1_TWIS1_UARTE1"]
+    SPIM1_SPIS1_TWIM1_TWIS1_UARTE1 = 9,
+    #[doc = "10 - SPIM2_SPIS2_TWIM2_TWIS2_UARTE2"]
+    SPIM2_SPIS2_TWIM2_TWIS2_UARTE2 = 10,
+    #[doc = "11 - SPIM3_SPIS3_TWIM3_TWIS3_UARTE3"]
+    SPIM3_SPIS3_TWIM3_TWIS3_UARTE3 = 11,
     #[doc = "13 - GPIOTE0"]
     GPIOTE0 = 13,
     #[doc = "14 - SAADC"]
@@ -74,11 +74,11 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 mod _vectors {
     extern "C" {
         fn SPU();
-        fn CLOCK_POWER();
-        fn UARTE0_SPIM0_SPIS0_TWIM0_TWIS0();
-        fn UARTE1_SPIM1_SPIS1_TWIM1_TWIS1();
-        fn UARTE2_SPIM2_SPIS2_TWIM2_TWIS2();
-        fn UARTE3_SPIM3_SPIS3_TWIM3_TWIS3();
+        fn POWER_CLOCK();
+        fn SPIM0_SPIS0_TWIM0_TWIS0_UARTE0();
+        fn SPIM1_SPIS1_TWIM1_TWIS1_UARTE1();
+        fn SPIM2_SPIS2_TWIM2_TWIS2_UARTE2();
+        fn SPIM3_SPIS3_TWIM3_TWIS3_UARTE3();
         fn GPIOTE0();
         fn SAADC();
         fn TIMER0();
@@ -118,21 +118,21 @@ mod _vectors {
         Vector { _handler: SPU },
         Vector { _reserved: 0 },
         Vector {
-            _handler: CLOCK_POWER,
+            _handler: POWER_CLOCK,
         },
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
         Vector {
-            _handler: UARTE0_SPIM0_SPIS0_TWIM0_TWIS0,
+            _handler: SPIM0_SPIS0_TWIM0_TWIS0_UARTE0,
         },
         Vector {
-            _handler: UARTE1_SPIM1_SPIS1_TWIM1_TWIS1,
+            _handler: SPIM1_SPIS1_TWIM1_TWIS1_UARTE1,
         },
         Vector {
-            _handler: UARTE2_SPIM2_SPIS2_TWIM2_TWIS2,
+            _handler: SPIM2_SPIS2_TWIM2_TWIS2_UARTE2,
         },
         Vector {
-            _handler: UARTE3_SPIM3_SPIS3_TWIM3_TWIS3,
+            _handler: SPIM3_SPIS3_TWIM3_TWIS3_UARTE3,
         },
         Vector { _reserved: 0 },
         Vector { _handler: GPIOTE0 },
@@ -192,226 +192,224 @@ mod _vectors {
     ];
 }
 #[doc = "Factory Information Configuration Registers"]
-pub const FICR_S: ficr_s::Ficr = unsafe { ficr_s::Ficr::from_ptr(0x00ff_0000usize as _) };
+pub const FICR_S: ficr::Ficr = unsafe { ficr::Ficr::from_ptr(0x00ff_0000usize as _) };
 #[doc = "User information configuration registers User information configuration registers"]
-pub const UICR_S: uicr_s::Uicr = unsafe { uicr_s::Uicr::from_ptr(0x00ff_8000usize as _) };
+pub const UICR_S: uicr::Uicr = unsafe { uicr::Uicr::from_ptr(0x00ff_8000usize as _) };
 #[doc = "Voltage regulators control 0"]
-pub const REGULATORS_NS: regulators_ns::Regulators =
-    unsafe { regulators_ns::Regulators::from_ptr(0x4000_4000usize as _) };
+pub const REGULATORS_NS: regulators::Regulators =
+    unsafe { regulators::Regulators::from_ptr(0x4000_4000usize as _) };
 #[doc = "Clock management 0"]
-pub const CLOCK_NS: clock_ns::Clock = unsafe { clock_ns::Clock::from_ptr(0x4000_5000usize as _) };
+pub const CLOCK_NS: clock::Clock = unsafe { clock::Clock::from_ptr(0x4000_5000usize as _) };
 #[doc = "Power control 0"]
-pub const POWER_NS: power_ns::Power = unsafe { power_ns::Power::from_ptr(0x4000_5000usize as _) };
+pub const POWER_NS: power::Power = unsafe { power::Power::from_ptr(0x4000_5000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 0"]
-pub const SPIM0_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_8000usize as _) };
+pub const SPIM0_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_8000usize as _) };
 #[doc = "SPI Slave 0"]
-pub const SPIS0_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_8000usize as _) };
+pub const SPIS0_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 0"]
-pub const TWIM0_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_8000usize as _) };
+pub const TWIM0_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 0"]
-pub const TWIS0_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_8000usize as _) };
+pub const TWIS0_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_8000usize as _) };
 #[doc = "UART with EasyDMA 0"]
-pub const UARTE0_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_8000usize as _) };
+pub const UARTE0_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_8000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 2"]
-pub const SPIM1_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_9000usize as _) };
+pub const SPIM1_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_9000usize as _) };
 #[doc = "SPI Slave 2"]
-pub const SPIS1_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_9000usize as _) };
+pub const SPIS1_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 2"]
-pub const TWIM1_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_9000usize as _) };
+pub const TWIM1_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 2"]
-pub const TWIS1_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_9000usize as _) };
+pub const TWIS1_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_9000usize as _) };
 #[doc = "UART with EasyDMA 2"]
-pub const UARTE1_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_9000usize as _) };
+pub const UARTE1_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_9000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 4"]
-pub const SPIM2_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_a000usize as _) };
+pub const SPIM2_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_a000usize as _) };
 #[doc = "SPI Slave 4"]
-pub const SPIS2_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_a000usize as _) };
+pub const SPIS2_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_a000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 4"]
-pub const TWIM2_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_a000usize as _) };
+pub const TWIM2_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_a000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 4"]
-pub const TWIS2_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_a000usize as _) };
+pub const TWIS2_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_a000usize as _) };
 #[doc = "UART with EasyDMA 4"]
-pub const UARTE2_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_a000usize as _) };
+pub const UARTE2_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_a000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 6"]
-pub const SPIM3_NS: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x4000_b000usize as _) };
+pub const SPIM3_NS: spim::Spim = unsafe { spim::Spim::from_ptr(0x4000_b000usize as _) };
 #[doc = "SPI Slave 6"]
-pub const SPIS3_NS: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x4000_b000usize as _) };
+pub const SPIS3_NS: spis::Spis = unsafe { spis::Spis::from_ptr(0x4000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 6"]
-pub const TWIM3_NS: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x4000_b000usize as _) };
+pub const TWIM3_NS: twim::Twim = unsafe { twim::Twim::from_ptr(0x4000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 6"]
-pub const TWIS3_NS: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x4000_b000usize as _) };
+pub const TWIS3_NS: twis::Twis = unsafe { twis::Twis::from_ptr(0x4000_b000usize as _) };
 #[doc = "UART with EasyDMA 6"]
-pub const UARTE3_NS: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x4000_b000usize as _) };
+pub const UARTE3_NS: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x4000_b000usize as _) };
 #[doc = "Analog to Digital Converter 0"]
-pub const SAADC_NS: saadc_ns::Saadc = unsafe { saadc_ns::Saadc::from_ptr(0x4000_e000usize as _) };
+pub const SAADC_NS: saadc::Saadc = unsafe { saadc::Saadc::from_ptr(0x4000_e000usize as _) };
 #[doc = "Timer/Counter 0"]
-pub const TIMER0_NS: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x4000_f000usize as _) };
+pub const TIMER0_NS: timer::Timer = unsafe { timer::Timer::from_ptr(0x4000_f000usize as _) };
 #[doc = "Timer/Counter 2"]
-pub const TIMER1_NS: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x4001_0000usize as _) };
+pub const TIMER1_NS: timer::Timer = unsafe { timer::Timer::from_ptr(0x4001_0000usize as _) };
 #[doc = "Timer/Counter 4"]
-pub const TIMER2_NS: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x4001_1000usize as _) };
+pub const TIMER2_NS: timer::Timer = unsafe { timer::Timer::from_ptr(0x4001_1000usize as _) };
 #[doc = "Real-time counter 0"]
-pub const RTC0_NS: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x4001_4000usize as _) };
+pub const RTC0_NS: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x4001_4000usize as _) };
 #[doc = "Real-time counter 2"]
-pub const RTC1_NS: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x4001_5000usize as _) };
-#[doc = "Distributed Programmable Peripheral Interconnect Controller 0"]
-pub const DPPIC_NS: dppic_ns::Dppic = unsafe { dppic_ns::Dppic::from_ptr(0x4001_7000usize as _) };
+pub const RTC1_NS: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x4001_5000usize as _) };
+#[doc = "Distributed programmable peripheral interconnect controller 0"]
+pub const DPPIC_NS: dppic::Dppic = unsafe { dppic::Dppic::from_ptr(0x4001_7000usize as _) };
 #[doc = "Watchdog Timer 0"]
-pub const WDT_NS: wdt_ns::Wdt = unsafe { wdt_ns::Wdt::from_ptr(0x4001_8000usize as _) };
+pub const WDT_NS: wdt::Wdt = unsafe { wdt::Wdt::from_ptr(0x4001_8000usize as _) };
 #[doc = "Event generator unit 0"]
-pub const EGU0_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_b000usize as _) };
+pub const EGU0_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_b000usize as _) };
 #[doc = "Event generator unit 2"]
-pub const EGU1_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_c000usize as _) };
+pub const EGU1_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_c000usize as _) };
 #[doc = "Event generator unit 4"]
-pub const EGU2_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_d000usize as _) };
+pub const EGU2_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_d000usize as _) };
 #[doc = "Event generator unit 6"]
-pub const EGU3_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_e000usize as _) };
+pub const EGU3_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_e000usize as _) };
 #[doc = "Event generator unit 8"]
-pub const EGU4_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4001_f000usize as _) };
+pub const EGU4_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4001_f000usize as _) };
 #[doc = "Event generator unit 10"]
-pub const EGU5_NS: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x4002_0000usize as _) };
+pub const EGU5_NS: egu::Egu = unsafe { egu::Egu::from_ptr(0x4002_0000usize as _) };
 #[doc = "Pulse width modulation unit 0"]
-pub const PWM0_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_1000usize as _) };
+pub const PWM0_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_1000usize as _) };
 #[doc = "Pulse width modulation unit 2"]
-pub const PWM1_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_2000usize as _) };
+pub const PWM1_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_2000usize as _) };
 #[doc = "Pulse width modulation unit 4"]
-pub const PWM2_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_3000usize as _) };
+pub const PWM2_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_3000usize as _) };
 #[doc = "Pulse width modulation unit 6"]
-pub const PWM3_NS: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x4002_4000usize as _) };
+pub const PWM3_NS: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x4002_4000usize as _) };
 #[doc = "Pulse Density Modulation (Digital Microphone) Interface 0"]
-pub const PDM_NS: pdm_ns::Pdm = unsafe { pdm_ns::Pdm::from_ptr(0x4002_6000usize as _) };
+pub const PDM_NS: pdm::Pdm = unsafe { pdm::Pdm::from_ptr(0x4002_6000usize as _) };
 #[doc = "Inter-IC Sound 0"]
-pub const I2S_NS: i2s_ns::I2s = unsafe { i2s_ns::I2s::from_ptr(0x4002_8000usize as _) };
-#[doc = "Inter Processor Communication 0"]
-pub const IPC_NS: ipc_ns::Ipc = unsafe { ipc_ns::Ipc::from_ptr(0x4002_a000usize as _) };
+pub const I2S_NS: i2s::I2s = unsafe { i2s::I2s::from_ptr(0x4002_8000usize as _) };
+#[doc = "Interprocessor communication 0"]
+pub const IPC_NS: ipc::Ipc = unsafe { ipc::Ipc::from_ptr(0x4002_a000usize as _) };
 #[doc = "FPU 0"]
-pub const FPU_NS: fpu_ns::Fpu = unsafe { fpu_ns::Fpu::from_ptr(0x4002_c000usize as _) };
+pub const FPU_NS: fpu::Fpu = unsafe { fpu::Fpu::from_ptr(0x4002_c000usize as _) };
 #[doc = "GPIO Tasks and Events 1"]
-pub const GPIOTE1_NS: gpiote_s::Gpiote =
-    unsafe { gpiote_s::Gpiote::from_ptr(0x4003_1000usize as _) };
+pub const GPIOTE1_NS: gpiote::Gpiote = unsafe { gpiote::Gpiote::from_ptr(0x4003_1000usize as _) };
 #[doc = "Key management unit 0"]
-pub const KMU_NS: kmu_ns::Kmu = unsafe { kmu_ns::Kmu::from_ptr(0x4003_9000usize as _) };
+pub const KMU_NS: kmu::Kmu = unsafe { kmu::Kmu::from_ptr(0x4003_9000usize as _) };
 #[doc = "Non-volatile memory controller 0"]
-pub const NVMC_NS: nvmc_ns::Nvmc = unsafe { nvmc_ns::Nvmc::from_ptr(0x4003_9000usize as _) };
+pub const NVMC_NS: nvmc::Nvmc = unsafe { nvmc::Nvmc::from_ptr(0x4003_9000usize as _) };
 #[doc = "Volatile Memory controller 0"]
-pub const VMC_NS: vmc_ns::Vmc = unsafe { vmc_ns::Vmc::from_ptr(0x4003_a000usize as _) };
+pub const VMC_NS: vmc::Vmc = unsafe { vmc::Vmc::from_ptr(0x4003_a000usize as _) };
 #[doc = "GPIO Port 0"]
-pub const P0_NS: gpio_ns::Gpio = unsafe { gpio_ns::Gpio::from_ptr(0x4084_2500usize as _) };
+pub const P0_NS: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4084_2500usize as _) };
 #[doc = "System protection unit"]
-pub const SPU_S: spu_s::Spu = unsafe { spu_s::Spu::from_ptr(0x5000_3000usize as _) };
+pub const SPU_S: spu::Spu = unsafe { spu::Spu::from_ptr(0x5000_3000usize as _) };
 #[doc = "Voltage regulators control 1"]
-pub const REGULATORS_S: regulators_ns::Regulators =
-    unsafe { regulators_ns::Regulators::from_ptr(0x5000_4000usize as _) };
+pub const REGULATORS_S: regulators::Regulators =
+    unsafe { regulators::Regulators::from_ptr(0x5000_4000usize as _) };
 #[doc = "Clock management 1"]
-pub const CLOCK_S: clock_ns::Clock = unsafe { clock_ns::Clock::from_ptr(0x5000_5000usize as _) };
+pub const CLOCK_S: clock::Clock = unsafe { clock::Clock::from_ptr(0x5000_5000usize as _) };
 #[doc = "Power control 1"]
-pub const POWER_S: power_ns::Power = unsafe { power_ns::Power::from_ptr(0x5000_5000usize as _) };
+pub const POWER_S: power::Power = unsafe { power::Power::from_ptr(0x5000_5000usize as _) };
 #[doc = "Control access port"]
-pub const CTRL_AP_PERI_S: ctrl_ap_peri_s::CtrlApPeri =
-    unsafe { ctrl_ap_peri_s::CtrlApPeri::from_ptr(0x5000_6000usize as _) };
+pub const CTRL_AP_PERI_S: ctrlapperi::Ctrlapperi =
+    unsafe { ctrlapperi::Ctrlapperi::from_ptr(0x5000_6000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 1"]
-pub const SPIM0_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_8000usize as _) };
+pub const SPIM0_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_8000usize as _) };
 #[doc = "SPI Slave 1"]
-pub const SPIS0_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_8000usize as _) };
+pub const SPIS0_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 1"]
-pub const TWIM0_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_8000usize as _) };
+pub const TWIM0_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_8000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 1"]
-pub const TWIS0_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_8000usize as _) };
+pub const TWIS0_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_8000usize as _) };
 #[doc = "UART with EasyDMA 1"]
-pub const UARTE0_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_8000usize as _) };
+pub const UARTE0_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_8000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 3"]
-pub const SPIM1_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_9000usize as _) };
+pub const SPIM1_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_9000usize as _) };
 #[doc = "SPI Slave 3"]
-pub const SPIS1_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_9000usize as _) };
+pub const SPIS1_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 3"]
-pub const TWIM1_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_9000usize as _) };
+pub const TWIM1_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_9000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 3"]
-pub const TWIS1_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_9000usize as _) };
+pub const TWIS1_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_9000usize as _) };
 #[doc = "UART with EasyDMA 3"]
-pub const UARTE1_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_9000usize as _) };
+pub const UARTE1_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_9000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 5"]
-pub const SPIM2_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_a000usize as _) };
+pub const SPIM2_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_a000usize as _) };
 #[doc = "SPI Slave 5"]
-pub const SPIS2_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_a000usize as _) };
+pub const SPIS2_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_a000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 5"]
-pub const TWIM2_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_a000usize as _) };
+pub const TWIM2_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_a000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 5"]
-pub const TWIS2_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_a000usize as _) };
+pub const TWIS2_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_a000usize as _) };
 #[doc = "UART with EasyDMA 5"]
-pub const UARTE2_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_a000usize as _) };
+pub const UARTE2_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_a000usize as _) };
 #[doc = "Serial Peripheral Interface Master with EasyDMA 7"]
-pub const SPIM3_S: spim_ns::Spim = unsafe { spim_ns::Spim::from_ptr(0x5000_b000usize as _) };
+pub const SPIM3_S: spim::Spim = unsafe { spim::Spim::from_ptr(0x5000_b000usize as _) };
 #[doc = "SPI Slave 7"]
-pub const SPIS3_S: spis_ns::Spis = unsafe { spis_ns::Spis::from_ptr(0x5000_b000usize as _) };
+pub const SPIS3_S: spis::Spis = unsafe { spis::Spis::from_ptr(0x5000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Master Interface with EasyDMA 7"]
-pub const TWIM3_S: twim_ns::Twim = unsafe { twim_ns::Twim::from_ptr(0x5000_b000usize as _) };
+pub const TWIM3_S: twim::Twim = unsafe { twim::Twim::from_ptr(0x5000_b000usize as _) };
 #[doc = "I2C compatible Two-Wire Slave Interface with EasyDMA 7"]
-pub const TWIS3_S: twis_ns::Twis = unsafe { twis_ns::Twis::from_ptr(0x5000_b000usize as _) };
+pub const TWIS3_S: twis::Twis = unsafe { twis::Twis::from_ptr(0x5000_b000usize as _) };
 #[doc = "UART with EasyDMA 7"]
-pub const UARTE3_S: uarte_ns::Uarte = unsafe { uarte_ns::Uarte::from_ptr(0x5000_b000usize as _) };
+pub const UARTE3_S: uarte::Uarte = unsafe { uarte::Uarte::from_ptr(0x5000_b000usize as _) };
 #[doc = "GPIO Tasks and Events 0"]
-pub const GPIOTE0_S: gpiote_s::Gpiote =
-    unsafe { gpiote_s::Gpiote::from_ptr(0x5000_d000usize as _) };
+pub const GPIOTE0_S: gpiote::Gpiote = unsafe { gpiote::Gpiote::from_ptr(0x5000_d000usize as _) };
 #[doc = "Analog to Digital Converter 1"]
-pub const SAADC_S: saadc_ns::Saadc = unsafe { saadc_ns::Saadc::from_ptr(0x5000_e000usize as _) };
+pub const SAADC_S: saadc::Saadc = unsafe { saadc::Saadc::from_ptr(0x5000_e000usize as _) };
 #[doc = "Timer/Counter 1"]
-pub const TIMER0_S: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x5000_f000usize as _) };
+pub const TIMER0_S: timer::Timer = unsafe { timer::Timer::from_ptr(0x5000_f000usize as _) };
 #[doc = "Timer/Counter 3"]
-pub const TIMER1_S: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x5001_0000usize as _) };
+pub const TIMER1_S: timer::Timer = unsafe { timer::Timer::from_ptr(0x5001_0000usize as _) };
 #[doc = "Timer/Counter 5"]
-pub const TIMER2_S: timer_ns::Timer = unsafe { timer_ns::Timer::from_ptr(0x5001_1000usize as _) };
+pub const TIMER2_S: timer::Timer = unsafe { timer::Timer::from_ptr(0x5001_1000usize as _) };
 #[doc = "Real-time counter 1"]
-pub const RTC0_S: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x5001_4000usize as _) };
+pub const RTC0_S: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x5001_4000usize as _) };
 #[doc = "Real-time counter 3"]
-pub const RTC1_S: rtc_ns::Rtc = unsafe { rtc_ns::Rtc::from_ptr(0x5001_5000usize as _) };
-#[doc = "Distributed Programmable Peripheral Interconnect Controller 1"]
-pub const DPPIC_S: dppic_ns::Dppic = unsafe { dppic_ns::Dppic::from_ptr(0x5001_7000usize as _) };
+pub const RTC1_S: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x5001_5000usize as _) };
+#[doc = "Distributed programmable peripheral interconnect controller 1"]
+pub const DPPIC_S: dppic::Dppic = unsafe { dppic::Dppic::from_ptr(0x5001_7000usize as _) };
 #[doc = "Watchdog Timer 1"]
-pub const WDT_S: wdt_ns::Wdt = unsafe { wdt_ns::Wdt::from_ptr(0x5001_8000usize as _) };
+pub const WDT_S: wdt::Wdt = unsafe { wdt::Wdt::from_ptr(0x5001_8000usize as _) };
 #[doc = "Event generator unit 1"]
-pub const EGU0_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_b000usize as _) };
+pub const EGU0_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_b000usize as _) };
 #[doc = "Event generator unit 3"]
-pub const EGU1_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_c000usize as _) };
+pub const EGU1_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_c000usize as _) };
 #[doc = "Event generator unit 5"]
-pub const EGU2_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_d000usize as _) };
+pub const EGU2_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_d000usize as _) };
 #[doc = "Event generator unit 7"]
-pub const EGU3_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_e000usize as _) };
+pub const EGU3_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_e000usize as _) };
 #[doc = "Event generator unit 9"]
-pub const EGU4_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5001_f000usize as _) };
+pub const EGU4_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5001_f000usize as _) };
 #[doc = "Event generator unit 11"]
-pub const EGU5_S: egu_ns::Egu = unsafe { egu_ns::Egu::from_ptr(0x5002_0000usize as _) };
+pub const EGU5_S: egu::Egu = unsafe { egu::Egu::from_ptr(0x5002_0000usize as _) };
 #[doc = "Pulse width modulation unit 1"]
-pub const PWM0_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_1000usize as _) };
+pub const PWM0_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_1000usize as _) };
 #[doc = "Pulse width modulation unit 3"]
-pub const PWM1_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_2000usize as _) };
+pub const PWM1_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_2000usize as _) };
 #[doc = "Pulse width modulation unit 5"]
-pub const PWM2_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_3000usize as _) };
+pub const PWM2_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_3000usize as _) };
 #[doc = "Pulse width modulation unit 7"]
-pub const PWM3_S: pwm_ns::Pwm = unsafe { pwm_ns::Pwm::from_ptr(0x5002_4000usize as _) };
+pub const PWM3_S: pwm::Pwm = unsafe { pwm::Pwm::from_ptr(0x5002_4000usize as _) };
 #[doc = "Pulse Density Modulation (Digital Microphone) Interface 1"]
-pub const PDM_S: pdm_ns::Pdm = unsafe { pdm_ns::Pdm::from_ptr(0x5002_6000usize as _) };
+pub const PDM_S: pdm::Pdm = unsafe { pdm::Pdm::from_ptr(0x5002_6000usize as _) };
 #[doc = "Inter-IC Sound 1"]
-pub const I2S_S: i2s_ns::I2s = unsafe { i2s_ns::I2s::from_ptr(0x5002_8000usize as _) };
-#[doc = "Inter Processor Communication 1"]
-pub const IPC_S: ipc_ns::Ipc = unsafe { ipc_ns::Ipc::from_ptr(0x5002_a000usize as _) };
+pub const I2S_S: i2s::I2s = unsafe { i2s::I2s::from_ptr(0x5002_8000usize as _) };
+#[doc = "Interprocessor communication 1"]
+pub const IPC_S: ipc::Ipc = unsafe { ipc::Ipc::from_ptr(0x5002_a000usize as _) };
 #[doc = "FPU 1"]
-pub const FPU_S: fpu_ns::Fpu = unsafe { fpu_ns::Fpu::from_ptr(0x5002_c000usize as _) };
+pub const FPU_S: fpu::Fpu = unsafe { fpu::Fpu::from_ptr(0x5002_c000usize as _) };
 #[doc = "Key management unit 1"]
-pub const KMU_S: kmu_ns::Kmu = unsafe { kmu_ns::Kmu::from_ptr(0x5003_9000usize as _) };
+pub const KMU_S: kmu::Kmu = unsafe { kmu::Kmu::from_ptr(0x5003_9000usize as _) };
 #[doc = "Non-volatile memory controller 1"]
-pub const NVMC_S: nvmc_ns::Nvmc = unsafe { nvmc_ns::Nvmc::from_ptr(0x5003_9000usize as _) };
+pub const NVMC_S: nvmc::Nvmc = unsafe { nvmc::Nvmc::from_ptr(0x5003_9000usize as _) };
 #[doc = "Volatile Memory controller 1"]
-pub const VMC_S: vmc_ns::Vmc = unsafe { vmc_ns::Vmc::from_ptr(0x5003_a000usize as _) };
+pub const VMC_S: vmc::Vmc = unsafe { vmc::Vmc::from_ptr(0x5003_a000usize as _) };
 #[doc = "CRYPTOCELL HOST_RGF interface"]
-pub const CC_HOST_RGF_S: cc_host_rgf_s::CcHostRgf =
-    unsafe { cc_host_rgf_s::CcHostRgf::from_ptr(0x5084_0000usize as _) };
+pub const CC_HOST_RGF_S: cc_host_rgf::CcHostRgf =
+    unsafe { cc_host_rgf::CcHostRgf::from_ptr(0x5084_0000usize as _) };
 #[doc = "ARM TrustZone CryptoCell register interface"]
-pub const CRYPTOCELL_S: cryptocell_s::Cryptocell =
-    unsafe { cryptocell_s::Cryptocell::from_ptr(0x5084_0000usize as _) };
+pub const CRYPTOCELL_S: cryptocell::Cryptocell =
+    unsafe { cryptocell::Cryptocell::from_ptr(0x5084_0000usize as _) };
 #[doc = "GPIO Port 1"]
-pub const P0_S: gpio_ns::Gpio = unsafe { gpio_ns::Gpio::from_ptr(0x5084_2500usize as _) };
+pub const P0_S: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x5084_2500usize as _) };
 #[doc = "Trace and debug control"]
-pub const TAD_S: tad_s::Tad = unsafe { tad_s::Tad::from_ptr(0xe008_0000usize as _) };
+pub const TAD_S: tad::Tad = unsafe { tad::Tad::from_ptr(0xe008_0000usize as _) };
 #[doc = r" Number available in the NVIC for configuring priority"]
 #[cfg(feature = "rt")]
 pub const NVIC_PRIO_BITS: u8 = 3;
@@ -419,7 +417,7 @@ pub const NVIC_PRIO_BITS: u8 = 3;
 pub use cortex_m_rt::interrupt;
 #[cfg(feature = "rt")]
 pub use Interrupt as interrupt;
-pub mod cc_host_rgf_s {
+pub mod cc_host_rgf {
     #[doc = "CRYPTOCELL HOST_RGF interface"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct CcHostRgf {
@@ -630,7 +628,7 @@ pub mod cc_host_rgf_s {
         }
     }
 }
-pub mod clock_ns {
+pub mod clock {
     #[doc = "Clock management 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Clock {
@@ -803,14 +801,14 @@ pub mod clock_ns {
         impl Hfclkstat {
             #[doc = "Active clock source"]
             #[inline(always)]
-            pub const fn src(&self) -> bool {
+            pub const fn src(&self) -> super::vals::HfclkstatSrc {
                 let val = (self.0 >> 0usize) & 0x01;
-                val != 0
+                super::vals::HfclkstatSrc::from_bits(val as u8)
             }
             #[doc = "Active clock source"]
             #[inline(always)]
-            pub fn set_src(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            pub fn set_src(&mut self, val: super::vals::HfclkstatSrc) {
+                self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
             }
             #[doc = "HFCLK state"]
             #[inline(always)]
@@ -1005,6 +1003,36 @@ pub mod clock_ns {
     pub mod vals {
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub enum HfclkstatSrc {
+            #[doc = "HFINT - 64 MHz on-chip oscillator"]
+            HFINT = 0x0,
+            #[doc = "HFXO - 64 MHz clock derived from external 32 MHz crystal oscillator"]
+            HFXO = 0x01,
+        }
+        impl HfclkstatSrc {
+            #[inline(always)]
+            pub const fn from_bits(val: u8) -> HfclkstatSrc {
+                unsafe { core::mem::transmute(val & 0x01) }
+            }
+            #[inline(always)]
+            pub const fn to_bits(self) -> u8 {
+                unsafe { core::mem::transmute(self) }
+            }
+        }
+        impl From<u8> for HfclkstatSrc {
+            #[inline(always)]
+            fn from(val: u8) -> HfclkstatSrc {
+                HfclkstatSrc::from_bits(val)
+            }
+        }
+        impl From<HfclkstatSrc> for u8 {
+            #[inline(always)]
+            fn from(val: HfclkstatSrc) -> u8 {
+                HfclkstatSrc::to_bits(val)
+            }
+        }
+        #[repr(u8)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub enum Lfclksrc {
             #[doc = "Reserved for future use (equals selecting LFRC)"]
             RFU = 0x0,
@@ -1115,7 +1143,7 @@ pub mod common {
         }
     }
 }
-pub mod cryptocell_s {
+pub mod cryptocell {
     #[doc = "ARM TrustZone CryptoCell register interface"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cryptocell {
@@ -1164,15 +1192,15 @@ pub mod cryptocell_s {
         }
     }
 }
-pub mod ctrl_ap_peri_s {
+pub mod ctrlapperi {
     #[doc = "Control access port"]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct CtrlApPeri {
+    pub struct Ctrlapperi {
         ptr: *mut u8,
     }
-    unsafe impl Send for CtrlApPeri {}
-    unsafe impl Sync for CtrlApPeri {}
-    impl CtrlApPeri {
+    unsafe impl Send for Ctrlapperi {}
+    unsafe impl Sync for Ctrlapperi {}
+    impl Ctrlapperi {
         #[inline(always)]
         pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
             Self { ptr: ptr as _ }
@@ -1208,12 +1236,12 @@ pub mod ctrl_ap_peri_s {
         pub const fn as_ptr(&self) -> *mut () {
             self.ptr as _
         }
-        #[doc = "Lock register ERASEPROTECT.DISABLE from being written until next reset"]
+        #[doc = "This register locks the ERASEPROTECT.DISABLE register from being written until next reset."]
         #[inline(always)]
         pub const fn lock(self) -> crate::common::Reg<regs::Lock, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
         }
-        #[doc = "Disable ERASEPROTECT and perform ERASEALL"]
+        #[doc = "This register disables the ERASEPROTECT register and performs an ERASEALL operation."]
         #[inline(always)]
         pub const fn disable(self) -> crate::common::Reg<u32, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
@@ -1235,40 +1263,40 @@ pub mod ctrl_ap_peri_s {
         pub const fn as_ptr(&self) -> *mut () {
             self.ptr as _
         }
-        #[doc = "Data sent from the debugger to the CPU"]
+        #[doc = "Data sent from the debugger to the CPU."]
         #[inline(always)]
         pub const fn rxdata(self) -> crate::common::Reg<u32, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
         }
-        #[doc = "Status to indicate if data sent from the debugger to the CPU has been read"]
+        #[doc = "This register shows a status that indicates if data sent from the debugger to the CPU has been read."]
         #[inline(always)]
         pub const fn rxstatus(self) -> crate::common::Reg<regs::Rxstatus, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
         }
-        #[doc = "Data sent from the CPU to the debugger"]
+        #[doc = "Data sent from the CPU to the debugger."]
         #[inline(always)]
         pub const fn txdata(self) -> crate::common::Reg<u32, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x80usize) as _) }
         }
-        #[doc = "Status to indicate if data sent from the CPU to the debugger has been read"]
+        #[doc = "This register shows a status that indicates if the data sent from the CPU to the debugger has been read."]
         #[inline(always)]
         pub const fn txstatus(self) -> crate::common::Reg<regs::Txstatus, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x84usize) as _) }
         }
     }
     pub mod regs {
-        #[doc = "Lock register ERASEPROTECT.DISABLE from being written until next reset"]
+        #[doc = "This register locks the ERASEPROTECT.DISABLE register from being written until next reset."]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Lock(pub u32);
         impl Lock {
-            #[doc = "Lock register ERASEPROTECT.DISABLE from being written until next reset"]
+            #[doc = "Lock ERASEPROTECT.DISABLE register from being written until next reset"]
             #[inline(always)]
             pub const fn lock(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Lock register ERASEPROTECT.DISABLE from being written until next reset"]
+            #[doc = "Lock ERASEPROTECT.DISABLE register from being written until next reset"]
             #[inline(always)]
             pub fn set_lock(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -1280,7 +1308,7 @@ pub mod ctrl_ap_peri_s {
                 Lock(0)
             }
         }
-        #[doc = "Status to indicate if data sent from the debugger to the CPU has been read"]
+        #[doc = "This register shows a status that indicates if data sent from the debugger to the CPU has been read."]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Rxstatus(pub u32);
@@ -1303,7 +1331,7 @@ pub mod ctrl_ap_peri_s {
                 Rxstatus(0)
             }
         }
-        #[doc = "Status to indicate if data sent from the CPU to the debugger has been read"]
+        #[doc = "This register shows a status that indicates if the data sent from the CPU to the debugger has been read."]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Txstatus(pub u32);
@@ -1328,8 +1356,8 @@ pub mod ctrl_ap_peri_s {
         }
     }
 }
-pub mod dppic_ns {
-    #[doc = "Distributed Programmable Peripheral Interconnect Controller 0"]
+pub mod dppic {
+    #[doc = "Distributed programmable peripheral interconnect controller 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dppic {
         ptr: *mut u8,
@@ -1372,7 +1400,7 @@ pub mod dppic_ns {
         pub const fn chenclr(self) -> crate::common::Reg<regs::Chen, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0508usize) as _) }
         }
-        #[doc = "Description collection: Channel group n Note: Writes to this register is ignored if either SUBSCRIBE_CHG\\[n\\].EN/DIS are enabled."]
+        #[doc = "Description collection: Channel group n Note: Writes to this register are ignored if either SUBSCRIBE_CHG\\[n\\].EN or SUBSCRIBE_CHG\\[n\\].DIS is enabled"]
         #[inline(always)]
         pub const fn chg(self, n: usize) -> crate::common::Reg<regs::Chg, crate::common::RW> {
             assert!(n < 6usize);
@@ -1465,7 +1493,7 @@ pub mod dppic_ns {
                 Chen(0)
             }
         }
-        #[doc = "Description collection: Channel group n Note: Writes to this register is ignored if either SUBSCRIBE_CHG\\[n\\].EN/DIS are enabled."]
+        #[doc = "Description collection: Channel group n Note: Writes to this register are ignored if either SUBSCRIBE_CHG\\[n\\].EN or SUBSCRIBE_CHG\\[n\\].DIS is enabled"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Chg(pub u32);
@@ -1494,7 +1522,7 @@ pub mod dppic_ns {
         }
     }
 }
-pub mod egu_ns {
+pub mod egu {
     #[doc = "Event generator unit 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Egu {
@@ -1590,7 +1618,7 @@ pub mod egu_ns {
         }
     }
 }
-pub mod ficr_s {
+pub mod ficr {
     #[doc = "Factory Information Configuration Registers"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ficr {
@@ -1606,6 +1634,11 @@ pub mod ficr_s {
         #[inline(always)]
         pub const fn as_ptr(&self) -> *mut () {
             self.ptr as _
+        }
+        #[doc = "SIP-specific device info"]
+        #[inline(always)]
+        pub const fn sipinfo(self) -> Sipinfo {
+            unsafe { Sipinfo::from_ptr(self.ptr.add(0x0140usize) as _) }
         }
         #[doc = "Device info"]
         #[inline(always)]
@@ -1653,7 +1686,7 @@ pub mod ficr_s {
         }
         #[doc = "Part Variant, Hardware version and Production configuration"]
         #[inline(always)]
-        pub const fn variant(self) -> crate::common::Reg<regs::Variant, crate::common::R> {
+        pub const fn variant(self) -> crate::common::Reg<regs::InfoVariant, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
         }
         #[doc = "Package option"]
@@ -1673,18 +1706,54 @@ pub mod ficr_s {
         }
         #[doc = "Code memory page size"]
         #[inline(always)]
-        pub const fn codepagesize(self) -> crate::common::Reg<u32, crate::common::R> {
+        pub const fn codepagesize(
+            self,
+        ) -> crate::common::Reg<regs::Codepagesize, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
         }
         #[doc = "Code memory size"]
         #[inline(always)]
-        pub const fn codesize(self) -> crate::common::Reg<u32, crate::common::R> {
+        pub const fn codesize(self) -> crate::common::Reg<regs::Codesize, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
         }
         #[doc = "Device type"]
         #[inline(always)]
         pub const fn devicetype(self) -> crate::common::Reg<regs::Devicetype, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        }
+    }
+    #[doc = "SIP-specific device info"]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct Sipinfo {
+        ptr: *mut u8,
+    }
+    unsafe impl Send for Sipinfo {}
+    unsafe impl Sync for Sipinfo {}
+    impl Sipinfo {
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
+            Self { ptr: ptr as _ }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut () {
+            self.ptr as _
+        }
+        #[doc = "SIP part number"]
+        #[inline(always)]
+        pub const fn partno(self) -> crate::common::Reg<regs::Partno, crate::common::R> {
+            unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        }
+        #[doc = "Description collection: SIP hardware revision, encoded in ASCII, ex B0A or B1A"]
+        #[inline(always)]
+        pub const fn hwrevision(self, n: usize) -> crate::common::Reg<u8, crate::common::R> {
+            assert!(n < 4usize);
+            unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize + n * 1usize) as _) }
+        }
+        #[doc = "Description collection: SIP VARIANT, encoded in ASCII, ex SIAA, SIBA or SICA"]
+        #[inline(always)]
+        pub const fn variant(self, n: usize) -> crate::common::Reg<u8, crate::common::R> {
+            assert!(n < 4usize);
+            unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize + n * 1usize) as _) }
         }
     }
     #[doc = "Unspecified"]
@@ -1772,6 +1841,54 @@ pub mod ficr_s {
         }
     }
     pub mod regs {
+        #[doc = "Code memory page size"]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct Codepagesize(pub u32);
+        impl Codepagesize {
+            #[doc = "Code memory page size"]
+            #[inline(always)]
+            pub const fn codepagesize(&self) -> super::vals::Codepagesize {
+                let val = (self.0 >> 0usize) & 0xffff_ffff;
+                super::vals::Codepagesize::from_bits(val as u32)
+            }
+            #[doc = "Code memory page size"]
+            #[inline(always)]
+            pub fn set_codepagesize(&mut self, val: super::vals::Codepagesize) {
+                self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                    | (((val.to_bits() as u32) & 0xffff_ffff) << 0usize);
+            }
+        }
+        impl Default for Codepagesize {
+            #[inline(always)]
+            fn default() -> Codepagesize {
+                Codepagesize(0)
+            }
+        }
+        #[doc = "Code memory size"]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct Codesize(pub u32);
+        impl Codesize {
+            #[doc = "Code memory size in number of pages Total code space is: CODEPAGESIZE * CODESIZE"]
+            #[inline(always)]
+            pub const fn codesize(&self) -> super::vals::Codesize {
+                let val = (self.0 >> 0usize) & 0xffff_ffff;
+                super::vals::Codesize::from_bits(val as u32)
+            }
+            #[doc = "Code memory size in number of pages Total code space is: CODEPAGESIZE * CODESIZE"]
+            #[inline(always)]
+            pub fn set_codesize(&mut self, val: super::vals::Codesize) {
+                self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                    | (((val.to_bits() as u32) & 0xffff_ffff) << 0usize);
+            }
+        }
+        impl Default for Codesize {
+            #[inline(always)]
+            fn default() -> Codesize {
+                Codesize(0)
+            }
+        }
         #[doc = "Device type"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
@@ -1818,6 +1935,30 @@ pub mod ficr_s {
             #[inline(always)]
             fn default() -> Flash {
                 Flash(0)
+            }
+        }
+        #[doc = "Part Variant, Hardware version and Production configuration"]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct InfoVariant(pub u32);
+        impl InfoVariant {
+            #[doc = "Part Variant, Hardware version and Production configuration, encoded as ASCII"]
+            #[inline(always)]
+            pub const fn variant(&self) -> super::vals::Variant {
+                let val = (self.0 >> 0usize) & 0xffff_ffff;
+                super::vals::Variant::from_bits(val as u32)
+            }
+            #[doc = "Part Variant, Hardware version and Production configuration, encoded as ASCII"]
+            #[inline(always)]
+            pub fn set_variant(&mut self, val: super::vals::Variant) {
+                self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                    | (((val.to_bits() as u32) & 0xffff_ffff) << 0usize);
+            }
+        }
+        impl Default for InfoVariant {
+            #[inline(always)]
+            fn default() -> InfoVariant {
+                InfoVariant(0)
             }
         }
         #[doc = "Package option"]
@@ -1868,6 +2009,28 @@ pub mod ficr_s {
                 Part(0)
             }
         }
+        #[doc = "SIP part number"]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct Partno(pub u32);
+        impl Partno {
+            #[inline(always)]
+            pub const fn partno(&self) -> super::vals::Partno {
+                let val = (self.0 >> 0usize) & 0xffff_ffff;
+                super::vals::Partno::from_bits(val as u32)
+            }
+            #[inline(always)]
+            pub fn set_partno(&mut self, val: super::vals::Partno) {
+                self.0 = (self.0 & !(0xffff_ffff << 0usize))
+                    | (((val.to_bits() as u32) & 0xffff_ffff) << 0usize);
+            }
+        }
+        impl Default for Partno {
+            #[inline(always)]
+            fn default() -> Partno {
+                Partno(0)
+            }
+        }
         #[doc = "RAM variant"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
@@ -1892,32 +2055,62 @@ pub mod ficr_s {
                 Ram(0)
             }
         }
-        #[doc = "Part Variant, Hardware version and Production configuration"]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Variant(pub u32);
-        impl Variant {
-            #[doc = "Part Variant, Hardware version and Production configuration, encoded as ASCII"]
-            #[inline(always)]
-            pub const fn variant(&self) -> super::vals::Variant {
-                let val = (self.0 >> 0usize) & 0xffff_ffff;
-                super::vals::Variant::from_bits(val as u32)
-            }
-            #[doc = "Part Variant, Hardware version and Production configuration, encoded as ASCII"]
-            #[inline(always)]
-            pub fn set_variant(&mut self, val: super::vals::Variant) {
-                self.0 = (self.0 & !(0xffff_ffff << 0usize))
-                    | (((val.to_bits() as u32) & 0xffff_ffff) << 0usize);
-            }
-        }
-        impl Default for Variant {
-            #[inline(always)]
-            fn default() -> Variant {
-                Variant(0)
-            }
-        }
     }
     pub mod vals {
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct Codepagesize(pub u32);
+        impl Codepagesize {
+            #[doc = "4 kByte"]
+            pub const K4096: Self = Self(0x1000);
+        }
+        impl Codepagesize {
+            pub const fn from_bits(val: u32) -> Codepagesize {
+                Self(val & 0xffff_ffff)
+            }
+            pub const fn to_bits(self) -> u32 {
+                self.0
+            }
+        }
+        impl From<u32> for Codepagesize {
+            #[inline(always)]
+            fn from(val: u32) -> Codepagesize {
+                Codepagesize::from_bits(val)
+            }
+        }
+        impl From<Codepagesize> for u32 {
+            #[inline(always)]
+            fn from(val: Codepagesize) -> u32 {
+                Codepagesize::to_bits(val)
+            }
+        }
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct Codesize(pub u32);
+        impl Codesize {
+            #[doc = "256 pages"]
+            pub const P256: Self = Self(0x0100);
+        }
+        impl Codesize {
+            pub const fn from_bits(val: u32) -> Codesize {
+                Self(val & 0xffff_ffff)
+            }
+            pub const fn to_bits(self) -> u32 {
+                self.0
+            }
+        }
+        impl From<u32> for Codesize {
+            #[inline(always)]
+            fn from(val: u32) -> Codesize {
+                Codesize::from_bits(val)
+            }
+        }
+        impl From<Codesize> for u32 {
+            #[inline(always)]
+            fn from(val: Codesize) -> u32 {
+                Codesize::to_bits(val)
+            }
+        }
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub struct Devicetype(pub u32);
@@ -1978,8 +2171,8 @@ pub mod ficr_s {
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub struct Package(pub u32);
         impl Package {
-            #[doc = "CCxx - 236 ball wlCSP"]
-            pub const CC: Self = Self(0x2000);
+            #[doc = "CFxx - 236 ball wlCSP"]
+            pub const CF: Self = Self(0x2002);
         }
         impl Package {
             pub const fn from_bits(val: u32) -> Package {
@@ -2005,6 +2198,8 @@ pub mod ficr_s {
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub struct Part(pub u32);
         impl Part {
+            #[doc = "nRF9120"]
+            pub const N9120: Self = Self(0x9120);
             #[doc = "nRF9160"]
             pub const N9160: Self = Self(0x9160);
         }
@@ -2026,6 +2221,33 @@ pub mod ficr_s {
             #[inline(always)]
             fn from(val: Part) -> u32 {
                 Part::to_bits(val)
+            }
+        }
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct Partno(pub u32);
+        impl Partno {
+            #[doc = "Device is an nRF9160 sip"]
+            pub const _9160: Self = Self(0x9160);
+        }
+        impl Partno {
+            pub const fn from_bits(val: u32) -> Partno {
+                Self(val & 0xffff_ffff)
+            }
+            pub const fn to_bits(self) -> u32 {
+                self.0
+            }
+        }
+        impl From<u32> for Partno {
+            #[inline(always)]
+            fn from(val: u32) -> Partno {
+                Partno::from_bits(val)
+            }
+        }
+        impl From<Partno> for u32 {
+            #[inline(always)]
+            fn from(val: Partno) -> u32 {
+                Partno::to_bits(val)
             }
         }
         #[repr(transparent)]
@@ -2065,6 +2287,10 @@ pub mod ficr_s {
             pub const AAA0: Self = Self(0x4141_4130);
             #[doc = "AAAA"]
             pub const AAAA: Self = Self(0x4141_4141);
+            #[doc = "AAB0"]
+            pub const AAB0: Self = Self(0x4141_4230);
+            #[doc = "AAC0"]
+            pub const AAC0: Self = Self(0x4141_4330);
         }
         impl Variant {
             pub const fn from_bits(val: u32) -> Variant {
@@ -2088,7 +2314,7 @@ pub mod ficr_s {
         }
     }
 }
-pub mod fpu_ns {
+pub mod fpu {
     #[doc = "FPU 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Fpu {
@@ -2112,7 +2338,7 @@ pub mod fpu_ns {
         }
     }
 }
-pub mod gpio_ns {
+pub mod gpio {
     #[doc = "GPIO Port 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gpio {
@@ -2351,7 +2577,7 @@ pub mod gpio_ns {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Latch(pub u32);
         impl Latch {
-            #[doc = "Status on whether PIN0 has met criteria set in PIN_CNF0.SENSE register. Write '1' to clear."]
+            #[doc = "Status on whether PIN\\[0\\] has met criteria set in PIN_CNF\\[0\\].SENSE register. Write '1' to clear."]
             #[inline(always)]
             pub const fn pin(&self, n: usize) -> bool {
                 assert!(n < 32usize);
@@ -2359,7 +2585,7 @@ pub mod gpio_ns {
                 let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
-            #[doc = "Status on whether PIN0 has met criteria set in PIN_CNF0.SENSE register. Write '1' to clear."]
+            #[doc = "Status on whether PIN\\[0\\] has met criteria set in PIN_CNF\\[0\\].SENSE register. Write '1' to clear."]
             #[inline(always)]
             pub fn set_pin(&mut self, n: usize, val: bool) {
                 assert!(n < 32usize);
@@ -2724,7 +2950,7 @@ pub mod gpio_ns {
         }
     }
 }
-pub mod gpiote_s {
+pub mod gpiote {
     #[doc = "GPIO Tasks and Events 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gpiote {
@@ -2823,7 +3049,7 @@ pub mod gpiote_s {
         pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
-        #[doc = "Description collection: Configuration for OUT\\[n\\], SET\\[n\\] and CLR\\[n\\] tasks and IN\\[n\\] event"]
+        #[doc = "Description collection: Configuration for OUT\\[n\\], SET\\[n\\], and CLR\\[n\\] tasks and IN\\[n\\] event"]
         #[inline(always)]
         pub const fn config(self, n: usize) -> crate::common::Reg<regs::Config, crate::common::RW> {
             assert!(n < 8usize);
@@ -2831,7 +3057,7 @@ pub mod gpiote_s {
         }
     }
     pub mod regs {
-        #[doc = "Description collection: Configuration for OUT\\[n\\], SET\\[n\\] and CLR\\[n\\] tasks and IN\\[n\\] event"]
+        #[doc = "Description collection: Configuration for OUT\\[n\\], SET\\[n\\], and CLR\\[n\\] tasks and IN\\[n\\] event"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Config(pub u32);
@@ -2847,13 +3073,13 @@ pub mod gpiote_s {
             pub fn set_mode(&mut self, val: super::vals::Mode) {
                 self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
             }
-            #[doc = "GPIO number associated with SET\\[n\\], CLR\\[n\\] and OUT\\[n\\] tasks and IN\\[n\\] event"]
+            #[doc = "GPIO number associated with SET\\[n\\], CLR\\[n\\], and OUT\\[n\\] tasks and IN\\[n\\] event"]
             #[inline(always)]
             pub const fn psel(&self) -> u8 {
                 let val = (self.0 >> 8usize) & 0x1f;
                 val as u8
             }
-            #[doc = "GPIO number associated with SET\\[n\\], CLR\\[n\\] and OUT\\[n\\] tasks and IN\\[n\\] event"]
+            #[doc = "GPIO number associated with SET\\[n\\], CLR\\[n\\], and OUT\\[n\\] tasks and IN\\[n\\] event"]
             #[inline(always)]
             pub fn set_psel(&mut self, val: u8) {
                 self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
@@ -3101,7 +3327,7 @@ pub mod gpiote_s {
         }
     }
 }
-pub mod i2s_ns {
+pub mod i2s {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Config {
@@ -3990,8 +4216,8 @@ pub mod i2s_ns {
         }
     }
 }
-pub mod ipc_ns {
-    #[doc = "Inter Processor Communication 0"]
+pub mod ipc {
+    #[doc = "Interprocessor communication 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipc {
         ptr: *mut u8,
@@ -4007,7 +4233,7 @@ pub mod ipc_ns {
         pub const fn as_ptr(&self) -> *mut () {
             self.ptr as _
         }
-        #[doc = "Description collection: Trigger events on channel enabled in SEND_CNF\\[n\\]."]
+        #[doc = "Description collection: Trigger events on IPC channel enabled in SEND_CNF\\[n\\]"]
         #[inline(always)]
         pub const fn tasks_send(self, n: usize) -> crate::common::Reg<u32, crate::common::W> {
             assert!(n < 8usize);
@@ -4022,7 +4248,7 @@ pub mod ipc_ns {
             assert!(n < 8usize);
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x80usize + n * 4usize) as _) }
         }
-        #[doc = "Description collection: Event received on one or more of the enabled channels in RECEIVE_CNF\\[n\\]."]
+        #[doc = "Description collection: Event received on one or more of the enabled IPC channels in RECEIVE_CNF\\[n\\]"]
         #[inline(always)]
         pub const fn events_receive(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
             assert!(n < 8usize);
@@ -4057,7 +4283,7 @@ pub mod ipc_ns {
         pub const fn intpend(self) -> crate::common::Reg<regs::Intpend, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x030cusize) as _) }
         }
-        #[doc = "Description collection: Send event configuration for TASKS_SEND\\[n\\]."]
+        #[doc = "Description collection: Send event configuration for TASKS_SEND\\[n\\]"]
         #[inline(always)]
         pub const fn send_cnf(
             self,
@@ -4066,7 +4292,7 @@ pub mod ipc_ns {
             assert!(n < 8usize);
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0510usize + n * 4usize) as _) }
         }
-        #[doc = "Description collection: Receive event configuration for EVENTS_RECEIVE\\[n\\]."]
+        #[doc = "Description collection: Receive event configuration for EVENTS_RECEIVE\\[n\\]"]
         #[inline(always)]
         pub const fn receive_cnf(
             self,
@@ -4075,7 +4301,7 @@ pub mod ipc_ns {
             assert!(n < 8usize);
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0590usize + n * 4usize) as _) }
         }
-        #[doc = "Description collection: General purpose memory."]
+        #[doc = "Description collection: General purpose memory"]
         #[inline(always)]
         pub const fn gpmem(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
             assert!(n < 4usize);
@@ -4283,95 +4509,95 @@ pub mod ipc_ns {
                 Intpend(0)
             }
         }
-        #[doc = "Description collection: Receive event configuration for EVENTS_RECEIVE\\[n\\]."]
+        #[doc = "Description collection: Receive event configuration for EVENTS_RECEIVE\\[n\\]"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct ReceiveCnf(pub u32);
         impl ReceiveCnf {
-            #[doc = "Enable subscription to channel 0."]
+            #[doc = "Enable subscription to IPC channel 0"]
             #[inline(always)]
             pub const fn chen0(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 0."]
+            #[doc = "Enable subscription to IPC channel 0"]
             #[inline(always)]
             pub fn set_chen0(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Enable subscription to channel 1."]
+            #[doc = "Enable subscription to IPC channel 1"]
             #[inline(always)]
             pub const fn chen1(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 1."]
+            #[doc = "Enable subscription to IPC channel 1"]
             #[inline(always)]
             pub fn set_chen1(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Enable subscription to channel 2."]
+            #[doc = "Enable subscription to IPC channel 2"]
             #[inline(always)]
             pub const fn chen2(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 2."]
+            #[doc = "Enable subscription to IPC channel 2"]
             #[inline(always)]
             pub fn set_chen2(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
-            #[doc = "Enable subscription to channel 3."]
+            #[doc = "Enable subscription to IPC channel 3"]
             #[inline(always)]
             pub const fn chen3(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 3."]
+            #[doc = "Enable subscription to IPC channel 3"]
             #[inline(always)]
             pub fn set_chen3(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
             }
-            #[doc = "Enable subscription to channel 4."]
+            #[doc = "Enable subscription to IPC channel 4"]
             #[inline(always)]
             pub const fn chen4(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 4."]
+            #[doc = "Enable subscription to IPC channel 4"]
             #[inline(always)]
             pub fn set_chen4(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
             }
-            #[doc = "Enable subscription to channel 5."]
+            #[doc = "Enable subscription to IPC channel 5"]
             #[inline(always)]
             pub const fn chen5(&self) -> bool {
                 let val = (self.0 >> 5usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 5."]
+            #[doc = "Enable subscription to IPC channel 5"]
             #[inline(always)]
             pub fn set_chen5(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
             }
-            #[doc = "Enable subscription to channel 6."]
+            #[doc = "Enable subscription to IPC channel 6"]
             #[inline(always)]
             pub const fn chen6(&self) -> bool {
                 let val = (self.0 >> 6usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 6."]
+            #[doc = "Enable subscription to IPC channel 6"]
             #[inline(always)]
             pub fn set_chen6(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
             }
-            #[doc = "Enable subscription to channel 7."]
+            #[doc = "Enable subscription to IPC channel 7"]
             #[inline(always)]
             pub const fn chen7(&self) -> bool {
                 let val = (self.0 >> 7usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable subscription to channel 7."]
+            #[doc = "Enable subscription to IPC channel 7"]
             #[inline(always)]
             pub fn set_chen7(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
@@ -4383,95 +4609,95 @@ pub mod ipc_ns {
                 ReceiveCnf(0)
             }
         }
-        #[doc = "Description collection: Send event configuration for TASKS_SEND\\[n\\]."]
+        #[doc = "Description collection: Send event configuration for TASKS_SEND\\[n\\]"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct SendCnf(pub u32);
         impl SendCnf {
-            #[doc = "Enable broadcasting on channel 0."]
+            #[doc = "Enable broadcasting on IPC channel 0"]
             #[inline(always)]
             pub const fn chen0(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 0."]
+            #[doc = "Enable broadcasting on IPC channel 0"]
             #[inline(always)]
             pub fn set_chen0(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
-            #[doc = "Enable broadcasting on channel 1."]
+            #[doc = "Enable broadcasting on IPC channel 1"]
             #[inline(always)]
             pub const fn chen1(&self) -> bool {
                 let val = (self.0 >> 1usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 1."]
+            #[doc = "Enable broadcasting on IPC channel 1"]
             #[inline(always)]
             pub fn set_chen1(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
-            #[doc = "Enable broadcasting on channel 2."]
+            #[doc = "Enable broadcasting on IPC channel 2"]
             #[inline(always)]
             pub const fn chen2(&self) -> bool {
                 let val = (self.0 >> 2usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 2."]
+            #[doc = "Enable broadcasting on IPC channel 2"]
             #[inline(always)]
             pub fn set_chen2(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
-            #[doc = "Enable broadcasting on channel 3."]
+            #[doc = "Enable broadcasting on IPC channel 3"]
             #[inline(always)]
             pub const fn chen3(&self) -> bool {
                 let val = (self.0 >> 3usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 3."]
+            #[doc = "Enable broadcasting on IPC channel 3"]
             #[inline(always)]
             pub fn set_chen3(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
             }
-            #[doc = "Enable broadcasting on channel 4."]
+            #[doc = "Enable broadcasting on IPC channel 4"]
             #[inline(always)]
             pub const fn chen4(&self) -> bool {
                 let val = (self.0 >> 4usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 4."]
+            #[doc = "Enable broadcasting on IPC channel 4"]
             #[inline(always)]
             pub fn set_chen4(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
             }
-            #[doc = "Enable broadcasting on channel 5."]
+            #[doc = "Enable broadcasting on IPC channel 5"]
             #[inline(always)]
             pub const fn chen5(&self) -> bool {
                 let val = (self.0 >> 5usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 5."]
+            #[doc = "Enable broadcasting on IPC channel 5"]
             #[inline(always)]
             pub fn set_chen5(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
             }
-            #[doc = "Enable broadcasting on channel 6."]
+            #[doc = "Enable broadcasting on IPC channel 6"]
             #[inline(always)]
             pub const fn chen6(&self) -> bool {
                 let val = (self.0 >> 6usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 6."]
+            #[doc = "Enable broadcasting on IPC channel 6"]
             #[inline(always)]
             pub fn set_chen6(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
             }
-            #[doc = "Enable broadcasting on channel 7."]
+            #[doc = "Enable broadcasting on IPC channel 7"]
             #[inline(always)]
             pub const fn chen7(&self) -> bool {
                 let val = (self.0 >> 7usize) & 0x01;
                 val != 0
             }
-            #[doc = "Enable broadcasting on channel 7."]
+            #[doc = "Enable broadcasting on IPC channel 7"]
             #[inline(always)]
             pub fn set_chen7(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
@@ -4485,7 +4711,7 @@ pub mod ipc_ns {
         }
     }
 }
-pub mod kmu_ns {
+pub mod kmu {
     #[doc = "Key management unit 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Kmu {
@@ -4651,13 +4877,13 @@ pub mod kmu_ns {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Selectkeyslot(pub u32);
         impl Selectkeyslot {
-            #[doc = "Select key slot ID to be read over AHB, or pushed over secure APB, when TASKS_PUSH_KEYSLOT is started NOTE: ID=0 is not a valid key slot ID. The 0 ID should be used when the KMU is idle or not in use NOTE: Index N in UICR-&gt;KEYSLOT.KEY\\[N\\] and UICR-&gt;KEYSLOT.CONFIG\\[N\\] corresponds to KMU key slot ID=N+1"]
+            #[doc = "Select key slot ID to be read over AHB, or pushed over secure APB, when TASKS_PUSH_KEYSLOT is started. NOTE: ID=0 is not a valid key slot ID. The 0 ID should be used when the KMU is idle or not in use. NOTE: Index N in UICR-&gt;KEYSLOT.KEY\\[N\\] and UICR-&gt;KEYSLOT.CONFIG\\[N\\] corresponds to KMU key slot ID=N+1."]
             #[inline(always)]
             pub const fn id(&self) -> u8 {
                 let val = (self.0 >> 0usize) & 0xff;
                 val as u8
             }
-            #[doc = "Select key slot ID to be read over AHB, or pushed over secure APB, when TASKS_PUSH_KEYSLOT is started NOTE: ID=0 is not a valid key slot ID. The 0 ID should be used when the KMU is idle or not in use NOTE: Index N in UICR-&gt;KEYSLOT.KEY\\[N\\] and UICR-&gt;KEYSLOT.CONFIG\\[N\\] corresponds to KMU key slot ID=N+1"]
+            #[doc = "Select key slot ID to be read over AHB, or pushed over secure APB, when TASKS_PUSH_KEYSLOT is started. NOTE: ID=0 is not a valid key slot ID. The 0 ID should be used when the KMU is idle or not in use. NOTE: Index N in UICR-&gt;KEYSLOT.KEY\\[N\\] and UICR-&gt;KEYSLOT.CONFIG\\[N\\] corresponds to KMU key slot ID=N+1."]
             #[inline(always)]
             pub fn set_id(&mut self, val: u8) {
                 self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
@@ -4705,7 +4931,7 @@ pub mod kmu_ns {
         }
     }
 }
-pub mod nvmc_ns {
+pub mod nvmc {
     #[doc = "Non-volatile memory controller 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Nvmc {
@@ -5085,7 +5311,7 @@ pub mod nvmc_ns {
         }
     }
 }
-pub mod pdm_ns {
+pub mod pdm {
     #[doc = "Pulse Density Modulation (Digital Microphone) Interface 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pdm {
@@ -5426,13 +5652,13 @@ pub mod pdm_ns {
             pub fn set_operation(&mut self, val: super::vals::Operation) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
             }
-            #[doc = "Defines on which PDM_CLK edge Left (or mono) is sampled"]
+            #[doc = "Defines on which PDM_CLK edge left (or mono) is sampled"]
             #[inline(always)]
             pub const fn edge(&self) -> super::vals::Edge {
                 let val = (self.0 >> 1usize) & 0x01;
                 super::vals::Edge::from_bits(val as u8)
             }
-            #[doc = "Defines on which PDM_CLK edge Left (or mono) is sampled"]
+            #[doc = "Defines on which PDM_CLK edge left (or mono) is sampled"]
             #[inline(always)]
             pub fn set_edge(&mut self, val: super::vals::Edge) {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val.to_bits() as u32) & 0x01) << 1usize);
@@ -5449,13 +5675,13 @@ pub mod pdm_ns {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Pdmclkctrl(pub u32);
         impl Pdmclkctrl {
-            #[doc = "PDM_CLK frequency"]
+            #[doc = "PDM_CLK frequency configuration."]
             #[inline(always)]
             pub const fn freq(&self) -> super::vals::Freq {
                 let val = (self.0 >> 0usize) & 0xffff_ffff;
                 super::vals::Freq::from_bits(val as u32)
             }
-            #[doc = "PDM_CLK frequency"]
+            #[doc = "PDM_CLK frequency configuration."]
             #[inline(always)]
             pub fn set_freq(&mut self, val: super::vals::Freq) {
                 self.0 = (self.0 & !(0xffff_ffff << 0usize))
@@ -5564,11 +5790,11 @@ pub mod pdm_ns {
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub struct Gain(pub u8);
         impl Gain {
-            #[doc = "-20dB gain adjustment (minimum)"]
+            #[doc = "-20 dB gain adjustment (minimum)"]
             pub const MIN_GAIN: Self = Self(0x0);
-            #[doc = "0dB gain adjustment"]
+            #[doc = "0 dB gain adjustment"]
             pub const DEFAULT_GAIN: Self = Self(0x28);
-            #[doc = "+20dB gain adjustment (maximum)"]
+            #[doc = "+20 dB gain adjustment (maximum)"]
             pub const MAX_GAIN: Self = Self(0x50);
         }
         impl Gain {
@@ -5594,9 +5820,9 @@ pub mod pdm_ns {
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub enum Operation {
-            #[doc = "Sample and store one pair (Left + Right) of 16bit samples per RAM word R=\\[31:16\\]; L=\\[15:0\\]"]
+            #[doc = "Sample and store one pair (left + right) of 16-bit samples per RAM word R=\\[31:16\\]; L=\\[15:0\\]"]
             STEREO = 0x0,
-            #[doc = "Sample and store two successive Left samples (16 bit each) per RAM word L1=\\[31:16\\]; L0=\\[15:0\\]"]
+            #[doc = "Sample and store two successive left samples (16 bits each) per RAM word L1=\\[31:16\\]; L0=\\[15:0\\]"]
             MONO = 0x01,
         }
         impl Operation {
@@ -5653,7 +5879,34 @@ pub mod pdm_ns {
         }
     }
 }
-pub mod power_ns {
+pub mod power {
+    #[doc = "LTE Modem"]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct Ltemodem {
+        ptr: *mut u8,
+    }
+    unsafe impl Send for Ltemodem {}
+    unsafe impl Sync for Ltemodem {}
+    impl Ltemodem {
+        #[inline(always)]
+        pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
+            Self { ptr: ptr as _ }
+        }
+        #[inline(always)]
+        pub const fn as_ptr(&self) -> *mut () {
+            self.ptr as _
+        }
+        #[doc = "Start LTE modem"]
+        #[inline(always)]
+        pub const fn startn(self) -> crate::common::Reg<regs::Startn, crate::common::RW> {
+            unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        }
+        #[doc = "Force off LTE modem"]
+        #[inline(always)]
+        pub const fn forceoff(self) -> crate::common::Reg<regs::Forceoff, crate::common::RW> {
+            unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        }
+    }
     #[doc = "Power control 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Power {
@@ -5764,8 +6017,36 @@ pub mod power_ns {
             assert!(n < 2usize);
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x051cusize + n * 4usize) as _) }
         }
+        #[doc = "LTE Modem"]
+        #[inline(always)]
+        pub const fn ltemodem(self) -> Ltemodem {
+            unsafe { Ltemodem::from_ptr(self.ptr.add(0x0610usize) as _) }
+        }
     }
     pub mod regs {
+        #[doc = "Force off LTE modem"]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct Forceoff(pub u32);
+        impl Forceoff {
+            #[doc = "Force off LTE modem"]
+            #[inline(always)]
+            pub const fn forceoff(&self) -> super::vals::Forceoff {
+                let val = (self.0 >> 0usize) & 0x01;
+                super::vals::Forceoff::from_bits(val as u8)
+            }
+            #[doc = "Force off LTE modem"]
+            #[inline(always)]
+            pub fn set_forceoff(&mut self, val: super::vals::Forceoff) {
+                self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            }
+        }
+        impl Default for Forceoff {
+            #[inline(always)]
+            fn default() -> Forceoff {
+                Forceoff(0)
+            }
+        }
         #[doc = "Description collection: General purpose retention register"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
@@ -5946,9 +6227,94 @@ pub mod power_ns {
                 Resetreas(0)
             }
         }
+        #[doc = "Start LTE modem"]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct Startn(pub u32);
+        impl Startn {
+            #[doc = "Start LTE modem"]
+            #[inline(always)]
+            pub const fn startn(&self) -> super::vals::Startn {
+                let val = (self.0 >> 0usize) & 0x01;
+                super::vals::Startn::from_bits(val as u8)
+            }
+            #[doc = "Start LTE modem"]
+            #[inline(always)]
+            pub fn set_startn(&mut self, val: super::vals::Startn) {
+                self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u32) & 0x01) << 0usize);
+            }
+        }
+        impl Default for Startn {
+            #[inline(always)]
+            fn default() -> Startn {
+                Startn(0)
+            }
+        }
+    }
+    pub mod vals {
+        #[repr(u8)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub enum Forceoff {
+            #[doc = "Release force off"]
+            RELEASE = 0x0,
+            #[doc = "Hold force off active"]
+            HOLD = 0x01,
+        }
+        impl Forceoff {
+            #[inline(always)]
+            pub const fn from_bits(val: u8) -> Forceoff {
+                unsafe { core::mem::transmute(val & 0x01) }
+            }
+            #[inline(always)]
+            pub const fn to_bits(self) -> u8 {
+                unsafe { core::mem::transmute(self) }
+            }
+        }
+        impl From<u8> for Forceoff {
+            #[inline(always)]
+            fn from(val: u8) -> Forceoff {
+                Forceoff::from_bits(val)
+            }
+        }
+        impl From<Forceoff> for u8 {
+            #[inline(always)]
+            fn from(val: Forceoff) -> u8 {
+                Forceoff::to_bits(val)
+            }
+        }
+        #[repr(u8)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub enum Startn {
+            #[doc = "Start LTE modem"]
+            START = 0x0,
+            #[doc = "Hold LTE modem disabled"]
+            HOLD = 0x01,
+        }
+        impl Startn {
+            #[inline(always)]
+            pub const fn from_bits(val: u8) -> Startn {
+                unsafe { core::mem::transmute(val & 0x01) }
+            }
+            #[inline(always)]
+            pub const fn to_bits(self) -> u8 {
+                unsafe { core::mem::transmute(self) }
+            }
+        }
+        impl From<u8> for Startn {
+            #[inline(always)]
+            fn from(val: u8) -> Startn {
+                Startn::from_bits(val)
+            }
+        }
+        impl From<Startn> for u8 {
+            #[inline(always)]
+            fn from(val: Startn) -> u8 {
+                Startn::to_bits(val)
+            }
+        }
     }
 }
-pub mod pwm_ns {
+pub mod pwm {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -6798,7 +7164,7 @@ pub mod pwm_ns {
         }
     }
 }
-pub mod regulators_ns {
+pub mod regulators {
     #[doc = "Voltage regulators control 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Regulators {
@@ -6819,6 +7185,11 @@ pub mod regulators_ns {
         #[inline(always)]
         pub const fn systemoff(self) -> crate::common::Reg<regs::Systemoff, crate::common::W> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0500usize) as _) }
+        }
+        #[doc = "External power failure warning configuration"]
+        #[inline(always)]
+        pub const fn extpofcon(self) -> crate::common::Reg<regs::Extpofcon, crate::common::RW> {
+            unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0514usize) as _) }
         }
         #[doc = "Enable DC/DC mode of the main voltage regulator."]
         #[inline(always)]
@@ -6850,6 +7221,29 @@ pub mod regulators_ns {
                 Dcdcen(0)
             }
         }
+        #[doc = "External power failure warning configuration"]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct Extpofcon(pub u32);
+        impl Extpofcon {
+            #[doc = "Enable or disable external power failure warning"]
+            #[inline(always)]
+            pub const fn pof(&self) -> bool {
+                let val = (self.0 >> 0usize) & 0x01;
+                val != 0
+            }
+            #[doc = "Enable or disable external power failure warning"]
+            #[inline(always)]
+            pub fn set_pof(&mut self, val: bool) {
+                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            }
+        }
+        impl Default for Extpofcon {
+            #[inline(always)]
+            fn default() -> Extpofcon {
+                Extpofcon(0)
+            }
+        }
         #[doc = "System OFF register"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
@@ -6875,7 +7269,7 @@ pub mod regulators_ns {
         }
     }
 }
-pub mod rtc_ns {
+pub mod rtc {
     #[doc = "Real-time counter 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rtc {
@@ -7407,7 +7801,7 @@ pub mod rtc_ns {
         }
     }
 }
-pub mod saadc_ns {
+pub mod saadc {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ch {
@@ -8808,16 +9202,16 @@ pub mod shared {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Publish(pub u32);
         impl Publish {
-            #[doc = "Channel that event HFCLKSTARTED will publish to."]
+            #[doc = "DPPI channel that event HFCLKSTARTED will publish to"]
             #[inline(always)]
             pub const fn chidx(&self) -> u8 {
-                let val = (self.0 >> 0usize) & 0x0f;
+                let val = (self.0 >> 0usize) & 0xff;
                 val as u8
             }
-            #[doc = "Channel that event HFCLKSTARTED will publish to."]
+            #[doc = "DPPI channel that event HFCLKSTARTED will publish to"]
             #[inline(always)]
             pub fn set_chidx(&mut self, val: u8) {
-                self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
+                self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
             }
             #[inline(always)]
             pub const fn en(&self) -> bool {
@@ -8840,16 +9234,16 @@ pub mod shared {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Subscribe(pub u32);
         impl Subscribe {
-            #[doc = "Channel that task HFCLKSTART will subscribe to"]
+            #[doc = "DPPI channel that task HFCLKSTART will subscribe to"]
             #[inline(always)]
             pub const fn chidx(&self) -> u8 {
-                let val = (self.0 >> 0usize) & 0x0f;
+                let val = (self.0 >> 0usize) & 0xff;
                 val as u8
             }
-            #[doc = "Channel that task HFCLKSTART will subscribe to"]
+            #[doc = "DPPI channel that task HFCLKSTART will subscribe to"]
             #[inline(always)]
             pub fn set_chidx(&mut self, val: u8) {
-                self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
+                self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
             }
             #[inline(always)]
             pub const fn en(&self) -> bool {
@@ -8901,7 +9295,7 @@ pub mod shared {
         }
     }
 }
-pub mod spim_ns {
+pub mod spim {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -9772,7 +10166,7 @@ pub mod spim_ns {
         }
     }
 }
-pub mod spis_ns {
+pub mod spis {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -10639,7 +11033,7 @@ pub mod spis_ns {
         }
     }
 }
-pub mod spu_s {
+pub mod spu {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dppi {
@@ -11877,13 +12271,13 @@ pub mod spu_s {
             #[doc = "Region number"]
             #[inline(always)]
             pub const fn region(&self) -> u8 {
-                let val = (self.0 >> 0usize) & 0x0f;
+                let val = (self.0 >> 0usize) & 0x1f;
                 val as u8
             }
             #[doc = "Region number"]
             #[inline(always)]
             pub fn set_region(&mut self, val: u8) {
-                self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
+                self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
             }
             #[inline(always)]
             pub const fn lock(&self) -> bool {
@@ -12264,7 +12658,7 @@ pub mod spu_s {
         }
     }
 }
-pub mod tad_s {
+pub mod tad {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -12281,35 +12675,35 @@ pub mod tad_s {
         pub const fn as_ptr(&self) -> *mut () {
             self.ptr as _
         }
-        #[doc = "Pin number configuration for TRACECLK"]
+        #[doc = "Pin configuration for TRACECLK"]
         #[inline(always)]
         pub const fn traceclk(
             self,
         ) -> crate::common::Reg<super::shared::regs::Psel, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
         }
-        #[doc = "Pin number configuration for TRACEDATA\\[0\\]"]
+        #[doc = "Pin configuration for TRACEDATA\\[0\\]"]
         #[inline(always)]
         pub const fn tracedata0(
             self,
         ) -> crate::common::Reg<super::shared::regs::Psel, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
         }
-        #[doc = "Pin number configuration for TRACEDATA\\[1\\]"]
+        #[doc = "Pin configuration for TRACEDATA\\[1\\]"]
         #[inline(always)]
         pub const fn tracedata1(
             self,
         ) -> crate::common::Reg<super::shared::regs::Psel, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
         }
-        #[doc = "Pin number configuration for TRACEDATA\\[2\\]"]
+        #[doc = "Pin configuration for TRACEDATA\\[2\\]"]
         #[inline(always)]
         pub const fn tracedata2(
             self,
         ) -> crate::common::Reg<super::shared::regs::Psel, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
         }
-        #[doc = "Pin number configuration for TRACEDATA\\[3\\]"]
+        #[doc = "Pin configuration for TRACEDATA\\[3\\]"]
         #[inline(always)]
         pub const fn tracedata3(
             self,
@@ -12335,12 +12729,12 @@ pub mod tad_s {
         }
         #[doc = "Start all trace and debug clocks."]
         #[inline(always)]
-        pub const fn clockstart(self) -> crate::common::Reg<regs::Clockstart, crate::common::W> {
+        pub const fn tasks_clockstart(self) -> crate::common::Reg<u32, crate::common::W> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
         }
         #[doc = "Stop all trace and debug clocks."]
         #[inline(always)]
-        pub const fn clockstop(self) -> crate::common::Reg<regs::Clockstop, crate::common::W> {
+        pub const fn tasks_clockstop(self) -> crate::common::Reg<u32, crate::common::W> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
         }
         #[doc = "Enable debug domain and aquire selected GPIOs"]
@@ -12353,7 +12747,7 @@ pub mod tad_s {
         pub const fn psel(self) -> Psel {
             unsafe { Psel::from_ptr(self.ptr.add(0x0504usize) as _) }
         }
-        #[doc = "Clocking options for the Trace Port debug interface"]
+        #[doc = "Clocking options for the Trace Port debug interface Reset behavior is the same as debug components"]
         #[inline(always)]
         pub const fn traceportspeed(
             self,
@@ -12362,48 +12756,6 @@ pub mod tad_s {
         }
     }
     pub mod regs {
-        #[doc = "Start all trace and debug clocks."]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Clockstart(pub u32);
-        impl Clockstart {
-            #[inline(always)]
-            pub const fn start(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
-                val != 0
-            }
-            #[inline(always)]
-            pub fn set_start(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-        }
-        impl Default for Clockstart {
-            #[inline(always)]
-            fn default() -> Clockstart {
-                Clockstart(0)
-            }
-        }
-        #[doc = "Stop all trace and debug clocks."]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Clockstop(pub u32);
-        impl Clockstop {
-            #[inline(always)]
-            pub const fn stop(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
-                val != 0
-            }
-            #[inline(always)]
-            pub fn set_stop(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-        }
-        impl Default for Clockstop {
-            #[inline(always)]
-            fn default() -> Clockstop {
-                Clockstop(0)
-            }
-        }
         #[doc = "Enable debug domain and aquire selected GPIOs"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
@@ -12425,18 +12777,18 @@ pub mod tad_s {
                 Enable(0)
             }
         }
-        #[doc = "Clocking options for the Trace Port debug interface"]
+        #[doc = "Clocking options for the Trace Port debug interface Reset behavior is the same as debug components"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Traceportspeed(pub u32);
         impl Traceportspeed {
-            #[doc = "Speed of Trace Port clock. Note that the TRACECLK pin will output this clock divided by two."]
+            #[doc = "Speed of Trace Port clock. Note that the TRACECLK pin output will be divided again by two from the Trace Port clock."]
             #[inline(always)]
             pub const fn traceportspeed(&self) -> super::vals::Traceportspeed {
                 let val = (self.0 >> 0usize) & 0x03;
                 super::vals::Traceportspeed::from_bits(val as u8)
             }
-            #[doc = "Speed of Trace Port clock. Note that the TRACECLK pin will output this clock divided by two."]
+            #[doc = "Speed of Trace Port clock. Note that the TRACECLK pin output will be divided again by two from the Trace Port clock."]
             #[inline(always)]
             pub fn set_traceportspeed(&mut self, val: super::vals::Traceportspeed) {
                 self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
@@ -12450,16 +12802,151 @@ pub mod tad_s {
         }
     }
     pub mod vals {
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct PselTraceclkPin(pub u8);
+        impl PselTraceclkPin {
+            #[doc = "TRACECLK pin"]
+            pub const TRACECLK: Self = Self(0x15);
+        }
+        impl PselTraceclkPin {
+            pub const fn from_bits(val: u8) -> PselTraceclkPin {
+                Self(val & 0x1f)
+            }
+            pub const fn to_bits(self) -> u8 {
+                self.0
+            }
+        }
+        impl From<u8> for PselTraceclkPin {
+            #[inline(always)]
+            fn from(val: u8) -> PselTraceclkPin {
+                PselTraceclkPin::from_bits(val)
+            }
+        }
+        impl From<PselTraceclkPin> for u8 {
+            #[inline(always)]
+            fn from(val: PselTraceclkPin) -> u8 {
+                PselTraceclkPin::to_bits(val)
+            }
+        }
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct PselTracedata0Pin(pub u8);
+        impl PselTracedata0Pin {
+            #[doc = "TRACEDATA0 pin"]
+            pub const TRACEDATA0: Self = Self(0x16);
+        }
+        impl PselTracedata0Pin {
+            pub const fn from_bits(val: u8) -> PselTracedata0Pin {
+                Self(val & 0x1f)
+            }
+            pub const fn to_bits(self) -> u8 {
+                self.0
+            }
+        }
+        impl From<u8> for PselTracedata0Pin {
+            #[inline(always)]
+            fn from(val: u8) -> PselTracedata0Pin {
+                PselTracedata0Pin::from_bits(val)
+            }
+        }
+        impl From<PselTracedata0Pin> for u8 {
+            #[inline(always)]
+            fn from(val: PselTracedata0Pin) -> u8 {
+                PselTracedata0Pin::to_bits(val)
+            }
+        }
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct PselTracedata1Pin(pub u8);
+        impl PselTracedata1Pin {
+            #[doc = "TRACEDATA1 pin"]
+            pub const TRACEDATA1: Self = Self(0x17);
+        }
+        impl PselTracedata1Pin {
+            pub const fn from_bits(val: u8) -> PselTracedata1Pin {
+                Self(val & 0x1f)
+            }
+            pub const fn to_bits(self) -> u8 {
+                self.0
+            }
+        }
+        impl From<u8> for PselTracedata1Pin {
+            #[inline(always)]
+            fn from(val: u8) -> PselTracedata1Pin {
+                PselTracedata1Pin::from_bits(val)
+            }
+        }
+        impl From<PselTracedata1Pin> for u8 {
+            #[inline(always)]
+            fn from(val: PselTracedata1Pin) -> u8 {
+                PselTracedata1Pin::to_bits(val)
+            }
+        }
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct PselTracedata2Pin(pub u8);
+        impl PselTracedata2Pin {
+            #[doc = "TRACEDATA2 pin"]
+            pub const TRACEDATA2: Self = Self(0x18);
+        }
+        impl PselTracedata2Pin {
+            pub const fn from_bits(val: u8) -> PselTracedata2Pin {
+                Self(val & 0x1f)
+            }
+            pub const fn to_bits(self) -> u8 {
+                self.0
+            }
+        }
+        impl From<u8> for PselTracedata2Pin {
+            #[inline(always)]
+            fn from(val: u8) -> PselTracedata2Pin {
+                PselTracedata2Pin::from_bits(val)
+            }
+        }
+        impl From<PselTracedata2Pin> for u8 {
+            #[inline(always)]
+            fn from(val: PselTracedata2Pin) -> u8 {
+                PselTracedata2Pin::to_bits(val)
+            }
+        }
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+        pub struct PselTracedata3Pin(pub u8);
+        impl PselTracedata3Pin {
+            #[doc = "TRACEDATA3 pin"]
+            pub const TRACEDATA3: Self = Self(0x19);
+        }
+        impl PselTracedata3Pin {
+            pub const fn from_bits(val: u8) -> PselTracedata3Pin {
+                Self(val & 0x1f)
+            }
+            pub const fn to_bits(self) -> u8 {
+                self.0
+            }
+        }
+        impl From<u8> for PselTracedata3Pin {
+            #[inline(always)]
+            fn from(val: u8) -> PselTracedata3Pin {
+                PselTracedata3Pin::from_bits(val)
+            }
+        }
+        impl From<PselTracedata3Pin> for u8 {
+            #[inline(always)]
+            fn from(val: PselTracedata3Pin) -> u8 {
+                PselTracedata3Pin::to_bits(val)
+            }
+        }
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
         pub enum Traceportspeed {
-            #[doc = "32 MHz Trace Port clock (TRACECLK = 16 MHz)"]
+            #[doc = "Trace Port clock is: 32MHz"]
             _32MHZ = 0x0,
-            #[doc = "16 MHz Trace Port clock (TRACECLK = 8 MHz)"]
+            #[doc = "Trace Port clock is: 16MHz"]
             _16MHZ = 0x01,
-            #[doc = "8 MHz Trace Port clock (TRACECLK = 4 MHz)"]
+            #[doc = "Trace Port clock is: 8MHz"]
             _8MHZ = 0x02,
-            #[doc = "4 MHz Trace Port clock (TRACECLK = 2 MHz)"]
+            #[doc = "Trace Port clock is: 4MHz"]
             _4MHZ = 0x03,
         }
         impl Traceportspeed {
@@ -12486,7 +12973,7 @@ pub mod tad_s {
         }
     }
 }
-pub mod timer_ns {
+pub mod timer {
     #[doc = "Timer/Counter 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Timer {
@@ -12872,7 +13359,7 @@ pub mod timer_ns {
         }
     }
 }
-pub mod twim_ns {
+pub mod twim {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -13754,7 +14241,7 @@ pub mod twim_ns {
         }
     }
 }
-pub mod twis_ns {
+pub mod twis {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -14283,13 +14770,13 @@ pub mod twis_ns {
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Match(pub u32);
         impl Match {
-            #[doc = "Which of the addresses in {ADDRESS} matched the incoming address"]
+            #[doc = "Indication of which address in {ADDRESS} that matched the incoming address"]
             #[inline(always)]
             pub const fn match_(&self) -> bool {
                 let val = (self.0 >> 0usize) & 0x01;
                 val != 0
             }
-            #[doc = "Which of the addresses in {ADDRESS} matched the incoming address"]
+            #[doc = "Indication of which address in {ADDRESS} that matched the incoming address"]
             #[inline(always)]
             pub fn set_match_(&mut self, val: bool) {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
@@ -14608,7 +15095,7 @@ pub mod twis_ns {
         }
     }
 }
-pub mod uarte_ns {
+pub mod uarte {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psel {
@@ -14938,7 +15425,7 @@ pub mod uarte_ns {
         pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
-        #[doc = "Error source Note : this register is read / write one to clear."]
+        #[doc = "Error source This register is read/write one to clear."]
         #[inline(always)]
         pub const fn errorsrc(self) -> crate::common::Reg<regs::Errorsrc, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0480usize) as _) }
@@ -15067,7 +15554,7 @@ pub mod uarte_ns {
                 Enable(0)
             }
         }
-        #[doc = "Error source Note : this register is read / write one to clear."]
+        #[doc = "Error source This register is read/write one to clear."]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
         pub struct Errorsrc(pub u32);
@@ -15422,7 +15909,7 @@ pub mod uarte_ns {
             pub const BAUD460800: Self = Self(0x0740_0000);
             #[doc = "921600 baud (actual rate: 941176)"]
             pub const BAUD921600: Self = Self(0x0f00_0000);
-            #[doc = "1Mega baud"]
+            #[doc = "1 megabaud"]
             pub const BAUD1M: Self = Self(0x1000_0000);
         }
         impl Baudrate {
@@ -15557,7 +16044,7 @@ pub mod uarte_ns {
         }
     }
 }
-pub mod uicr_s {
+pub mod uicr {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Config {
@@ -15574,7 +16061,7 @@ pub mod uicr_s {
         pub const fn as_ptr(&self) -> *mut () {
             self.ptr as _
         }
-        #[doc = "Description cluster: Destination address where content of the key value registers (KEYSLOT.KEYn.VALUE\\[0-3\\]) will be pushed by KMU. Note that this address MUST match that of a peripherals APB mapped write-only key registers, else the KMU can push this key value into an address range which the CPU can potentially read!"]
+        #[doc = "Description cluster: Destination address where content of the key value registers (KEYSLOT.KEYn.VALUE\\[0-3\\]) will be pushed by KMU. Note that this address must match that of a peripherals APB mapped write-only key registers, else the KMU can push this key value into an address range which the CPU can potentially read."]
         #[inline(always)]
         pub const fn dest(self) -> crate::common::Reg<u32, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
@@ -15673,6 +16160,13 @@ pub mod uicr_s {
         pub const fn hfxocnt(self) -> crate::common::Reg<regs::Hfxocnt, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
         }
+        #[doc = "Enable blocking NVM WRITE and aborting NVM ERASE for Application NVM in POFWARN condition ."]
+        #[inline(always)]
+        pub const fn appnvmcpofguard(
+            self,
+        ) -> crate::common::Reg<regs::Appnvmcpofguard, crate::common::RW> {
+            unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        }
         #[doc = "Secure access port protection"]
         #[inline(always)]
         pub const fn secureapprotect(
@@ -15700,6 +16194,29 @@ pub mod uicr_s {
         }
     }
     pub mod regs {
+        #[doc = "Enable blocking NVM WRITE and aborting NVM ERASE for Application NVM in POFWARN condition ."]
+        #[repr(transparent)]
+        #[derive(Copy, Clone, Eq, PartialEq)]
+        pub struct Appnvmcpofguard(pub u32);
+        impl Appnvmcpofguard {
+            #[doc = "Enable blocking NVM WRITE and aborting NVM ERASE in POFWARN condition"]
+            #[inline(always)]
+            pub const fn nvmcpofguarden(&self) -> bool {
+                let val = (self.0 >> 0usize) & 0x01;
+                val != 0
+            }
+            #[doc = "Enable blocking NVM WRITE and aborting NVM ERASE in POFWARN condition"]
+            #[inline(always)]
+            pub fn set_nvmcpofguarden(&mut self, val: bool) {
+                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            }
+        }
+        impl Default for Appnvmcpofguard {
+            #[inline(always)]
+            fn default() -> Appnvmcpofguard {
+                Appnvmcpofguard(0)
+            }
+        }
         #[doc = "Access port protection"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
@@ -16112,7 +16629,7 @@ pub mod uicr_s {
         }
     }
 }
-pub mod vmc_ns {
+pub mod vmc {
     #[doc = "Unspecified"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ram {
@@ -16213,7 +16730,7 @@ pub mod vmc_ns {
         }
     }
 }
-pub mod wdt_ns {
+pub mod wdt {
     #[doc = "Watchdog Timer 0"]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wdt {

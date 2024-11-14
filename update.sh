@@ -6,7 +6,7 @@ rm -f src/chips/*/*.rs
 
 (cd ../chiptool/; cargo build)
 export RUST_BACKTRACE=1
-export RUST_LOG=info
+#export RUST_LOG=info
 chiptool=../chiptool/target/debug/chiptool
 
 for chip in $(ls svd); do 
@@ -14,6 +14,8 @@ for chip in $(ls svd); do
     $chiptool generate --svd svd/$chip.svd --transform transform.yaml
     rustfmt lib.rs
     sed -i '/#!\[no_std]/d' lib.rs
+
+    mkdir -p src/chips/$chip
     mv lib.rs src/chips/$chip/pac.rs
 done
 

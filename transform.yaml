@@ -1,35 +1,5 @@
 transforms:
-# ======= General
-  - !Rename
-      from: p0::(.*)
-      to: gpio::$1
-  - !Rename
-      from: gpio::P0
-      to: gpio::Gpio
-  - !Rename
-      from: p0(_s|_ns)::(.*)
-      to: gpio$1::$2
-  - !Rename
-      from: gpio(_s|_ns)::P0(S|Ns)
-      to: gpio$1::Gpio
-  - !Rename
-      from: acl(_s|_ns)::Acl
-      to: acl$1::AclE
-  - !Rename
-      from: approtect(_s|_ns)::Approtect
-      to: approtect$1::ApprotectE
-  - !Rename
-      from: ([^:]+_s)::([^:]+)S
-      to: $1::$2
-  - !Rename
-      from: ([^:]+_ns)::([^:]+)Ns
-      to: $1::$2
-  - !Rename
-      from: ([^:]+)::([^:]+)0
-      to: $1::$2
-  - !Rename
-      from: (.*)0(|_s|_ns)::(.*)
-      to: $1$2::$3
+# ======= Misc renames.
   - !DeleteFieldsets
       from: .*
       useless: true
@@ -44,24 +14,64 @@ transforms:
       from: .*::vals::Ready
       bit_size: 1
   - !MergeEnums
-      from: .*::vals::.*Connect
+      from:
+        include: .*::vals::.*Connect
+        exclude: saadc.*::vals::Psel[pn]Connect
       to: shared::vals::Connect
-  - !Rename
-      from: saadc(|_s|_ns)::regs::(Pselp|Pseln)
-      to: saadc$1::regs::_$2
   - !MergeFieldsets
-      from: .*::regs::Psel.+
+      from: 
+        include: .*::regs::Psel.+
+        exclude: 
+        - saadc::regs::(Pselp|Pseln)
       to: shared::regs::Psel
       check: NoCheck
-  - !Rename
-      from: (.*)::regs::_(.*)
-      to: $1::regs::$2
   - !MergeFieldsets
       from: .*::regs::Subscribe.*
       to: shared::regs::Subscribe
+      check: NoCheck
   - !MergeFieldsets
       from: .*::regs::Publish.*
       to: shared::regs::Publish
+      check: NoCheck
+
+# ======= Fix inconsistent interrupt naming in nrf52840.
+  - !RenameInterrupts
+      from: CLOCK_POWER
+      to: POWER_CLOCK
+  - !RenameInterrupts
+      from: UART0_UARTE0
+      to: UARTE0_UART0
+  - !RenameInterrupts
+      from: SPI0_SPIM0_SPIS0_TWI0_TWIM0_TWIS0
+      to: SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0
+  - !RenameInterrupts
+      from: SPI1_SPIM1_SPIS1_TWI1_TWIM1_TWIS1
+      to: SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1
+  - !RenameInterrupts
+      from: AAR_CCM
+      to: CCM_AAR
+  - !RenameInterrupts
+      from: EGU0_SWI0
+      to: SWI0_EGU0
+  - !RenameInterrupts
+      from: EGU1_SWI1
+      to: SWI1_EGU1
+  - !RenameInterrupts
+      from: EGU2_SWI2
+      to: SWI2_EGU2
+  - !RenameInterrupts
+      from: EGU3_SWI3
+      to: SWI3_EGU3
+  - !RenameInterrupts
+      from: EGU4_SWI4
+      to: SWI4_EGU4
+  - !RenameInterrupts
+      from: EGU5_SWI5
+      to: SWI5_EGU5
+  - !RenameInterrupts
+      from: SPI2_SPIM2_SPIS2
+      to: SPIM2_SPIS2_SPI2
+    
 
 # ======= "Interrupt enabled" enums
   - !DeleteEnums
@@ -85,195 +95,195 @@ transforms:
 
 # ======= GPIO
   - !DeleteEnums
-      from: gpio(|_s|_ns)::vals::(Dirclr|Dirset|In|Out.*|Latch)Pin\d+
+      from: gpio::vals::(Dirclr|Dirset|In|Out.*|Latch)Pin\d+
   - !MergeEnums
-      from: gpio(|_s|_ns)::vals::Dir.*
-      to: gpio$1::vals::Dir
+      from: gpio::vals::Dir.*
+      to: gpio::vals::Dir
   - !MergeEnums
-      from: gpio(|_s|_ns)::vals::Detectmode.*
-      to: gpio$1::vals::Detectmode
+      from: gpio::vals::Detectmode.*
+      to: gpio::vals::Detectmode
   - !MakeFieldArray
-      fieldsets: gpio(|_s|_ns)::regs::(Dir.*|In|Out.*|Latch)
+      fieldsets: gpio::regs::(Dir.*|In|Out.*|Latch)
       from: pin\d+
       to: pin
 
 # ======= MWU
   - !DeleteEnums
-      from: mwu(|_s|_ns)::vals::.* # all enums are 0=no, 1=yes...
+      from: mwu::vals::.* # all enums are 0=no, 1=yes...
   - !MakeFieldArray
-      fieldsets: mwu(|_s|_ns)::regs::Regionen.*
+      fieldsets: mwu::regs::Regionen.*
       from: rgn(\d+)(.*)
       to: rgn_$2
   - !MakeFieldArray
-      fieldsets: mwu(|_s|_ns)::regs::Regionen.*
+      fieldsets: mwu::regs::Regionen.*
       from: prgn(\d+)(.*)
       to: prgn_$2
   - !MakeFieldArray
-      fieldsets: mwu(|_s|_ns)::regs::Subs.*
+      fieldsets: mwu::regs::Subs.*
       from: sr(\d+)
       to: sr
   - !MergeFieldsets
-      from: mwu(|_s|_ns)::regs::Regionen.*
-      to: mwu$1::regs::Regionen
+      from: mwu::regs::Regionen.*
+      to: mwu::regs::Regionen
 
 # ======= PPI
   - !DeleteEnums
-      from: (ppi|dppic)(|_s|_ns)::vals::.* # all enums are 0=no, 1=yes...
+      from: (ppi|dppic)::vals::.* # all enums are 0=no, 1=yes...
   - !DeleteFieldsets
-      from: (ppi|dppic)(|_s|_ns)::regs::(En|Dis)
+      from: (ppi|dppic)::regs::(En|Dis)
   - !MakeFieldArray
-      fieldsets: (ppi|dppic)(|_s|_ns)::regs::(Chen.*|Chg)
+      fieldsets: (ppi|dppic)::regs::(Chen.*|Chg)
       from: ch(\d+)
       to: ch
       mode: Holey
   - !MergeFieldsets
-      from: (ppi|dppic)(|_s|_ns)::regs::Chen.*
+      from: (ppi|dppic)::regs::Chen.*
       to: $1$2::regs::Chen
 
 # ======= USBD
   - !DeleteEnums
-      from: usbd(|_s|_ns)::vals::(Enable|Connect)
+      from: usbd::vals::(Enable|Connect)
   - !DeleteEnumsUsedIn
-      fieldsets: usbd(|_s|_ns)::regs::(Epdatastatus|Epstatus|Epouten|Epinen)
+      fieldsets: usbd::regs::(Epdatastatus|Epstatus|Epouten|Epinen)
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::Inten
+      fieldsets: usbd::regs::Inten
       from: endepin(\d+)
       to: endepin
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::Inten
+      fieldsets: usbd::regs::Inten
       from: endepout(\d+)
       to: endepout
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::(Epdatastatus|Epstatus)
+      fieldsets: usbd::regs::(Epdatastatus|Epstatus)
       from: epin(\d+)
       to: epin
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::(Epdatastatus|Epstatus)
+      fieldsets: usbd::regs::(Epdatastatus|Epstatus)
       from: epout(\d+)
       to: epout
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::Epinen
+      fieldsets: usbd::regs::Epinen
       from: in(\d+)
       to: in_
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::Epouten
+      fieldsets: usbd::regs::Epouten
       from: out(\d+)
       to: out
   - !MergeEnums
-      from: usbd(|_s|_ns)::vals::(Direction|DtoggleIo|EpstallIo)
-      to: usbd$1::vals::Io
+      from: usbd::vals::(Direction|DtoggleIo|EpstallIo)
+      to: usbd::vals::Io
       main: usbd.*::vals::EpstallIo
       check: NoCheck
 
 # ======= CLOCK
   - !MergeEnums
-      from: clock(|_s|_ns)::vals::Lfclk.*Src
-      to: clock$1::vals::Lfclksrc
+      from: clock::vals::Lfclk.*Src
+      to: clock::vals::Lfclksrc
 
 # ======= NFCT
   - !DeleteEnums
-      from: nfct(|_s|_ns)::vals::(Fieldpresent|Crcerror|Crcmoderx|Crcmodetx|Paritystatus)
+      from: nfct::vals::(Fieldpresent|Crcerror|Crcmoderx|Crcmodetx|Paritystatus)
 
 # ======= NVMC
   - !DeleteEnums
-      from: nvmc(|_s|_ns)::vals::(Eraseall|Eraseuicr)
+      from: nvmc::vals::(Eraseall|Eraseuicr)
   - !Rename
-      from: nvmc(|_s|_ns)::vals::ConfigWen
-      to: nvmc$1::vals::Wen
+      from: nvmc::vals::ConfigWen
+      to: nvmc::vals::Wen
 
 # ======= QSPI
   - !DeleteEnums
-      from: qspi(|_s|_ns)::vals::Dpmen
+      from: qspi::vals::Dpmen
 
 # ======= RTC
   - !DeleteEnums
-      from: rtc(|_s|_ns)::vals::Evten(set|clr).*
+      from: rtc::vals::Evten(set|clr).*
 
 # ======= SPIS
   - !DeleteEnums
-      from: spis(|_s|_ns)::vals::(Overflow|Overread)
+      from: spis::vals::(Overflow|Overread)
 
 # ======= REGULATORS
   - !DeleteEnums
-      from: regulators(|_s|_ns)::vals::(Ramblock.*|Power.*|Vbusdetect)
+      from: regulators::vals::(Ramblock.*|Power.*|Vbusdetect)
 
 # ======= USBREGULATOR
   - !DeleteEnums
-      from: usbregulator(|_s|_ns)::vals::(Ramblock.*|Power.*|Vbusdetect)
+      from: usbreg::vals::(Ramblock.*|Power.*|Vbusdetect)
 
 # ======= POWER
   - !DeleteEnums
-      from: power(|_s|_ns)::vals::(Ramblock.*|Power.*|Vbusdetect)
+      from: power::vals::(Ramblock.*|Power.*|Vbusdetect)
   - !MakeFieldArray
-      fieldsets: power(|_s|_ns)::regs::(Power.*)
+      fieldsets: power::regs::(Power.*)
       from: s\d+power
       to: s_power
   - !MakeFieldArray
-      fieldsets: power(|_s|_ns)::regs::(Power.*)
+      fieldsets: power::regs::(Power.*)
       from: s\d+retention
       to: s_retention
   - !MergeFieldsets
-      from: power(|_s|_ns)::regs::Power.*
-      to: power$1::regs::Power
+      from: power::regs::Power.*
+      to: power::regs::Power
 
 # ======= RADIO
   - !RenameEnumVariants
-      enum: radio(|_s|_ns)::vals::Txpower
+      enum: radio::vals::Txpower
       from: (.*)D_BM
       to: ${1}_DBM
 
 # ======= EGU
   - !MakeFieldArray
-      fieldsets: egu(|_s|_ns)::regs::Inten
+      fieldsets: egu::regs::Inten
       from: triggered\d+
       to: triggered
 
 # ======= PDM
   - !MergeEnums
-      from: pdm(|_s|_ns)::vals::Gain[lr]
-      to: pdm$1::vals::Gain
+      from: pdm::vals::Gain[lr]
+      to: pdm::vals::Gain
 
 # ======= SAADC
   - !MergeEnums
-      from: saadc(|_s|_ns)::vals::Psel[pn]
-      to: saadc$1::vals::Psel
+      from: saadc::vals::Psel[pn]
+      to: saadc::vals::Psel
 
 # ======= TIMER
   - !MakeFieldArray
-      fieldsets: timer\d*(|_s|_ns)::regs::Inten
+      fieldsets: timer\d*::regs::Inten
       from: compare\d+
       to: compare
   - !MakeFieldArray
-      fieldsets: timer\d*(|_s|_ns)::regs::Shorts
+      fieldsets: timer\d*::regs::Shorts
       from: compare\d+_(.*)
       to: compare_$1
 
 # ======= USBD
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::Epinen
+      fieldsets: usbd::regs::Epinen
       from: in\d
       to: in_
   - !MakeFieldArray
-      fieldsets: usbd(|_s|_ns)::regs::Epouten
+      fieldsets: usbd::regs::Epouten
       from: out\d
       to: out
   - !DeleteEnums
-      from: usbd(|_s|_ns)::vals::Usbwuallowed
+      from: usbd::vals::Usbwuallowed
   - !MergeEnums
-      from: usbd(|_s|_ns)::vals::(EpinGetstatus|EpoutGetstatus)
-      to: usbd$1::vals::Getstatus
+      from: usbd::vals::(EpinGetstatus|EpoutGetstatus)
+      to: usbd::vals::Getstatus
 
 # ======= WDT
   - !DeleteEnums
-      from: wdt(|_s|_ns)::vals::ReqstatusRr\d+
+      from: wdt::vals::ReqstatusRr\d+
   - !MakeFieldArray
-      fieldsets: wdt(|_s|_ns)::regs::(Rren|Reqstatus)
+      fieldsets: wdt::regs::(Rren|Reqstatus)
       from: rr\d
       to: rr
 
 # ======= SPU
   - !DeleteEnums
-      from: spu_s::vals::.*Secattr
+      from: spu::vals::.*Secattr
   - !DeleteEnumsWithVariants
       variants:
         0: NON_SECURE
@@ -281,11 +291,10 @@ transforms:
 
 # ======= VMC
   - !MergeFieldsets
-      from: vmc(|_s|_ns)::regs::Power.*
-      to: vmc$1::regs::Power
-      main: (.*)::regs::Power
+      from: vmc::regs::Power.*
+      to: vmc::regs::Power
       check: NoCheck
   - !MakeFieldArray
-      fieldsets: vmc(|_s|_ns)::regs::Power
+      fieldsets: vmc::regs::Power
       from: s\d+(.*)
       to: s$1
