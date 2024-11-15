@@ -1,5 +1,8 @@
 transforms:
 # ======= Misc renames.
+  - !RenamePeripherals
+      from: GLOBAL_(.*)
+      to: $1
   - !DeleteFieldsets
       from: .*
       useless: true
