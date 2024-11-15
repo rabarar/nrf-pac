@@ -24,3 +24,15 @@ nrf54l15-app = []
 nrf54l15-flpr = []
 nrf9120 = []
 nrf9160 = []
+
+[package.metadata.embassy_docs]
+src_base = "https://github.com/embassy-rs/nrf-pac/blob/v$VERSION/src/"
+src_base_git = "https://github.com/embassy-rs/nrf-pac/blob/$COMMIT/src/"
+features = ["rt"]
+flavors = [
+    { regex_feature = "nrf51", target = "thumbv6m-none-eabi" },
+    { regex_feature = "nrf52.*", target = "thumbv7em-none-eabihf" },
+    { regex_feature = "nrf53.*", target = "thumbv8m.main-none-eabihf" },
+    { regex_feature = "nrf54.*", target = "thumbv8m.main-none-eabihf" },
+    { regex_feature = "nrf91.*", target = "thumbv8m.main-none-eabihf" },
+]

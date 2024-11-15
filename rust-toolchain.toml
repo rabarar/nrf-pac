@@ -1,0 +1,8 @@
+[toolchain]
+channel = "nightly-2024-11-04"
+components = [ "rust-src", "rustfmt" ]
+targets = [
+    "thumbv6m-none-eabi",
+    "thumbv7em-none-eabihf",
+    "thumbv8m.main-none-eabihf",
+]
