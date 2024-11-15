@@ -75,22 +75,37 @@ transforms:
 
 # ======= "Interrupt enabled" enums
   - !DeleteEnums
-      from: .*::vals::Inten(|set|clr).*
+      from: .*::vals::Int(en|enset|enclr|pend).*
   - !DeleteEnumsUsedIn
-      fieldsets: .*::regs::Inten(|set|clr)
+      fieldsets: .*::regs::Int(en|enset|enclr|pend)\d*
+  - !RenameFields
+      fieldset: (.*)::regs::Int(en|enset|enclr|pend)\d*
+      from: int(en|enset|enclr|pend)
+      to: int
   - !MergeFieldsets
-      from: (.*)::regs::Inten.*
-      to: $1::regs::Inten
+      from: (.*)::regs::Int(en|enset|enclr|pend)\d*
+      to: $1::regs::Int
       main: (.*)::regs::Inten
-      check: NoCheck
+  - !MakeRegisterArray
+      blocks: .*
+      from: (int(en|enset|enclr|pend))\d+
+      to: $1
 
   - !DeleteEnums
-      from: .*::vals::Nmien(|set|clr).*
+      from: .*::vals::Nmi(en|enset|enclr|pend).*
   - !DeleteEnumsUsedIn
-      fieldsets: .*::regs::Nmien(|set|clr)
+      fieldsets: .*::regs::Nmi(en|enset|enclr|pend)\d*
   - !MergeFieldsets
-      from: (.*)::regs::Nmien.*
-      to: $1::regs::Nmien
+      from: (.*)::regs::Nmi(en|enset|enclr|pend)\d*
+      to: $1::regs::Nmi
+
+  - !DeleteEnums
+      from: .*::vals::Evt(en|enset|enclr|pend).*
+  - !DeleteEnumsUsedIn
+      fieldsets: .*::regs::Evt(en|enset|enclr|pend)\d*
+  - !MergeFieldsets
+      from: (.*)::regs::Evt(en|enset|enclr|pend)\d*
+      to: $1::regs::Evt
 
 
 # ======= GPIO
@@ -106,6 +121,16 @@ transforms:
       fieldsets: gpio::regs::(Dir.*|In|Out.*|Latch)
       from: pin\d+
       to: pin
+
+# ======= GPIOTE
+  - !MakeFieldArray
+      fieldsets: gpiote::regs::Int
+      from: in\d+
+      to: in_
+  - !MakeFieldArray
+      fieldsets: gpiote::regs::Int
+      from: port\d+
+      to: port
 
 # ======= MWU
   - !DeleteEnums
@@ -146,11 +171,11 @@ transforms:
   - !DeleteEnumsUsedIn
       fieldsets: usbd::regs::(Epdatastatus|Epstatus|Epouten|Epinen)
   - !MakeFieldArray
-      fieldsets: usbd::regs::Inten
+      fieldsets: usbd::regs::Int
       from: endepin(\d+)
       to: endepin
   - !MakeFieldArray
-      fieldsets: usbd::regs::Inten
+      fieldsets: usbd::regs::Int
       from: endepout(\d+)
       to: endepout
   - !MakeFieldArray
@@ -196,12 +221,55 @@ transforms:
       from: qspi::vals::Dpmen
 
 # ======= RTC
-  - !DeleteEnums
-      from: rtc::vals::Evten(set|clr).*
+  - !MakeFieldArray
+      fieldsets: rtc::regs::(Evt|Int)
+      from: compare\d+
+      to: compare
+  - !MakeFieldArray
+      fieldsets: rtc::regs::Shorts
+      from: compare\d+_clear
+      to: comparen_clear
+
+# ======= SPIM
+  - !MakeFieldArray
+      fieldsets: spim::regs::Int
+      from: dmarxmatch\d+
+      to: dmarxmatch
+  - !MakeFieldArray
+      fieldsets: spim::regs::MatchConfig
+      from: (oneshot|enable)\d+
+      to: $1
 
 # ======= SPIS
   - !DeleteEnums
       from: spis::vals::(Overflow|Overread)
+  - !MakeFieldArray
+      fieldsets: spis::regs::Int
+      from: dmarxmatch\d+
+      to: dmarxmatch
+  - !MakeFieldArray
+      fieldsets: spis::regs::MatchConfig
+      from: (oneshot|enable)\d+
+      to: $1
+
+
+# ======= TAMPC
+  - !MakeFieldArray
+      fieldsets: tampc::regs::Chen
+      from: ch_\d+
+      to: ch
+  - !MakeFieldArray
+      fieldsets: tampc::regs::TampcStatus
+      from: (.*)_\d+
+      to: $1
+
+# ======= TEMP
+  - !DeleteFieldsets
+      from: temp::regs::[ABT]\d+
+  - !MakeRegisterArray
+      blocks: temp::Temp
+      from: (a|b|t)\d+
+      to: $1
 
 # ======= REGULATORS
   - !DeleteEnums
@@ -234,7 +302,7 @@ transforms:
 
 # ======= EGU
   - !MakeFieldArray
-      fieldsets: egu::regs::Inten
+      fieldsets: egu::regs::Int
       from: triggered\d+
       to: triggered
 
@@ -247,10 +315,14 @@ transforms:
   - !MergeEnums
       from: saadc::vals::Psel[pn]
       to: saadc::vals::Psel
+  - !MakeFieldArray
+      fieldsets: saadc::regs::Int
+      from: ch\d+limit(.*)
+      to: chlimit$1
 
 # ======= TIMER
   - !MakeFieldArray
-      fieldsets: timer\d*::regs::Inten
+      fieldsets: timer\d*::regs::Int
       from: compare\d+
       to: compare
   - !MakeFieldArray
@@ -298,3 +370,22 @@ transforms:
       fieldsets: vmc::regs::Power
       from: s\d+(.*)
       to: s$1
+
+# ======= CACHEINFO
+  - !MakeFieldArray
+      fieldsets: cacheinfo::regs::Info
+      from: duv\d+
+      to: duv
+
+# ======= PPIB
+  - !MakeFieldArray
+      fieldsets: ppib::regs::Send
+      from: send\d+
+      to: send
+
+# ======= PWM
+  - !MakeFieldArray
+      fieldsets: pwm::regs::Int
+      from: comparematch\d+
+      to: comparematch
+

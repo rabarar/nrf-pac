@@ -1,4 +1,4 @@
-#![doc = "Peripheral access API (generated using chiptool v0.1.0 (e77e8bb 2024-11-13))"]
+#![doc = "Peripheral access API (generated using chiptool v0.1.0 (4d62dd5 2024-11-15))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Interrupt {
     #[doc = "3 - SPU"]
@@ -719,22 +719,22 @@ pub mod clock {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Pending interrupts"]
         #[inline(always)]
-        pub const fn intpend(self) -> crate::common::Reg<regs::Intpend, crate::common::R> {
+        pub const fn intpend(self) -> crate::common::Reg<regs::Int, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x030cusize) as _) }
         }
         #[doc = "Status indicating that HFCLKSTART task has been triggered"]
@@ -831,8 +831,8 @@ pub mod clock {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event HFCLKSTARTED"]
             #[inline(always)]
             pub const fn hfclkstarted(&self) -> bool {
@@ -856,44 +856,10 @@ pub mod clock {
                 self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
-            }
-        }
-        #[doc = "Pending interrupts"]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Intpend(pub u32);
-        impl Intpend {
-            #[doc = "Read pending status of interrupt for event HFCLKSTARTED"]
-            #[inline(always)]
-            pub const fn hfclkstarted(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event HFCLKSTARTED"]
-            #[inline(always)]
-            pub fn set_hfclkstarted(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-            #[doc = "Read pending status of interrupt for event LFCLKSTARTED"]
-            #[inline(always)]
-            pub const fn lfclkstarted(&self) -> bool {
-                let val = (self.0 >> 1usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event LFCLKSTARTED"]
-            #[inline(always)]
-            pub fn set_lfclkstarted(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-            }
-        }
-        impl Default for Intpend {
-            #[inline(always)]
-            fn default() -> Intpend {
-                Intpend(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Status indicating that LFCLKSTART task has been triggered"]
@@ -1574,17 +1540,17 @@ pub mod egu {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
     }
@@ -1592,8 +1558,8 @@ pub mod egu {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event TRIGGERED\\[0\\]"]
             #[inline(always)]
             pub const fn triggered(&self, n: usize) -> bool {
@@ -1610,10 +1576,10 @@ pub mod egu {
                 self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
     }
@@ -3041,12 +3007,12 @@ pub mod gpiote {
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Description collection: Configuration for OUT\\[n\\], SET\\[n\\], and CLR\\[n\\] tasks and IN\\[n\\] event"]
@@ -3118,95 +3084,22 @@ pub mod gpiote {
         #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Write '1' to disable interrupt for event IN\\[0\\]"]
             #[inline(always)]
-            pub const fn in0(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
+            pub const fn in_(&self, n: usize) -> bool {
+                assert!(n < 8usize);
+                let offs = 0usize + n * 1usize;
+                let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
             #[doc = "Write '1' to disable interrupt for event IN\\[0\\]"]
             #[inline(always)]
-            pub fn set_in0(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[1\\]"]
-            #[inline(always)]
-            pub const fn in1(&self) -> bool {
-                let val = (self.0 >> 1usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[1\\]"]
-            #[inline(always)]
-            pub fn set_in1(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[2\\]"]
-            #[inline(always)]
-            pub const fn in2(&self) -> bool {
-                let val = (self.0 >> 2usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[2\\]"]
-            #[inline(always)]
-            pub fn set_in2(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[3\\]"]
-            #[inline(always)]
-            pub const fn in3(&self) -> bool {
-                let val = (self.0 >> 3usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[3\\]"]
-            #[inline(always)]
-            pub fn set_in3(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[4\\]"]
-            #[inline(always)]
-            pub const fn in4(&self) -> bool {
-                let val = (self.0 >> 4usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[4\\]"]
-            #[inline(always)]
-            pub fn set_in4(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[5\\]"]
-            #[inline(always)]
-            pub const fn in5(&self) -> bool {
-                let val = (self.0 >> 5usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[5\\]"]
-            #[inline(always)]
-            pub fn set_in5(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[6\\]"]
-            #[inline(always)]
-            pub const fn in6(&self) -> bool {
-                let val = (self.0 >> 6usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[6\\]"]
-            #[inline(always)]
-            pub fn set_in6(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[7\\]"]
-            #[inline(always)]
-            pub const fn in7(&self) -> bool {
-                let val = (self.0 >> 7usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event IN\\[7\\]"]
-            #[inline(always)]
-            pub fn set_in7(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            pub fn set_in_(&mut self, n: usize, val: bool) {
+                assert!(n < 8usize);
+                let offs = 0usize + n * 1usize;
+                self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
             #[doc = "Write '1' to disable interrupt for event PORT"]
             #[inline(always)]
@@ -3220,10 +3113,10 @@ pub mod gpiote {
                 self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
     }
@@ -3473,17 +3366,17 @@ pub mod i2s {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Enable I2S module."]
@@ -3727,8 +3620,8 @@ pub mod i2s {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event RXPTRUPD"]
             #[inline(always)]
             pub const fn rxptrupd(&self) -> bool {
@@ -3763,10 +3656,10 @@ pub mod i2s {
                 self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Size of RXD and TXD buffers."]
@@ -4265,22 +4158,22 @@ pub mod ipc {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Pending interrupts"]
         #[inline(always)]
-        pub const fn intpend(self) -> crate::common::Reg<regs::Intpend, crate::common::R> {
+        pub const fn intpend(self) -> crate::common::Reg<regs::Int, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x030cusize) as _) }
         }
         #[doc = "Description collection: Send event configuration for TASKS_SEND\\[n\\]"]
@@ -4312,8 +4205,8 @@ pub mod ipc {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event RECEIVE\\[0\\]"]
             #[inline(always)]
             pub const fn receive0(&self) -> bool {
@@ -4403,110 +4296,10 @@ pub mod ipc {
                 self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
-            }
-        }
-        #[doc = "Pending interrupts"]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Intpend(pub u32);
-        impl Intpend {
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[0\\]"]
-            #[inline(always)]
-            pub const fn receive0(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[0\\]"]
-            #[inline(always)]
-            pub fn set_receive0(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[1\\]"]
-            #[inline(always)]
-            pub const fn receive1(&self) -> bool {
-                let val = (self.0 >> 1usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[1\\]"]
-            #[inline(always)]
-            pub fn set_receive1(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[2\\]"]
-            #[inline(always)]
-            pub const fn receive2(&self) -> bool {
-                let val = (self.0 >> 2usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[2\\]"]
-            #[inline(always)]
-            pub fn set_receive2(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[3\\]"]
-            #[inline(always)]
-            pub const fn receive3(&self) -> bool {
-                let val = (self.0 >> 3usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[3\\]"]
-            #[inline(always)]
-            pub fn set_receive3(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[4\\]"]
-            #[inline(always)]
-            pub const fn receive4(&self) -> bool {
-                let val = (self.0 >> 4usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[4\\]"]
-            #[inline(always)]
-            pub fn set_receive4(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[5\\]"]
-            #[inline(always)]
-            pub const fn receive5(&self) -> bool {
-                let val = (self.0 >> 5usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[5\\]"]
-            #[inline(always)]
-            pub fn set_receive5(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[6\\]"]
-            #[inline(always)]
-            pub const fn receive6(&self) -> bool {
-                let val = (self.0 >> 6usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[6\\]"]
-            #[inline(always)]
-            pub fn set_receive6(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[7\\]"]
-            #[inline(always)]
-            pub const fn receive7(&self) -> bool {
-                let val = (self.0 >> 7usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event RECEIVE\\[7\\]"]
-            #[inline(always)]
-            pub fn set_receive7(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
-            }
-        }
-        impl Default for Intpend {
-            #[inline(always)]
-            fn default() -> Intpend {
-                Intpend(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Description collection: Receive event configuration for EVENTS_RECEIVE\\[n\\]"]
@@ -4750,22 +4543,22 @@ pub mod kmu {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Pending interrupts"]
         #[inline(always)]
-        pub const fn intpend(self) -> crate::common::Reg<regs::Intpend, crate::common::R> {
+        pub const fn intpend(self) -> crate::common::Reg<regs::Int, crate::common::R> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x030cusize) as _) }
         }
         #[doc = "Status bits for KMU operation"]
@@ -4785,8 +4578,8 @@ pub mod kmu {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event KEYSLOT_PUSHED"]
             #[inline(always)]
             pub const fn keyslot_pushed(&self) -> bool {
@@ -4821,55 +4614,10 @@ pub mod kmu {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
-            }
-        }
-        #[doc = "Pending interrupts"]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Intpend(pub u32);
-        impl Intpend {
-            #[doc = "Read pending status of interrupt for event KEYSLOT_PUSHED"]
-            #[inline(always)]
-            pub const fn keyslot_pushed(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event KEYSLOT_PUSHED"]
-            #[inline(always)]
-            pub fn set_keyslot_pushed(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-            #[doc = "Read pending status of interrupt for event KEYSLOT_REVOKED"]
-            #[inline(always)]
-            pub const fn keyslot_revoked(&self) -> bool {
-                let val = (self.0 >> 1usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event KEYSLOT_REVOKED"]
-            #[inline(always)]
-            pub fn set_keyslot_revoked(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-            }
-            #[doc = "Read pending status of interrupt for event KEYSLOT_ERROR"]
-            #[inline(always)]
-            pub const fn keyslot_error(&self) -> bool {
-                let val = (self.0 >> 2usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Read pending status of interrupt for event KEYSLOT_ERROR"]
-            #[inline(always)]
-            pub fn set_keyslot_error(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-            }
-        }
-        impl Default for Intpend {
-            #[inline(always)]
-            fn default() -> Intpend {
-                Intpend(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Select key slot to be read over AHB or pushed over secure APB when TASKS_PUSH_KEYSLOT is started"]
@@ -5390,17 +5138,17 @@ pub mod pdm {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "PDM module enable register"]
@@ -5571,8 +5319,8 @@ pub mod pdm {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event STARTED"]
             #[inline(always)]
             pub const fn started(&self) -> bool {
@@ -5607,10 +5355,10 @@ pub mod pdm {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Number of samples to allocate memory for in EasyDMA mode"]
@@ -5985,17 +5733,17 @@ pub mod power {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Reset reason"]
@@ -6073,8 +5821,8 @@ pub mod power {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event POFWARN"]
             #[inline(always)]
             pub const fn pofwarn(&self) -> bool {
@@ -6109,10 +5857,10 @@ pub mod power {
                 self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Modem domain power status"]
@@ -6472,17 +6220,17 @@ pub mod pwm {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "PWM module enable register"]
@@ -6696,8 +6444,8 @@ pub mod pwm {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event STOPPED"]
             #[inline(always)]
             pub const fn stopped(&self) -> bool {
@@ -6776,10 +6524,10 @@ pub mod pwm {
                 self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Number of playbacks of a loop"]
@@ -7375,27 +7123,27 @@ pub mod rtc {
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Enable or disable event routing"]
         #[inline(always)]
-        pub const fn evten(self) -> crate::common::Reg<regs::Evten, crate::common::RW> {
+        pub const fn evten(self) -> crate::common::Reg<regs::Evt, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0340usize) as _) }
         }
         #[doc = "Enable event routing"]
         #[inline(always)]
-        pub const fn evtenset(self) -> crate::common::Reg<regs::Evtenset, crate::common::RW> {
+        pub const fn evtenset(self) -> crate::common::Reg<regs::Evt, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0344usize) as _) }
         }
         #[doc = "Disable event routing"]
         #[inline(always)]
-        pub const fn evtenclr(self) -> crate::common::Reg<regs::Evtenclr, crate::common::RW> {
+        pub const fn evtenclr(self) -> crate::common::Reg<regs::Evt, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0348usize) as _) }
         }
         #[doc = "Current counter value"]
@@ -7467,8 +7215,8 @@ pub mod rtc {
         #[doc = "Enable or disable event routing"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Evten(pub u32);
-        impl Evten {
+        pub struct Evt(pub u32);
+        impl Evt {
             #[doc = "Enable or disable event routing for event TICK"]
             #[inline(always)]
             pub const fn tick(&self) -> bool {
@@ -7493,216 +7241,31 @@ pub mod rtc {
             }
             #[doc = "Enable or disable event routing for event COMPARE\\[0\\]"]
             #[inline(always)]
-            pub const fn compare0(&self) -> bool {
-                let val = (self.0 >> 16usize) & 0x01;
+            pub const fn compare(&self, n: usize) -> bool {
+                assert!(n < 4usize);
+                let offs = 16usize + n * 1usize;
+                let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
             #[doc = "Enable or disable event routing for event COMPARE\\[0\\]"]
             #[inline(always)]
-            pub fn set_compare0(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-            }
-            #[doc = "Enable or disable event routing for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub const fn compare1(&self) -> bool {
-                let val = (self.0 >> 17usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable event routing for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub fn set_compare1(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
-            }
-            #[doc = "Enable or disable event routing for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub const fn compare2(&self) -> bool {
-                let val = (self.0 >> 18usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable event routing for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub fn set_compare2(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
-            }
-            #[doc = "Enable or disable event routing for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub const fn compare3(&self) -> bool {
-                let val = (self.0 >> 19usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable event routing for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub fn set_compare3(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
+            pub fn set_compare(&mut self, n: usize, val: bool) {
+                assert!(n < 4usize);
+                let offs = 16usize + n * 1usize;
+                self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
         }
-        impl Default for Evten {
+        impl Default for Evt {
             #[inline(always)]
-            fn default() -> Evten {
-                Evten(0)
-            }
-        }
-        #[doc = "Disable event routing"]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Evtenclr(pub u32);
-        impl Evtenclr {
-            #[doc = "Write '1' to disable event routing for event TICK"]
-            #[inline(always)]
-            pub const fn tick(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable event routing for event TICK"]
-            #[inline(always)]
-            pub fn set_tick(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-            #[doc = "Write '1' to disable event routing for event OVRFLW"]
-            #[inline(always)]
-            pub const fn ovrflw(&self) -> bool {
-                let val = (self.0 >> 1usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable event routing for event OVRFLW"]
-            #[inline(always)]
-            pub fn set_ovrflw(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[0\\]"]
-            #[inline(always)]
-            pub const fn compare0(&self) -> bool {
-                let val = (self.0 >> 16usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[0\\]"]
-            #[inline(always)]
-            pub fn set_compare0(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub const fn compare1(&self) -> bool {
-                let val = (self.0 >> 17usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub fn set_compare1(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub const fn compare2(&self) -> bool {
-                let val = (self.0 >> 18usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub fn set_compare2(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub const fn compare3(&self) -> bool {
-                let val = (self.0 >> 19usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable event routing for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub fn set_compare3(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
-            }
-        }
-        impl Default for Evtenclr {
-            #[inline(always)]
-            fn default() -> Evtenclr {
-                Evtenclr(0)
-            }
-        }
-        #[doc = "Enable event routing"]
-        #[repr(transparent)]
-        #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Evtenset(pub u32);
-        impl Evtenset {
-            #[doc = "Write '1' to enable event routing for event TICK"]
-            #[inline(always)]
-            pub const fn tick(&self) -> bool {
-                let val = (self.0 >> 0usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to enable event routing for event TICK"]
-            #[inline(always)]
-            pub fn set_tick(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
-            }
-            #[doc = "Write '1' to enable event routing for event OVRFLW"]
-            #[inline(always)]
-            pub const fn ovrflw(&self) -> bool {
-                let val = (self.0 >> 1usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to enable event routing for event OVRFLW"]
-            #[inline(always)]
-            pub fn set_ovrflw(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[0\\]"]
-            #[inline(always)]
-            pub const fn compare0(&self) -> bool {
-                let val = (self.0 >> 16usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[0\\]"]
-            #[inline(always)]
-            pub fn set_compare0(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub const fn compare1(&self) -> bool {
-                let val = (self.0 >> 17usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub fn set_compare1(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub const fn compare2(&self) -> bool {
-                let val = (self.0 >> 18usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub fn set_compare2(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub const fn compare3(&self) -> bool {
-                let val = (self.0 >> 19usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to enable event routing for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub fn set_compare3(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
-            }
-        }
-        impl Default for Evtenset {
-            #[inline(always)]
-            fn default() -> Evtenset {
-                Evtenset(0)
+            fn default() -> Evt {
+                Evt(0)
             }
         }
         #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Write '1' to disable interrupt for event TICK"]
             #[inline(always)]
             pub const fn tick(&self) -> bool {
@@ -7727,53 +7290,24 @@ pub mod rtc {
             }
             #[doc = "Write '1' to disable interrupt for event COMPARE\\[0\\]"]
             #[inline(always)]
-            pub const fn compare0(&self) -> bool {
-                let val = (self.0 >> 16usize) & 0x01;
+            pub const fn compare(&self, n: usize) -> bool {
+                assert!(n < 4usize);
+                let offs = 16usize + n * 1usize;
+                let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
             #[doc = "Write '1' to disable interrupt for event COMPARE\\[0\\]"]
             #[inline(always)]
-            pub fn set_compare0(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub const fn compare1(&self) -> bool {
-                let val = (self.0 >> 17usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event COMPARE\\[1\\]"]
-            #[inline(always)]
-            pub fn set_compare1(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub const fn compare2(&self) -> bool {
-                let val = (self.0 >> 18usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event COMPARE\\[2\\]"]
-            #[inline(always)]
-            pub fn set_compare2(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
-            }
-            #[doc = "Write '1' to disable interrupt for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub const fn compare3(&self) -> bool {
-                let val = (self.0 >> 19usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Write '1' to disable interrupt for event COMPARE\\[3\\]"]
-            #[inline(always)]
-            pub fn set_compare3(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
+            pub fn set_compare(&mut self, n: usize, val: bool) {
+                assert!(n < 4usize);
+                let offs = 16usize + n * 1usize;
+                self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "12-bit prescaler for counter frequency (32768/(PRESCALER+1)). Must be written when RTC is stopped."]
@@ -8079,17 +7613,17 @@ pub mod saadc {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Status"]
@@ -8271,8 +7805,8 @@ pub mod saadc {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event STARTED"]
             #[inline(always)]
             pub const fn started(&self) -> bool {
@@ -8341,185 +7875,39 @@ pub mod saadc {
             }
             #[doc = "Enable or disable interrupt for event CH0LIMITH"]
             #[inline(always)]
-            pub const fn ch0limith(&self) -> bool {
-                let val = (self.0 >> 6usize) & 0x01;
+            pub const fn chlimith(&self, n: usize) -> bool {
+                assert!(n < 8usize);
+                let offs = 6usize + n * 2usize;
+                let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
             #[doc = "Enable or disable interrupt for event CH0LIMITH"]
             #[inline(always)]
-            pub fn set_ch0limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+            pub fn set_chlimith(&mut self, n: usize, val: bool) {
+                assert!(n < 8usize);
+                let offs = 6usize + n * 2usize;
+                self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
             #[doc = "Enable or disable interrupt for event CH0LIMITL"]
             #[inline(always)]
-            pub const fn ch0limitl(&self) -> bool {
-                let val = (self.0 >> 7usize) & 0x01;
+            pub const fn chlimitl(&self, n: usize) -> bool {
+                assert!(n < 8usize);
+                let offs = 7usize + n * 2usize;
+                let val = (self.0 >> offs) & 0x01;
                 val != 0
             }
             #[doc = "Enable or disable interrupt for event CH0LIMITL"]
             #[inline(always)]
-            pub fn set_ch0limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH1LIMITH"]
-            #[inline(always)]
-            pub const fn ch1limith(&self) -> bool {
-                let val = (self.0 >> 8usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH1LIMITH"]
-            #[inline(always)]
-            pub fn set_ch1limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH1LIMITL"]
-            #[inline(always)]
-            pub const fn ch1limitl(&self) -> bool {
-                let val = (self.0 >> 9usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH1LIMITL"]
-            #[inline(always)]
-            pub fn set_ch1limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH2LIMITH"]
-            #[inline(always)]
-            pub const fn ch2limith(&self) -> bool {
-                let val = (self.0 >> 10usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH2LIMITH"]
-            #[inline(always)]
-            pub fn set_ch2limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH2LIMITL"]
-            #[inline(always)]
-            pub const fn ch2limitl(&self) -> bool {
-                let val = (self.0 >> 11usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH2LIMITL"]
-            #[inline(always)]
-            pub fn set_ch2limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH3LIMITH"]
-            #[inline(always)]
-            pub const fn ch3limith(&self) -> bool {
-                let val = (self.0 >> 12usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH3LIMITH"]
-            #[inline(always)]
-            pub fn set_ch3limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH3LIMITL"]
-            #[inline(always)]
-            pub const fn ch3limitl(&self) -> bool {
-                let val = (self.0 >> 13usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH3LIMITL"]
-            #[inline(always)]
-            pub fn set_ch3limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH4LIMITH"]
-            #[inline(always)]
-            pub const fn ch4limith(&self) -> bool {
-                let val = (self.0 >> 14usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH4LIMITH"]
-            #[inline(always)]
-            pub fn set_ch4limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH4LIMITL"]
-            #[inline(always)]
-            pub const fn ch4limitl(&self) -> bool {
-                let val = (self.0 >> 15usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH4LIMITL"]
-            #[inline(always)]
-            pub fn set_ch4limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH5LIMITH"]
-            #[inline(always)]
-            pub const fn ch5limith(&self) -> bool {
-                let val = (self.0 >> 16usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH5LIMITH"]
-            #[inline(always)]
-            pub fn set_ch5limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH5LIMITL"]
-            #[inline(always)]
-            pub const fn ch5limitl(&self) -> bool {
-                let val = (self.0 >> 17usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH5LIMITL"]
-            #[inline(always)]
-            pub fn set_ch5limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH6LIMITH"]
-            #[inline(always)]
-            pub const fn ch6limith(&self) -> bool {
-                let val = (self.0 >> 18usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH6LIMITH"]
-            #[inline(always)]
-            pub fn set_ch6limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH6LIMITL"]
-            #[inline(always)]
-            pub const fn ch6limitl(&self) -> bool {
-                let val = (self.0 >> 19usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH6LIMITL"]
-            #[inline(always)]
-            pub fn set_ch6limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH7LIMITH"]
-            #[inline(always)]
-            pub const fn ch7limith(&self) -> bool {
-                let val = (self.0 >> 20usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH7LIMITH"]
-            #[inline(always)]
-            pub fn set_ch7limith(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
-            }
-            #[doc = "Enable or disable interrupt for event CH7LIMITL"]
-            #[inline(always)]
-            pub const fn ch7limitl(&self) -> bool {
-                let val = (self.0 >> 21usize) & 0x01;
-                val != 0
-            }
-            #[doc = "Enable or disable interrupt for event CH7LIMITL"]
-            #[inline(always)]
-            pub fn set_ch7limitl(&mut self, val: bool) {
-                self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
+            pub fn set_chlimitl(&mut self, n: usize, val: bool) {
+                assert!(n < 8usize);
+                let offs = 7usize + n * 2usize;
+                self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Description cluster: High/low limits for event monitoring a channel"]
@@ -9500,12 +8888,12 @@ pub mod spim {
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Enable SPIM"]
@@ -9677,8 +9065,8 @@ pub mod spim {
         #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Write '1' to disable interrupt for event STOPPED"]
             #[inline(always)]
             pub const fn stopped(&self) -> bool {
@@ -9735,10 +9123,10 @@ pub mod spim {
                 self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Over-read character. Character clocked out in case an over-read of the TXD buffer."]
@@ -10328,12 +9716,12 @@ pub mod spis {
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Semaphore status register"]
@@ -10514,8 +9902,8 @@ pub mod spis {
         #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Write '1' to disable interrupt for event END"]
             #[inline(always)]
             pub const fn end(&self) -> bool {
@@ -10550,10 +9938,10 @@ pub mod spis {
                 self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Over-read character"]
@@ -11284,17 +10672,17 @@ pub mod spu {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Show implemented features for the current device"]
@@ -12144,8 +11532,8 @@ pub mod spu {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event RAMACCERR"]
             #[inline(always)]
             pub const fn ramaccerr(&self) -> bool {
@@ -12180,10 +11568,10 @@ pub mod spu {
                 self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Description cluster: List capabilities and access permissions for the peripheral with ID n"]
@@ -13087,12 +12475,12 @@ pub mod timer {
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Timer mode selection"]
@@ -13153,8 +12541,8 @@ pub mod timer {
         #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Write '1' to disable interrupt for event COMPARE\\[0\\]"]
             #[inline(always)]
             pub const fn compare(&self, n: usize) -> bool {
@@ -13171,10 +12559,10 @@ pub mod timer {
                 self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Timer mode selection"]
@@ -13591,17 +12979,17 @@ pub mod twim {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Error source"]
@@ -13796,8 +13184,8 @@ pub mod twim {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event STOPPED"]
             #[inline(always)]
             pub const fn stopped(&self) -> bool {
@@ -13876,10 +13264,10 @@ pub mod twim {
                 self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Number of bytes transferred in the last transaction"]
@@ -14461,17 +13849,17 @@ pub mod twis {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Error source"]
@@ -14690,8 +14078,8 @@ pub mod twis {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event STOPPED"]
             #[inline(always)]
             pub const fn stopped(&self) -> bool {
@@ -14759,10 +14147,10 @@ pub mod twis {
                 self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Status register indicating which address had a match"]
@@ -15412,17 +14800,17 @@ pub mod uarte {
         }
         #[doc = "Enable or disable interrupt"]
         #[inline(always)]
-        pub const fn inten(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn inten(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Error source This register is read/write one to clear."]
@@ -15613,8 +15001,8 @@ pub mod uarte {
         #[doc = "Enable or disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Enable or disable interrupt for event CTS"]
             #[inline(always)]
             pub const fn cts(&self) -> bool {
@@ -15737,10 +15125,10 @@ pub mod uarte {
                 self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Number of bytes transferred in the last transaction"]
@@ -16773,12 +16161,12 @@ pub mod wdt {
         }
         #[doc = "Enable interrupt"]
         #[inline(always)]
-        pub const fn intenset(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenset(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
         }
         #[doc = "Disable interrupt"]
         #[inline(always)]
-        pub const fn intenclr(self) -> crate::common::Reg<regs::Inten, crate::common::RW> {
+        pub const fn intenclr(self) -> crate::common::Reg<regs::Int, crate::common::RW> {
             unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
         }
         #[doc = "Run status"]
@@ -16851,8 +16239,8 @@ pub mod wdt {
         #[doc = "Disable interrupt"]
         #[repr(transparent)]
         #[derive(Copy, Clone, Eq, PartialEq)]
-        pub struct Inten(pub u32);
-        impl Inten {
+        pub struct Int(pub u32);
+        impl Int {
             #[doc = "Write '1' to disable interrupt for event TIMEOUT"]
             #[inline(always)]
             pub const fn timeout(&self) -> bool {
@@ -16865,10 +16253,10 @@ pub mod wdt {
                 self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
             }
         }
-        impl Default for Inten {
+        impl Default for Int {
             #[inline(always)]
-            fn default() -> Inten {
-                Inten(0)
+            fn default() -> Int {
+                Int(0)
             }
         }
         #[doc = "Request status"]
