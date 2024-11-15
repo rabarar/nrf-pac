@@ -18,4 +18,3 @@ PROVIDE(SWI0 = DefaultHandler);
 PROVIDE(SWI1 = DefaultHandler);
 PROVIDE(SWI2 = DefaultHandler);
 PROVIDE(SWI3 = DefaultHandler);
-

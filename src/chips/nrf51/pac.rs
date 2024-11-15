@@ -1,16 +1,16 @@
 #![doc = "Peripheral access API (generated using chiptool v0.1.0 (4d62dd5 2024-11-15))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Interrupt {
-    #[doc = "0 - POWER_CLOCK"]
-    POWER_CLOCK = 0,
+    #[doc = "0 - CLOCK_POWER"]
+    CLOCK_POWER = 0,
     #[doc = "1 - RADIO"]
     RADIO = 1,
     #[doc = "2 - UART0"]
     UART0 = 2,
-    #[doc = "3 - SPI0_TWI0"]
-    SPI0_TWI0 = 3,
-    #[doc = "4 - SPI1_TWI1"]
-    SPI1_TWI1 = 4,
+    #[doc = "3 - TWISPI0"]
+    TWISPI0 = 3,
+    #[doc = "4 - TWISPI1"]
+    TWISPI1 = 4,
     #[doc = "6 - GPIOTE"]
     GPIOTE = 6,
     #[doc = "7 - ADC"]
@@ -29,8 +29,8 @@ pub enum Interrupt {
     RNG = 13,
     #[doc = "14 - ECB"]
     ECB = 14,
-    #[doc = "15 - CCM_AAR"]
-    CCM_AAR = 15,
+    #[doc = "15 - AAR_CCM"]
+    AAR_CCM = 15,
     #[doc = "16 - WDT"]
     WDT = 16,
     #[doc = "17 - RTC1"]
@@ -61,11 +61,11 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 #[cfg(feature = "rt")]
 mod _vectors {
     extern "C" {
-        fn POWER_CLOCK();
+        fn CLOCK_POWER();
         fn RADIO();
         fn UART0();
-        fn SPI0_TWI0();
-        fn SPI1_TWI1();
+        fn TWISPI0();
+        fn TWISPI1();
         fn GPIOTE();
         fn ADC();
         fn TIMER0();
@@ -75,7 +75,7 @@ mod _vectors {
         fn TEMP();
         fn RNG();
         fn ECB();
-        fn CCM_AAR();
+        fn AAR_CCM();
         fn WDT();
         fn RTC1();
         fn QDEC();
@@ -95,16 +95,12 @@ mod _vectors {
     #[no_mangle]
     pub static __INTERRUPTS: [Vector; 26] = [
         Vector {
-            _handler: POWER_CLOCK,
+            _handler: CLOCK_POWER,
         },
         Vector { _handler: RADIO },
         Vector { _handler: UART0 },
-        Vector {
-            _handler: SPI0_TWI0,
-        },
-        Vector {
-            _handler: SPI1_TWI1,
-        },
+        Vector { _handler: TWISPI0 },
+        Vector { _handler: TWISPI1 },
         Vector { _reserved: 0 },
         Vector { _handler: GPIOTE },
         Vector { _handler: ADC },
@@ -115,7 +111,7 @@ mod _vectors {
         Vector { _handler: TEMP },
         Vector { _handler: RNG },
         Vector { _handler: ECB },
-        Vector { _handler: CCM_AAR },
+        Vector { _handler: AAR_CCM },
         Vector { _handler: WDT },
         Vector { _handler: RTC1 },
         Vector { _handler: QDEC },

@@ -1,9 +1,9 @@
 PROVIDE(SPU = DefaultHandler);
 PROVIDE(CLOCK_POWER = DefaultHandler);
-PROVIDE(SPIM0_SPIS0_TWIM0_TWIS0_UARTE0 = DefaultHandler);
-PROVIDE(SPIM1_SPIS1_TWIM1_TWIS1_UARTE1 = DefaultHandler);
-PROVIDE(SPIM2_SPIS2_TWIM2_TWIS2_UARTE2 = DefaultHandler);
-PROVIDE(SPIM3_SPIS3_TWIM3_TWIS3_UARTE3 = DefaultHandler);
+PROVIDE(SERIAL0 = DefaultHandler);
+PROVIDE(SERIAL1 = DefaultHandler);
+PROVIDE(SERIAL2 = DefaultHandler);
+PROVIDE(SERIAL3 = DefaultHandler);
 PROVIDE(GPIOTE0 = DefaultHandler);
 PROVIDE(SAADC = DefaultHandler);
 PROVIDE(TIMER0 = DefaultHandler);
@@ -29,4 +29,3 @@ PROVIDE(FPU = DefaultHandler);
 PROVIDE(GPIOTE1 = DefaultHandler);
 PROVIDE(KMU = DefaultHandler);
 PROVIDE(CRYPTOCELL = DefaultHandler);
-

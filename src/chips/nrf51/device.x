@@ -1,8 +1,8 @@
-PROVIDE(POWER_CLOCK = DefaultHandler);
+PROVIDE(CLOCK_POWER = DefaultHandler);
 PROVIDE(RADIO = DefaultHandler);
 PROVIDE(UART0 = DefaultHandler);
-PROVIDE(SPI0_TWI0 = DefaultHandler);
-PROVIDE(SPI1_TWI1 = DefaultHandler);
+PROVIDE(TWISPI0 = DefaultHandler);
+PROVIDE(TWISPI1 = DefaultHandler);
 PROVIDE(GPIOTE = DefaultHandler);
 PROVIDE(ADC = DefaultHandler);
 PROVIDE(TIMER0 = DefaultHandler);
@@ -12,7 +12,7 @@ PROVIDE(RTC0 = DefaultHandler);
 PROVIDE(TEMP = DefaultHandler);
 PROVIDE(RNG = DefaultHandler);
 PROVIDE(ECB = DefaultHandler);
-PROVIDE(CCM_AAR = DefaultHandler);
+PROVIDE(AAR_CCM = DefaultHandler);
 PROVIDE(WDT = DefaultHandler);
 PROVIDE(RTC1 = DefaultHandler);
 PROVIDE(QDEC = DefaultHandler);
@@ -23,4 +23,3 @@ PROVIDE(SWI2 = DefaultHandler);
 PROVIDE(SWI3 = DefaultHandler);
 PROVIDE(SWI4 = DefaultHandler);
 PROVIDE(SWI5 = DefaultHandler);
-

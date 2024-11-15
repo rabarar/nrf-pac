@@ -39,4 +39,3 @@ PROVIDE(USBD = DefaultHandler);
 PROVIDE(USBREGULATOR = DefaultHandler);
 PROVIDE(KMU = DefaultHandler);
 PROVIDE(CRYPTOCELL = DefaultHandler);
-

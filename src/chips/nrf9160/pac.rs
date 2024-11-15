@@ -3,16 +3,16 @@
 pub enum Interrupt {
     #[doc = "3 - SPU"]
     SPU = 3,
-    #[doc = "5 - POWER_CLOCK"]
-    POWER_CLOCK = 5,
-    #[doc = "8 - SPIM0_SPIS0_TWIM0_TWIS0_UARTE0"]
-    SPIM0_SPIS0_TWIM0_TWIS0_UARTE0 = 8,
-    #[doc = "9 - SPIM1_SPIS1_TWIM1_TWIS1_UARTE1"]
-    SPIM1_SPIS1_TWIM1_TWIS1_UARTE1 = 9,
-    #[doc = "10 - SPIM2_SPIS2_TWIM2_TWIS2_UARTE2"]
-    SPIM2_SPIS2_TWIM2_TWIS2_UARTE2 = 10,
-    #[doc = "11 - SPIM3_SPIS3_TWIM3_TWIS3_UARTE3"]
-    SPIM3_SPIS3_TWIM3_TWIS3_UARTE3 = 11,
+    #[doc = "5 - CLOCK_POWER"]
+    CLOCK_POWER = 5,
+    #[doc = "8 - SERIAL0"]
+    SERIAL0 = 8,
+    #[doc = "9 - SERIAL1"]
+    SERIAL1 = 9,
+    #[doc = "10 - SERIAL2"]
+    SERIAL2 = 10,
+    #[doc = "11 - SERIAL3"]
+    SERIAL3 = 11,
     #[doc = "13 - GPIOTE0"]
     GPIOTE0 = 13,
     #[doc = "14 - SAADC"]
@@ -74,11 +74,11 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 mod _vectors {
     extern "C" {
         fn SPU();
-        fn POWER_CLOCK();
-        fn SPIM0_SPIS0_TWIM0_TWIS0_UARTE0();
-        fn SPIM1_SPIS1_TWIM1_TWIS1_UARTE1();
-        fn SPIM2_SPIS2_TWIM2_TWIS2_UARTE2();
-        fn SPIM3_SPIS3_TWIM3_TWIS3_UARTE3();
+        fn CLOCK_POWER();
+        fn SERIAL0();
+        fn SERIAL1();
+        fn SERIAL2();
+        fn SERIAL3();
         fn GPIOTE0();
         fn SAADC();
         fn TIMER0();
@@ -118,22 +118,14 @@ mod _vectors {
         Vector { _handler: SPU },
         Vector { _reserved: 0 },
         Vector {
-            _handler: POWER_CLOCK,
+            _handler: CLOCK_POWER,
         },
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
-        Vector {
-            _handler: SPIM0_SPIS0_TWIM0_TWIS0_UARTE0,
-        },
-        Vector {
-            _handler: SPIM1_SPIS1_TWIM1_TWIS1_UARTE1,
-        },
-        Vector {
-            _handler: SPIM2_SPIS2_TWIM2_TWIS2_UARTE2,
-        },
-        Vector {
-            _handler: SPIM3_SPIS3_TWIM3_TWIS3_UARTE3,
-        },
+        Vector { _handler: SERIAL0 },
+        Vector { _handler: SERIAL1 },
+        Vector { _handler: SERIAL2 },
+        Vector { _handler: SERIAL3 },
         Vector { _reserved: 0 },
         Vector { _handler: GPIOTE0 },
         Vector { _handler: SAADC },

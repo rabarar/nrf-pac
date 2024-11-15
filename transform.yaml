@@ -34,44 +34,101 @@ transforms:
       to: shared::regs::Publish
       check: NoCheck
 
-# ======= Fix inconsistent interrupt naming in nrf52840.
+# ======= Fix inconsistent interrupt naming
   - !RenameInterrupts
-      from: CLOCK_POWER
-      to: POWER_CLOCK
+      from: POWER_CLOCK
+      to: CLOCK_POWER
   - !RenameInterrupts
       from: UART0_UARTE0
-      to: UARTE0_UART0
+      to: UARTE0
+  - !RenameInterrupts
+      from: UARTE0_UART0
+      to: UARTE0
+  - !RenameInterrupts
+      from: SPI0_TWI0
+      to: TWISPI0
+  - !RenameInterrupts
+      from: SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0
+      to: TWISPI0
+  - !RenameInterrupts
+      from: TWIM0_TWIS0_TWI0_SPIM0_SPIS0_SPI0
+      to: TWISPI0
   - !RenameInterrupts
       from: SPI0_SPIM0_SPIS0_TWI0_TWIM0_TWIS0
-      to: SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0
+      to: TWISPI0
+  - !RenameInterrupts
+      from: SPI1_TWI1
+      to: TWISPI1
+  - !RenameInterrupts
+      from: SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1
+      to: TWISPI1
   - !RenameInterrupts
       from: SPI1_SPIM1_SPIS1_TWI1_TWIM1_TWIS1
-      to: SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1
+      to: TWISPI1
   - !RenameInterrupts
-      from: AAR_CCM
-      to: CCM_AAR
+      from: SPIM1_SPIS1_SPI1
+      to: SPI1
   - !RenameInterrupts
-      from: EGU0_SWI0
-      to: SWI0_EGU0
+      from: TWIM0_TWIS0_TWI0_SPIM1_SPIS1_SPI1
+      to: TWI0_SPI1
   - !RenameInterrupts
-      from: EGU1_SWI1
-      to: SWI1_EGU1
+      from: CCM_AAR
+      to: AAR_CCM
   - !RenameInterrupts
-      from: EGU2_SWI2
-      to: SWI2_EGU2
+      from: SWI0_EGU0
+      to: EGU0_SWI0
   - !RenameInterrupts
-      from: EGU3_SWI3
-      to: SWI3_EGU3
+      from: SWI1_EGU1
+      to: EGU1_SWI1
   - !RenameInterrupts
-      from: EGU4_SWI4
-      to: SWI4_EGU4
+      from: SWI2_EGU2
+      to: EGU2_SWI2
   - !RenameInterrupts
-      from: EGU5_SWI5
-      to: SWI5_EGU5
+      from: SWI3_EGU3
+      to: EGU3_SWI3
+  - !RenameInterrupts
+      from: SWI4_EGU4
+      to: EGU4_SWI4
+  - !RenameInterrupts
+      from: SWI5_EGU5
+      to: EGU5_SWI5
+  - !RenameInterrupts
+      from: TWIM0_TWIS0_TWI0
+      to: TWI0
+  - !RenameInterrupts
+      from: SPIM0_SPIS0_SPI0
+      to: SPI0
   - !RenameInterrupts
       from: SPI2_SPIM2_SPIS2
-      to: SPIM2_SPIS2_SPI2
-    
+      to: SPI2
+  - !RenameInterrupts
+      from: SPIM2_SPIS2_SPI2
+      to: SPI2
+  # nrf91
+  - !RenameInterrupts
+      from: SPIM0_SPIS0_TWIM0_TWIS0_UARTE0
+      to: SERIAL0
+  - !RenameInterrupts
+      from: SPIM1_SPIS1_TWIM1_TWIS1_UARTE1
+      to: SERIAL1
+  - !RenameInterrupts
+      from: SPIM2_SPIS2_TWIM2_TWIS2_UARTE2
+      to: SERIAL2
+  - !RenameInterrupts
+      from: SPIM3_SPIS3_TWIM3_TWIS3_UARTE3
+      to: SERIAL3
+  - !RenameInterrupts
+      from: UARTE0_SPIM0_SPIS0_TWIM0_TWIS0
+      to: SERIAL0
+  - !RenameInterrupts
+      from: UARTE1_SPIM1_SPIS1_TWIM1_TWIS1
+      to: SERIAL1
+  - !RenameInterrupts
+      from: UARTE2_SPIM2_SPIS2_TWIM2_TWIS2
+      to: SERIAL2
+  - !RenameInterrupts
+      from: UARTE3_SPIM3_SPIS3_TWIM3_TWIS3
+      to: SERIAL3
 
 # ======= "Interrupt enabled" enums
   - !DeleteEnums

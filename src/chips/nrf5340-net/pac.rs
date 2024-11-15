@@ -1,8 +1,8 @@
 #![doc = "Peripheral access API (generated using chiptool v0.1.0 (4d62dd5 2024-11-15))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Interrupt {
-    #[doc = "5 - POWER_CLOCK"]
-    POWER_CLOCK = 5,
+    #[doc = "5 - CLOCK_POWER"]
+    CLOCK_POWER = 5,
     #[doc = "8 - RADIO"]
     RADIO = 8,
     #[doc = "9 - RNG"]
@@ -15,8 +15,8 @@ pub enum Interrupt {
     TIMER0 = 12,
     #[doc = "13 - ECB"]
     ECB = 13,
-    #[doc = "14 - CCM_AAR"]
-    CCM_AAR = 14,
+    #[doc = "14 - AAR_CCM"]
+    AAR_CCM = 14,
     #[doc = "16 - TEMP"]
     TEMP = 16,
     #[doc = "17 - RTC0"]
@@ -51,14 +51,14 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 #[cfg(feature = "rt")]
 mod _vectors {
     extern "C" {
-        fn POWER_CLOCK();
+        fn CLOCK_POWER();
         fn RADIO();
         fn RNG();
         fn GPIOTE();
         fn WDT();
         fn TIMER0();
         fn ECB();
-        fn CCM_AAR();
+        fn AAR_CCM();
         fn TEMP();
         fn RTC0();
         fn IPC();
@@ -85,7 +85,7 @@ mod _vectors {
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
         Vector {
-            _handler: POWER_CLOCK,
+            _handler: CLOCK_POWER,
         },
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
@@ -95,7 +95,7 @@ mod _vectors {
         Vector { _handler: WDT },
         Vector { _handler: TIMER0 },
         Vector { _handler: ECB },
-        Vector { _handler: CCM_AAR },
+        Vector { _handler: AAR_CCM },
         Vector { _reserved: 0 },
         Vector { _handler: TEMP },
         Vector { _handler: RTC0 },

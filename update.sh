@@ -11,7 +11,7 @@ if ! command -v chiptool &> /dev/null; then
     exit 1
 fi
 
-rm -f src/chips/*/*.rs
+rm -rf src/chips
 
 export RUST_BACKTRACE=1
 #export RUST_LOG=info
@@ -24,6 +24,7 @@ for chip in $(ls svd); do
 
     mkdir -p src/chips/$chip
     mv lib.rs src/chips/$chip/pac.rs
+    mv device.x src/chips/$chip/device.x
 done
 
 cargo fmt

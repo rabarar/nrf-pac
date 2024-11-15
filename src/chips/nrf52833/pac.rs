@@ -1,16 +1,16 @@
 #![doc = "Peripheral access API (generated using chiptool v0.1.0 (4d62dd5 2024-11-15))"]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Interrupt {
-    #[doc = "0 - POWER_CLOCK"]
-    POWER_CLOCK = 0,
+    #[doc = "0 - CLOCK_POWER"]
+    CLOCK_POWER = 0,
     #[doc = "1 - RADIO"]
     RADIO = 1,
-    #[doc = "2 - UARTE0_UART0"]
-    UARTE0_UART0 = 2,
-    #[doc = "3 - SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0"]
-    SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0 = 3,
-    #[doc = "4 - SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1"]
-    SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1 = 4,
+    #[doc = "2 - UARTE0"]
+    UARTE0 = 2,
+    #[doc = "3 - TWISPI0"]
+    TWISPI0 = 3,
+    #[doc = "4 - TWISPI1"]
+    TWISPI1 = 4,
     #[doc = "5 - NFCT"]
     NFCT = 5,
     #[doc = "6 - GPIOTE"]
@@ -31,8 +31,8 @@ pub enum Interrupt {
     RNG = 13,
     #[doc = "14 - ECB"]
     ECB = 14,
-    #[doc = "15 - CCM_AAR"]
-    CCM_AAR = 15,
+    #[doc = "15 - AAR_CCM"]
+    AAR_CCM = 15,
     #[doc = "16 - WDT"]
     WDT = 16,
     #[doc = "17 - RTC1"]
@@ -41,18 +41,18 @@ pub enum Interrupt {
     QDEC = 18,
     #[doc = "19 - COMP_LPCOMP"]
     COMP_LPCOMP = 19,
-    #[doc = "20 - SWI0_EGU0"]
-    SWI0_EGU0 = 20,
-    #[doc = "21 - SWI1_EGU1"]
-    SWI1_EGU1 = 21,
-    #[doc = "22 - SWI2_EGU2"]
-    SWI2_EGU2 = 22,
-    #[doc = "23 - SWI3_EGU3"]
-    SWI3_EGU3 = 23,
-    #[doc = "24 - SWI4_EGU4"]
-    SWI4_EGU4 = 24,
-    #[doc = "25 - SWI5_EGU5"]
-    SWI5_EGU5 = 25,
+    #[doc = "20 - EGU0_SWI0"]
+    EGU0_SWI0 = 20,
+    #[doc = "21 - EGU1_SWI1"]
+    EGU1_SWI1 = 21,
+    #[doc = "22 - EGU2_SWI2"]
+    EGU2_SWI2 = 22,
+    #[doc = "23 - EGU3_SWI3"]
+    EGU3_SWI3 = 23,
+    #[doc = "24 - EGU4_SWI4"]
+    EGU4_SWI4 = 24,
+    #[doc = "25 - EGU5_SWI5"]
+    EGU5_SWI5 = 25,
     #[doc = "26 - TIMER3"]
     TIMER3 = 26,
     #[doc = "27 - TIMER4"]
@@ -67,8 +67,8 @@ pub enum Interrupt {
     PWM1 = 33,
     #[doc = "34 - PWM2"]
     PWM2 = 34,
-    #[doc = "35 - SPIM2_SPIS2_SPI2"]
-    SPIM2_SPIS2_SPI2 = 35,
+    #[doc = "35 - SPI2"]
+    SPI2 = 35,
     #[doc = "36 - RTC2"]
     RTC2 = 36,
     #[doc = "37 - I2S"]
@@ -93,11 +93,11 @@ unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
 #[cfg(feature = "rt")]
 mod _vectors {
     extern "C" {
-        fn POWER_CLOCK();
+        fn CLOCK_POWER();
         fn RADIO();
-        fn UARTE0_UART0();
-        fn SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0();
-        fn SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1();
+        fn UARTE0();
+        fn TWISPI0();
+        fn TWISPI1();
         fn NFCT();
         fn GPIOTE();
         fn SAADC();
@@ -108,17 +108,17 @@ mod _vectors {
         fn TEMP();
         fn RNG();
         fn ECB();
-        fn CCM_AAR();
+        fn AAR_CCM();
         fn WDT();
         fn RTC1();
         fn QDEC();
         fn COMP_LPCOMP();
-        fn SWI0_EGU0();
-        fn SWI1_EGU1();
-        fn SWI2_EGU2();
-        fn SWI3_EGU3();
-        fn SWI4_EGU4();
-        fn SWI5_EGU5();
+        fn EGU0_SWI0();
+        fn EGU1_SWI1();
+        fn EGU2_SWI2();
+        fn EGU3_SWI3();
+        fn EGU4_SWI4();
+        fn EGU5_SWI5();
         fn TIMER3();
         fn TIMER4();
         fn PWM0();
@@ -126,7 +126,7 @@ mod _vectors {
         fn MWU();
         fn PWM1();
         fn PWM2();
-        fn SPIM2_SPIS2_SPI2();
+        fn SPI2();
         fn RTC2();
         fn I2S();
         fn FPU();
@@ -143,18 +143,12 @@ mod _vectors {
     #[no_mangle]
     pub static __INTERRUPTS: [Vector; 48] = [
         Vector {
-            _handler: POWER_CLOCK,
+            _handler: CLOCK_POWER,
         },
         Vector { _handler: RADIO },
-        Vector {
-            _handler: UARTE0_UART0,
-        },
-        Vector {
-            _handler: SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0,
-        },
-        Vector {
-            _handler: SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1,
-        },
+        Vector { _handler: UARTE0 },
+        Vector { _handler: TWISPI0 },
+        Vector { _handler: TWISPI1 },
         Vector { _handler: NFCT },
         Vector { _handler: GPIOTE },
         Vector { _handler: SAADC },
@@ -165,7 +159,7 @@ mod _vectors {
         Vector { _handler: TEMP },
         Vector { _handler: RNG },
         Vector { _handler: ECB },
-        Vector { _handler: CCM_AAR },
+        Vector { _handler: AAR_CCM },
         Vector { _handler: WDT },
         Vector { _handler: RTC1 },
         Vector { _handler: QDEC },
@@ -173,22 +167,22 @@ mod _vectors {
             _handler: COMP_LPCOMP,
         },
         Vector {
-            _handler: SWI0_EGU0,
+            _handler: EGU0_SWI0,
         },
         Vector {
-            _handler: SWI1_EGU1,
+            _handler: EGU1_SWI1,
         },
         Vector {
-            _handler: SWI2_EGU2,
+            _handler: EGU2_SWI2,
         },
         Vector {
-            _handler: SWI3_EGU3,
+            _handler: EGU3_SWI3,
         },
         Vector {
-            _handler: SWI4_EGU4,
+            _handler: EGU4_SWI4,
         },
         Vector {
-            _handler: SWI5_EGU5,
+            _handler: EGU5_SWI5,
         },
         Vector { _handler: TIMER3 },
         Vector { _handler: TIMER4 },
@@ -199,9 +193,7 @@ mod _vectors {
         Vector { _handler: MWU },
         Vector { _handler: PWM1 },
         Vector { _handler: PWM2 },
-        Vector {
-            _handler: SPIM2_SPIS2_SPI2,
-        },
+        Vector { _handler: SPI2 },
         Vector { _handler: RTC2 },
         Vector { _handler: I2S },
         Vector { _handler: FPU },

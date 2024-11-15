@@ -1,4 +1,3 @@
-
 PROVIDE(VPRCLIC_0 = DefaultHandler);
 PROVIDE(VPRCLIC_1 = DefaultHandler);
 PROVIDE(VPRCLIC_2 = DefaultHandler);
@@ -83,4 +82,4 @@ PROVIDE(WDT30 = DefaultHandler);
 PROVIDE(WDT31 = DefaultHandler);
 PROVIDE(GPIOTE30_0 = DefaultHandler);
 PROVIDE(GPIOTE30_1 = DefaultHandler);
-PROVIDE(POWER_CLOCK = DefaultHandler);
+PROVIDE(CLOCK_POWER = DefaultHandler);

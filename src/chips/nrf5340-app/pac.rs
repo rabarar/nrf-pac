@@ -7,8 +7,8 @@ pub enum Interrupt {
     CACHE = 1,
     #[doc = "3 - SPU"]
     SPU = 3,
-    #[doc = "5 - POWER_CLOCK"]
-    POWER_CLOCK = 5,
+    #[doc = "5 - CLOCK_POWER"]
+    CLOCK_POWER = 5,
     #[doc = "8 - SERIAL0"]
     SERIAL0 = 8,
     #[doc = "9 - SERIAL1"]
@@ -96,7 +96,7 @@ mod _vectors {
         fn FPU();
         fn CACHE();
         fn SPU();
-        fn POWER_CLOCK();
+        fn CLOCK_POWER();
         fn SERIAL0();
         fn SERIAL1();
         fn SPIM4();
@@ -148,7 +148,7 @@ mod _vectors {
         Vector { _handler: SPU },
         Vector { _reserved: 0 },
         Vector {
-            _handler: POWER_CLOCK,
+            _handler: CLOCK_POWER,
         },
         Vector { _reserved: 0 },
         Vector { _reserved: 0 },
