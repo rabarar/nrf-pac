@@ -2,6 +2,10 @@
 name = "nrf-pac"
 version = "0.1.0"
 edition = "2021"
+license = "BSD-3-Clause"
+keywords = ["no-std", "arm", "cortex-m", "nrf", "peripherals"]
+repository = "https://github.com/embassy-rs/nrf-pac"
+documentation = "https://docs.embassy.dev/nrf-pac"
 
 [dependencies]
 cortex-m = "0.7.1"
