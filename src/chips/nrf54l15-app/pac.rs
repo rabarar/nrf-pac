@@ -3099,13 +3099,13 @@ pub mod clock {
         impl LfclkStat {
             #[doc = "Value of LFCLK.SRCCOPY register when LFCLKSTARTED event was triggered"]
             #[inline(always)]
-            pub const fn src(&self) -> super::vals::StatSrc {
+            pub const fn src(&self) -> super::vals::Lfclksrc {
                 let val = (self.0 >> 0usize) & 0x03;
-                super::vals::StatSrc::from_bits(val as u8)
+                super::vals::Lfclksrc::from_bits(val as u8)
             }
             #[doc = "Value of LFCLK.SRCCOPY register when LFCLKSTARTED event was triggered"]
             #[inline(always)]
-            pub fn set_src(&mut self, val: super::vals::StatSrc) {
+            pub fn set_src(&mut self, val: super::vals::Lfclksrc) {
                 self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
             }
             #[doc = "ALWAYSRUN activated"]
@@ -3190,13 +3190,13 @@ pub mod clock {
         impl Src {
             #[doc = "Select which LFCLK source is started by the LFCLKSTART task"]
             #[inline(always)]
-            pub const fn src(&self) -> super::vals::SrcSrc {
+            pub const fn src(&self) -> super::vals::Lfclksrc {
                 let val = (self.0 >> 0usize) & 0x03;
-                super::vals::SrcSrc::from_bits(val as u8)
+                super::vals::Lfclksrc::from_bits(val as u8)
             }
             #[doc = "Select which LFCLK source is started by the LFCLKSTART task"]
             #[inline(always)]
-            pub fn set_src(&mut self, val: super::vals::SrcSrc) {
+            pub fn set_src(&mut self, val: super::vals::Lfclksrc) {
                 self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
             }
         }
@@ -3213,13 +3213,13 @@ pub mod clock {
         impl Srccopy {
             #[doc = "Value of LFCLK.SRC register when LFCLKSTART task was triggered"]
             #[inline(always)]
-            pub const fn src(&self) -> super::vals::SrccopySrc {
+            pub const fn src(&self) -> super::vals::Lfclksrc {
                 let val = (self.0 >> 0usize) & 0x03;
-                super::vals::SrccopySrc::from_bits(val as u8)
+                super::vals::Lfclksrc::from_bits(val as u8)
             }
             #[doc = "Value of LFCLK.SRC register when LFCLKSTART task was triggered"]
             #[inline(always)]
-            pub fn set_src(&mut self, val: super::vals::SrccopySrc) {
+            pub fn set_src(&mut self, val: super::vals::Lfclksrc) {
                 self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u32) & 0x03) << 0usize);
             }
         }
@@ -3279,7 +3279,7 @@ pub mod clock {
     pub mod vals {
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum SrcSrc {
+        pub enum Lfclksrc {
             #[doc = "32.768 kHz RC oscillator"]
             LFRC = 0x0,
             #[doc = "32.768 kHz crystal oscillator"]
@@ -3288,9 +3288,9 @@ pub mod clock {
             LFSYNT = 0x02,
             _RESERVED_3 = 0x03,
         }
-        impl SrcSrc {
+        impl Lfclksrc {
             #[inline(always)]
-            pub const fn from_bits(val: u8) -> SrcSrc {
+            pub const fn from_bits(val: u8) -> Lfclksrc {
                 unsafe { core::mem::transmute(val & 0x03) }
             }
             #[inline(always)]
@@ -3298,82 +3298,16 @@ pub mod clock {
                 unsafe { core::mem::transmute(self) }
             }
         }
-        impl From<u8> for SrcSrc {
+        impl From<u8> for Lfclksrc {
             #[inline(always)]
-            fn from(val: u8) -> SrcSrc {
-                SrcSrc::from_bits(val)
+            fn from(val: u8) -> Lfclksrc {
+                Lfclksrc::from_bits(val)
             }
         }
-        impl From<SrcSrc> for u8 {
+        impl From<Lfclksrc> for u8 {
             #[inline(always)]
-            fn from(val: SrcSrc) -> u8 {
-                SrcSrc::to_bits(val)
-            }
-        }
-        #[repr(u8)]
-        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum SrccopySrc {
-            #[doc = "32.768 kHz RC oscillator"]
-            LFRC = 0x0,
-            #[doc = "32.768 kHz crystal oscillator"]
-            LFXO = 0x01,
-            #[doc = "32.768 kHz synthesized from HFCLK"]
-            LFSYNT = 0x02,
-            _RESERVED_3 = 0x03,
-        }
-        impl SrccopySrc {
-            #[inline(always)]
-            pub const fn from_bits(val: u8) -> SrccopySrc {
-                unsafe { core::mem::transmute(val & 0x03) }
-            }
-            #[inline(always)]
-            pub const fn to_bits(self) -> u8 {
-                unsafe { core::mem::transmute(self) }
-            }
-        }
-        impl From<u8> for SrccopySrc {
-            #[inline(always)]
-            fn from(val: u8) -> SrccopySrc {
-                SrccopySrc::from_bits(val)
-            }
-        }
-        impl From<SrccopySrc> for u8 {
-            #[inline(always)]
-            fn from(val: SrccopySrc) -> u8 {
-                SrccopySrc::to_bits(val)
-            }
-        }
-        #[repr(u8)]
-        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum StatSrc {
-            #[doc = "32.768 kHz RC oscillator"]
-            LFRC = 0x0,
-            #[doc = "32.768 kHz crystal oscillator"]
-            LFXO = 0x01,
-            #[doc = "32.768 kHz synthesized from HFCLK"]
-            LFSYNT = 0x02,
-            _RESERVED_3 = 0x03,
-        }
-        impl StatSrc {
-            #[inline(always)]
-            pub const fn from_bits(val: u8) -> StatSrc {
-                unsafe { core::mem::transmute(val & 0x03) }
-            }
-            #[inline(always)]
-            pub const fn to_bits(self) -> u8 {
-                unsafe { core::mem::transmute(self) }
-            }
-        }
-        impl From<u8> for StatSrc {
-            #[inline(always)]
-            fn from(val: u8) -> StatSrc {
-                StatSrc::from_bits(val)
-            }
-        }
-        impl From<StatSrc> for u8 {
-            #[inline(always)]
-            fn from(val: StatSrc) -> u8 {
-                StatSrc::to_bits(val)
+            fn from(val: Lfclksrc) -> u8 {
+                Lfclksrc::to_bits(val)
             }
         }
     }
@@ -14653,24 +14587,24 @@ pub mod gpio {
             }
             #[doc = "Drive configuration for '0'"]
             #[inline(always)]
-            pub const fn drive0(&self) -> super::vals::Drive0 {
+            pub const fn drive0(&self) -> super::vals::Drive {
                 let val = (self.0 >> 8usize) & 0x03;
-                super::vals::Drive0::from_bits(val as u8)
+                super::vals::Drive::from_bits(val as u8)
             }
             #[doc = "Drive configuration for '0'"]
             #[inline(always)]
-            pub fn set_drive0(&mut self, val: super::vals::Drive0) {
+            pub fn set_drive0(&mut self, val: super::vals::Drive) {
                 self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
             }
             #[doc = "Drive configuration for '1'"]
             #[inline(always)]
-            pub const fn drive1(&self) -> super::vals::Drive1 {
+            pub const fn drive1(&self) -> super::vals::Drive {
                 let val = (self.0 >> 10usize) & 0x03;
-                super::vals::Drive1::from_bits(val as u8)
+                super::vals::Drive::from_bits(val as u8)
             }
             #[doc = "Drive configuration for '1'"]
             #[inline(always)]
-            pub fn set_drive1(&mut self, val: super::vals::Drive1) {
+            pub fn set_drive1(&mut self, val: super::vals::Drive) {
                 self.0 =
                     (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
             }
@@ -14806,19 +14740,19 @@ pub mod gpio {
         }
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum Drive0 {
+        pub enum Drive {
             #[doc = "Standard '0'"]
-            S0 = 0x0,
+            S = 0x0,
             #[doc = "High drive '0'"]
-            H0 = 0x01,
+            H = 0x01,
             #[doc = "Disconnect '0'(normally used for wired-or connections)"]
-            D0 = 0x02,
+            D = 0x02,
             #[doc = "Extra high drive '0'"]
-            E0 = 0x03,
+            E = 0x03,
         }
-        impl Drive0 {
+        impl Drive {
             #[inline(always)]
-            pub const fn from_bits(val: u8) -> Drive0 {
+            pub const fn from_bits(val: u8) -> Drive {
                 unsafe { core::mem::transmute(val & 0x03) }
             }
             #[inline(always)]
@@ -14826,50 +14760,16 @@ pub mod gpio {
                 unsafe { core::mem::transmute(self) }
             }
         }
-        impl From<u8> for Drive0 {
+        impl From<u8> for Drive {
             #[inline(always)]
-            fn from(val: u8) -> Drive0 {
-                Drive0::from_bits(val)
+            fn from(val: u8) -> Drive {
+                Drive::from_bits(val)
             }
         }
-        impl From<Drive0> for u8 {
+        impl From<Drive> for u8 {
             #[inline(always)]
-            fn from(val: Drive0) -> u8 {
-                Drive0::to_bits(val)
-            }
-        }
-        #[repr(u8)]
-        #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum Drive1 {
-            #[doc = "Standard '1'"]
-            S1 = 0x0,
-            #[doc = "High drive '1'"]
-            H1 = 0x01,
-            #[doc = "Disconnect '1'(normally used for wired-or connections)"]
-            D1 = 0x02,
-            #[doc = "Extra high drive '1'"]
-            E1 = 0x03,
-        }
-        impl Drive1 {
-            #[inline(always)]
-            pub const fn from_bits(val: u8) -> Drive1 {
-                unsafe { core::mem::transmute(val & 0x03) }
-            }
-            #[inline(always)]
-            pub const fn to_bits(self) -> u8 {
-                unsafe { core::mem::transmute(self) }
-            }
-        }
-        impl From<u8> for Drive1 {
-            #[inline(always)]
-            fn from(val: u8) -> Drive1 {
-                Drive1::from_bits(val)
-            }
-        }
-        impl From<Drive1> for u8 {
-            #[inline(always)]
-            fn from(val: Drive1) -> u8 {
-                Drive1::to_bits(val)
+            fn from(val: Drive) -> u8 {
+                Drive::to_bits(val)
             }
         }
         #[repr(u8)]
@@ -35025,13 +34925,13 @@ pub mod spim {
         impl Enable {
             #[doc = "Enable or disable SPIM"]
             #[inline(always)]
-            pub const fn enable(&self) -> super::vals::EnableEnable {
+            pub const fn enable(&self) -> super::vals::Enable {
                 let val = (self.0 >> 0usize) & 0x0f;
-                super::vals::EnableEnable::from_bits(val as u8)
+                super::vals::Enable::from_bits(val as u8)
             }
             #[doc = "Enable or disable SPIM"]
             #[inline(always)]
-            pub fn set_enable(&mut self, val: super::vals::EnableEnable) {
+            pub fn set_enable(&mut self, val: super::vals::Enable) {
                 self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
             }
         }
@@ -35770,7 +35670,7 @@ pub mod spim {
         }
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum EnableEnable {
+        pub enum Enable {
             #[doc = "Disable SPIM"]
             DISABLED = 0x0,
             _RESERVED_1 = 0x01,
@@ -35790,9 +35690,9 @@ pub mod spim {
             _RESERVED_e = 0x0e,
             _RESERVED_f = 0x0f,
         }
-        impl EnableEnable {
+        impl Enable {
             #[inline(always)]
-            pub const fn from_bits(val: u8) -> EnableEnable {
+            pub const fn from_bits(val: u8) -> Enable {
                 unsafe { core::mem::transmute(val & 0x0f) }
             }
             #[inline(always)]
@@ -35800,16 +35700,16 @@ pub mod spim {
                 unsafe { core::mem::transmute(self) }
             }
         }
-        impl From<u8> for EnableEnable {
+        impl From<u8> for Enable {
             #[inline(always)]
-            fn from(val: u8) -> EnableEnable {
-                EnableEnable::from_bits(val)
+            fn from(val: u8) -> Enable {
+                Enable::from_bits(val)
             }
         }
-        impl From<EnableEnable> for u8 {
+        impl From<Enable> for u8 {
             #[inline(always)]
-            fn from(val: EnableEnable) -> u8 {
-                EnableEnable::to_bits(val)
+            fn from(val: Enable) -> u8 {
+                Enable::to_bits(val)
             }
         }
         #[repr(u8)]
@@ -36714,13 +36614,13 @@ pub mod spis {
         impl Enable {
             #[doc = "Enable or disable SPI slave"]
             #[inline(always)]
-            pub const fn enable(&self) -> super::vals::EnableEnable {
+            pub const fn enable(&self) -> super::vals::Enable {
                 let val = (self.0 >> 0usize) & 0x0f;
-                super::vals::EnableEnable::from_bits(val as u8)
+                super::vals::Enable::from_bits(val as u8)
             }
             #[doc = "Enable or disable SPI slave"]
             #[inline(always)]
-            pub fn set_enable(&mut self, val: super::vals::EnableEnable) {
+            pub fn set_enable(&mut self, val: super::vals::Enable) {
                 self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
             }
         }
@@ -37383,7 +37283,7 @@ pub mod spis {
         }
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum EnableEnable {
+        pub enum Enable {
             #[doc = "Disable SPI slave"]
             DISABLED = 0x0,
             _RESERVED_1 = 0x01,
@@ -37403,9 +37303,9 @@ pub mod spis {
             _RESERVED_e = 0x0e,
             _RESERVED_f = 0x0f,
         }
-        impl EnableEnable {
+        impl Enable {
             #[inline(always)]
-            pub const fn from_bits(val: u8) -> EnableEnable {
+            pub const fn from_bits(val: u8) -> Enable {
                 unsafe { core::mem::transmute(val & 0x0f) }
             }
             #[inline(always)]
@@ -37413,16 +37313,16 @@ pub mod spis {
                 unsafe { core::mem::transmute(self) }
             }
         }
-        impl From<u8> for EnableEnable {
+        impl From<u8> for Enable {
             #[inline(always)]
-            fn from(val: u8) -> EnableEnable {
-                EnableEnable::from_bits(val)
+            fn from(val: u8) -> Enable {
+                Enable::from_bits(val)
             }
         }
-        impl From<EnableEnable> for u8 {
+        impl From<Enable> for u8 {
             #[inline(always)]
-            fn from(val: EnableEnable) -> u8 {
-                EnableEnable::to_bits(val)
+            fn from(val: Enable) -> u8 {
+                Enable::to_bits(val)
             }
         }
         #[repr(u8)]
@@ -46925,13 +46825,13 @@ pub mod twim {
         impl Enable {
             #[doc = "Enable or disable TWIM"]
             #[inline(always)]
-            pub const fn enable(&self) -> super::vals::EnableEnable {
+            pub const fn enable(&self) -> super::vals::Enable {
                 let val = (self.0 >> 0usize) & 0x0f;
-                super::vals::EnableEnable::from_bits(val as u8)
+                super::vals::Enable::from_bits(val as u8)
             }
             #[doc = "Enable or disable TWIM"]
             #[inline(always)]
-            pub fn set_enable(&mut self, val: super::vals::EnableEnable) {
+            pub fn set_enable(&mut self, val: super::vals::Enable) {
                 self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
             }
         }
@@ -47480,7 +47380,7 @@ pub mod twim {
     pub mod vals {
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum EnableEnable {
+        pub enum Enable {
             #[doc = "Disable TWIM"]
             DISABLED = 0x0,
             _RESERVED_1 = 0x01,
@@ -47500,9 +47400,9 @@ pub mod twim {
             _RESERVED_e = 0x0e,
             _RESERVED_f = 0x0f,
         }
-        impl EnableEnable {
+        impl Enable {
             #[inline(always)]
-            pub const fn from_bits(val: u8) -> EnableEnable {
+            pub const fn from_bits(val: u8) -> Enable {
                 unsafe { core::mem::transmute(val & 0x0f) }
             }
             #[inline(always)]
@@ -47510,16 +47410,16 @@ pub mod twim {
                 unsafe { core::mem::transmute(self) }
             }
         }
-        impl From<u8> for EnableEnable {
+        impl From<u8> for Enable {
             #[inline(always)]
-            fn from(val: u8) -> EnableEnable {
-                EnableEnable::from_bits(val)
+            fn from(val: u8) -> Enable {
+                Enable::from_bits(val)
             }
         }
-        impl From<EnableEnable> for u8 {
+        impl From<Enable> for u8 {
             #[inline(always)]
-            fn from(val: EnableEnable) -> u8 {
-                EnableEnable::to_bits(val)
+            fn from(val: Enable) -> u8 {
+                Enable::to_bits(val)
             }
         }
         #[repr(transparent)]
@@ -48408,13 +48308,13 @@ pub mod twis {
         impl Enable {
             #[doc = "Enable or disable TWIS"]
             #[inline(always)]
-            pub const fn enable(&self) -> super::vals::EnableEnable {
+            pub const fn enable(&self) -> super::vals::Enable {
                 let val = (self.0 >> 0usize) & 0x0f;
-                super::vals::EnableEnable::from_bits(val as u8)
+                super::vals::Enable::from_bits(val as u8)
             }
             #[doc = "Enable or disable TWIS"]
             #[inline(always)]
-            pub fn set_enable(&mut self, val: super::vals::EnableEnable) {
+            pub fn set_enable(&mut self, val: super::vals::Enable) {
                 self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
             }
         }
@@ -49079,7 +48979,7 @@ pub mod twis {
     pub mod vals {
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum EnableEnable {
+        pub enum Enable {
             #[doc = "Disable TWIS"]
             DISABLED = 0x0,
             _RESERVED_1 = 0x01,
@@ -49099,9 +48999,9 @@ pub mod twis {
             _RESERVED_e = 0x0e,
             _RESERVED_f = 0x0f,
         }
-        impl EnableEnable {
+        impl Enable {
             #[inline(always)]
-            pub const fn from_bits(val: u8) -> EnableEnable {
+            pub const fn from_bits(val: u8) -> Enable {
                 unsafe { core::mem::transmute(val & 0x0f) }
             }
             #[inline(always)]
@@ -49109,16 +49009,16 @@ pub mod twis {
                 unsafe { core::mem::transmute(self) }
             }
         }
-        impl From<u8> for EnableEnable {
+        impl From<u8> for Enable {
             #[inline(always)]
-            fn from(val: u8) -> EnableEnable {
-                EnableEnable::from_bits(val)
+            fn from(val: u8) -> Enable {
+                Enable::from_bits(val)
             }
         }
-        impl From<EnableEnable> for u8 {
+        impl From<Enable> for u8 {
             #[inline(always)]
-            fn from(val: EnableEnable) -> u8 {
-                EnableEnable::to_bits(val)
+            fn from(val: Enable) -> u8 {
+                Enable::to_bits(val)
             }
         }
         #[repr(u8)]
@@ -50100,13 +50000,13 @@ pub mod uarte {
         impl Enable {
             #[doc = "Enable or disable UARTE"]
             #[inline(always)]
-            pub const fn enable(&self) -> super::vals::EnableEnable {
+            pub const fn enable(&self) -> super::vals::Enable {
                 let val = (self.0 >> 0usize) & 0x0f;
-                super::vals::EnableEnable::from_bits(val as u8)
+                super::vals::Enable::from_bits(val as u8)
             }
             #[doc = "Enable or disable UARTE"]
             #[inline(always)]
-            pub fn set_enable(&mut self, val: super::vals::EnableEnable) {
+            pub fn set_enable(&mut self, val: super::vals::Enable) {
                 self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u32) & 0x0f) << 0usize);
             }
         }
@@ -51008,7 +50908,7 @@ pub mod uarte {
         }
         #[repr(u8)]
         #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-        pub enum EnableEnable {
+        pub enum Enable {
             #[doc = "Disable UARTE"]
             DISABLED = 0x0,
             _RESERVED_1 = 0x01,
@@ -51028,9 +50928,9 @@ pub mod uarte {
             _RESERVED_e = 0x0e,
             _RESERVED_f = 0x0f,
         }
-        impl EnableEnable {
+        impl Enable {
             #[inline(always)]
-            pub const fn from_bits(val: u8) -> EnableEnable {
+            pub const fn from_bits(val: u8) -> Enable {
                 unsafe { core::mem::transmute(val & 0x0f) }
             }
             #[inline(always)]
@@ -51038,16 +50938,16 @@ pub mod uarte {
                 unsafe { core::mem::transmute(self) }
             }
         }
-        impl From<u8> for EnableEnable {
+        impl From<u8> for Enable {
             #[inline(always)]
-            fn from(val: u8) -> EnableEnable {
-                EnableEnable::from_bits(val)
+            fn from(val: u8) -> Enable {
+                Enable::from_bits(val)
             }
         }
-        impl From<EnableEnable> for u8 {
+        impl From<Enable> for u8 {
             #[inline(always)]
-            fn from(val: EnableEnable) -> u8 {
-                EnableEnable::to_bits(val)
+            fn from(val: Enable) -> u8 {
+                Enable::to_bits(val)
             }
         }
         #[repr(u8)]

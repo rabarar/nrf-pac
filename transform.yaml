@@ -36,6 +36,9 @@ transforms:
       from: .*::regs::Publish.*
       to: shared::regs::Publish
       check: NoCheck
+  - !Rename
+      from: (.*)::vals::EnableEnable
+      to: $1::vals::Enable
 
 # ======= Fix inconsistent interrupt naming
   - !RenameInterrupts
@@ -177,6 +180,13 @@ transforms:
   - !MergeEnums
       from: gpio::vals::Detectmode.*
       to: gpio::vals::Detectmode
+  - !RenameEnumVariants
+      enum: gpio::vals::Drive[01]
+      from: (.*)[01]
+      to: $1
+  - !MergeEnums
+      from: gpio::vals::Drive[01]
+      to: gpio::vals::Drive
   - !MakeFieldArray
       fieldsets: gpio::regs::(Dir.*|In|Out.*|Latch)
       from: pin\d+
@@ -263,6 +273,9 @@ transforms:
 # ======= CLOCK
   - !MergeEnums
       from: clock::vals::Lfclk.*Src
+      to: clock::vals::Lfclksrc
+  - !MergeEnums
+      from: clock::vals::(SrcSrc|SrccopySrc|StatSrc)
       to: clock::vals::Lfclksrc
 
 # ======= NFCT
