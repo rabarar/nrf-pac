@@ -16,5 +16,6 @@
 #[cfg_attr(feature = "nrf54l15-flpr", path = "./chips/nrf54l15-flpr/pac.rs")]
 #[cfg_attr(feature = "nrf9120", path = "./chips/nrf9120/pac.rs")]
 #[cfg_attr(feature = "nrf9160", path = "./chips/nrf9160/pac.rs")]
+#[cfg_attr(feature = "nrf9151", path = "./chips/nrf9151/pac.rs")]
 mod inner;
 pub use inner::*;
